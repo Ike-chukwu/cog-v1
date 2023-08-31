@@ -1,0 +1,13 @@
+.topBTN {
+  width: 70rem;
+  background-color: rgba(98, 144, 159, 1);
+  margin: auto;
+  height: 4.1875rem;
+  text-align: center;
+}
+.topBTNone {
+  width: 13rem;
+  height: 4.1875rem;
+  border-left: 0.0625rem solid #000;
+  border-right: 0.0625rem solid #000;
+}

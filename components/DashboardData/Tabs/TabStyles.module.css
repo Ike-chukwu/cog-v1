@@ -1,0 +1,56 @@
+.dashboard header {
+  padding: 0.5em;
+  background-color: var(--greyColor);
+}
+.dashboard .tabs {
+  background-color: var(--mainColor);
+  height: auto;
+}
+@media screen and (max-width: 900px) {
+  .dashboard .tabs {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 900px) {
+  .dashboard .tabs h4 {
+    font-size: 17px;
+  }
+  .dashboard .tabs .active {
+    padding: 20px;
+  }
+}
+.dashboard .tabs .tabTitleContainer {
+  margin-top: 100px;
+  cursor: pointer;
+}
+.dashboard .tabs .tabTitleContainer .tabTitle {
+  width: 100%;
+  margin-top: 40px;
+}
+.dashboard .tabs .tabTitleContainer .tabTitle .active {
+  background-color: var(--white);
+  color: var(--mainColor);
+  transition: all 1s ease-in-out;
+  padding: 1em;
+  border-bottom-right-radius: 12px;
+  border-top-right-radius: 12px;
+}
+.dashboard .tabs .tabTitleContainer .tabTitle .active h4 {
+  margin: 0;
+}
+.dashboard .tabs .tabTitleContainer .tabTitle .notActive {
+  color: var(--white);
+  padding: 1em;
+}
+.dashboard .tabs .tabTitleContainer .tabTitle .notActive h4 {
+  margin: 0;
+}
+@media screen and (max-width: 900px) {
+  .dashboard .tabs .tabTitleContainer .tabTitle .active,
+  .dashboard .tabs .tabTitleContainer .tabTitle .notActive {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+} /*# sourceMappingURL=TabStyles.module.css.map */

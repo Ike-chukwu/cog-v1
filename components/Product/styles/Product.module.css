@@ -1,0 +1,31 @@
+.product {
+  margin: 2em auto;
+}
+.product .property {
+  border: solid 1px #b1b1b4;
+  box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 0.1803921569);
+  padding: 1em;
+  border-radius: 10px;
+  width: 65%;
+  margin: 2em 0;
+}
+.product .property .ImageContainer {
+  width: 155px;
+}
+.product small {
+  color: #4b4b4b;
+  font-size: 0.6rem;
+}
+.product aside {
+  width: 30%;
+  border-radius: 10px;
+  margin: 2em 0;
+  border: solid 1px var(--mainColor);
+}
+.product aside div {
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+.product aside h3 {
+  color: #000;
+} /*# sourceMappingURL=Product.module.css.map */

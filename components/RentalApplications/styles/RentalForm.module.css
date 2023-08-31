@@ -1,0 +1,62 @@
+.apply {
+  margin-bottom: 100px;
+}
+.apply .inputContainer {
+  margin-bottom: 1em;
+}
+.apply .inputContainer input,
+.apply .inputContainer select {
+  border: solid 1px var(--green);
+  padding: 0.5em;
+  border-radius: 5px;
+  width: 65%;
+}
+.apply .inputContainer label {
+  margin-bottom: 0.5em;
+}
+
+.review {
+  margin-bottom: 100px;
+}
+.review .prevData {
+  margin-bottom: 1em;
+  border-bottom: solid 1px rgb(204, 204, 204);
+  padding: 0.5em 0;
+}
+
+.payment {
+  margin-bottom: 100px;
+}
+.payment aside {
+  border-radius: 10px;
+  margin: 2em 0;
+  border: solid 1px var(--mainColor);
+}
+.payment aside div {
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+.payment aside h3 {
+  color: #000;
+}
+
+.complete {
+  margin-bottom: 100px;
+}
+.complete aside {
+  border-radius: 10px;
+  margin: 2em 0;
+  border: solid 1px var(--mainColor);
+}
+.complete aside div {
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+.complete aside h3 {
+  color: #000;
+}
+.complete p {
+  margin: 1em auto;
+  width: 60%;
+  text-align: center;
+} /*# sourceMappingURL=RentalForm.module.css.map */
