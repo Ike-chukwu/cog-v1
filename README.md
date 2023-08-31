@@ -12,6 +12,6 @@
 - Do not tamper with the current structure of the project (e.g creating new folders in the root directory) without general permission
 - Do not tamper with config files without general permission (i.e `next.config.js`, `jsconfig.json`, `postcss.config.js`) except `tailwind.config.js`😉
 
-  #### PS: General permission include [Tobi](https://github.com/tobiadetunji5), [Leye](https://github.com/usernameisleye) and 2 more fellow developers.
+  #### PS: "General permission" means permission from either [Tobi](https://github.com/tobiadetunji5) or [Leye](https://github.com/usernameisleye) or 2+ fellow developers or all
 
   ## FOLLOW THESE RULES EJOOR🙏🏾
