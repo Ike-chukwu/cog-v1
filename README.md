@@ -1,8 +1,11 @@
 # COG PM FRONTEND
+
 This is the new repository for COG PM Frontend, please try to follow the rules below to prevent the chaos that happened in the last repo. Thanks!
 
 ## REPO RULES🚨🚨🚨
-- ALWAYS build (i.e `npm run build` or `yarn build`) your code before you push to this repo, to prevent deployment errors👍🏾
+
+- ALWAYS build (i.e `npm run build`) your code before you push to this repo, to prevent deployment errors👍🏾
+- Please use `npm` and not `yarn` to avoid two `.lock` files in the repo
 - Don't edit the setup files without general permission (i.e .eslintrc.json, .prettierrc, .prettierignore, .vscode files, .husky files)
 - All files should be in `.js` not `.jsx` to encourage consistency
 - The main styling for this website is "TailwindCSS", adhere from creating more `.scss` and `.css`("Use `globals.css" for your custom css)
@@ -18,8 +21,9 @@ This is the new repository for COG PM Frontend, please try to follow the rules b
 
   ### FOLLOW THESE RULES EJOOR🙏🏾
 
- ## CONTRIBUTING TO THIS REPO
-  This is the process by which you can clone this repo, create your own branch, push the changes on your branch and make a Pull Request
+## CONTRIBUTING TO THIS REPO
+
+This is the process by which you can clone this repo, create your own branch, push the changes on your branch and make a Pull Request
 
 #### If you don't have git on your machine, [install it](https://docs.github.com/en/get-started/quickstart/set-up-git).
 
@@ -74,6 +78,7 @@ Add those changes to the branch you just created using the `git add` command:
 ```
 git add .
 ```
+
 Now commit those changes using the `git commit` command:
 
 ```

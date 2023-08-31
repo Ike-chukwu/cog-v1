@@ -59,3 +59,7 @@
 .dashboard_nav_links.expand_nav > li > a {
   width: fit-content;
 }
+
+.dashboard-wrap::-webkit-scrollbar {
+  display: none;
+}

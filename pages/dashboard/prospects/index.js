@@ -1,3 +1,4 @@
+// Prospect index code soon to be remodelled by Leye
 import Dashboard from "@/components/Layout/Dashboard"
 import Image from "next/image"
 import Link from "next/link"
@@ -80,7 +81,7 @@ const Prospects = () => {
                   className="absolute right-0 top-[45px] bg-white border-[#62909F] border-[1px] text-[15px]"
                   ref={popupRef}
                 >
-                  <Link href="dashboard/prospects/add-prospect">
+                  <Link href="prospects/add-prospect">
                     <span
                       className="flex p-2 gap-x-2 hover:bg-[#D2F4FF] cursor-pointer whitespace-no-wrap"
                       onClick={closePopupHandler}
@@ -95,7 +96,7 @@ const Prospects = () => {
                     </span>
                   </Link>
 
-                  <Link href="dashboard/prospects/all-prospects">
+                  <Link href="prospects/all-prospects">
                     <span
                       className="flex p-2 gap-x-2 hover:bg-[#D2F4FF] cursor-pointer whitespace-no-wrap"
                       onClick={closePopupHandler}

@@ -1,4 +1,3 @@
-import ProgressBar from "@/components/Create/ProgressBar"
 import Dashboard from "@/components/Layout/Dashboard"
 import Amount from "@/components/ProspectStages/Amount"
 import ClientDetails from "@/components/ProspectStages/ClientDetails"
@@ -6,6 +5,7 @@ import Demography from "@/components/ProspectStages/Demography"
 import PropertyDetails from "@/components/ProspectStages/PropertyDetails"
 import SigningDate from "@/components/ProspectStages/SigningDate"
 import ProspectSummary from "@/components/ProspectStages/Summary"
+import ProgressBar from "@/components/UI/Dashboard/ProgressBar"
 import { Fragment, useState } from "react"
 import { FiBell } from "react-icons/fi"
 

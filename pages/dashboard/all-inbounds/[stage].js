@@ -1,5 +1,5 @@
-import ProgressBar from "@/components/Create/ProgressBar"
 import Dashboard from "@/components/Layout/Dashboard"
+import ProgressBar from "@/components/UI/Dashboard/ProgressBar"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
@@ -11,7 +11,11 @@ import { Summary as OfferSummary } from "../../temp/make-offers"
 
 const Index = () => {
   const router = useRouter()
-  const { stage } = router.query
+  let { stage } = router.query
+
+  if (!stage) {
+    stage = "prospect"
+  }
 
   const contents = [
     {

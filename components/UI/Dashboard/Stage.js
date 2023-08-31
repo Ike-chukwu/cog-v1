@@ -1,5 +1,5 @@
-import SubStage from "./SubStage"
 import { FiCheck } from "react-icons/fi"
+import SubStage from "./SubStage"
 
 const Stage = ({
   stage,

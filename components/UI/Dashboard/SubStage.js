@@ -1,6 +1,3 @@
-import React from "react"
-import Form from "./Form"
-
 const SubStage = ({ subStage, isActive, stageNumber, subStageNumber }) => {
   return (
     <div className="mt-1 ml-2">
