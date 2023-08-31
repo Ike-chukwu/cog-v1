@@ -57,7 +57,7 @@ const Dashboard = ({ children }) => {
 
   return (
     <div className="flex">
-      <div className="dashboard-wrap w-1/5 overflow-y-scroll h-screen bg-white border-r border-[#737373] text-[#5E5E5E] py-8 px-4">
+      <div className="dashboard-wrap w-1/5 overflow-y-scroll h-screen bg-white border-r border-[#737373]/30 text-[#5E5E5E] py-8 px-4">
         <div className="flex flex-col justify-between h-full">
           <div className="grid gap-4">
             <header>
@@ -78,7 +78,7 @@ const Dashboard = ({ children }) => {
           </div>
 
           <button className="inline-flex items-center gap-3 mt-12 p-4 w-full rounded-md hover:bg-red-600 hover:text-white">
-            <IoExitOutline className="text-2xl" />
+            <IoExitOutline className="text-2xl rotate-180" />
             <span>Logout</span>
           </button>
         </div>
