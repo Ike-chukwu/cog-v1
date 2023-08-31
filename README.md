@@ -8,6 +8,7 @@
 - Create files in using the right NextJS folder structure routing. If you're not sure, here [Read it here...](https://nextjs.org/docs/pages/building-your-application/routing)
 - Utility function should be created in the `utils` folder(preferrably in its `index.js` file)
 - The `temp` folder is just "temporary" code for reference purposes, may be deleted soon
+- Use the import alias (i.e `@`) wherever you can to avoid import chaining (i.e "../../" or "../../") and so on😣
 - Components should be capitilized to encourage consistency (i.e `Component.js` not `component.js`)
 - Do not tamper with the current structure of the project (e.g creating new folders in the root directory) without general permission
 - Do not tamper with config files without general permission (i.e `next.config.js`, `jsconfig.json`, `postcss.config.js`) except `tailwind.config.js`😉
