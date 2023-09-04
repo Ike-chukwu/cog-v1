@@ -1,37 +1,45 @@
 import { Fragment } from "react"
 
-const ClientDetails = ({
+const PropertyDetails = ({
   subStage,
-  propertyType,
-    setPropertyType,
-
-    applicationType,
-    setApplicationType
-
+  propertyAddress,
+  setPropertyAddress,
+  setPremisesChecklist,
+  premisesChecklist,
+  unitID,
+  setUnitID,
 }) => {
   const getStage = () => {
     switch (subStage) {
       case 1:
         return (
-          <PropertyType propertyType={propertyType} setPropertyType={setPropertyType} />
+          <PropertyAddress
+            propertyAddress={propertyAddress}
+            setPropertyAddress={setPropertyAddress}
+          />
         )
       case 2:
         return (
-            <ApplicationType
-            applicationType={applicationType}
-            setApplicationType={setApplicationType}
+          <PremisesChecklist
+            premisesChecklist={premisesChecklist}
+            setPremisesChecklist={setPremisesChecklist}
           />
         )
+      case 3:
+        return <UnitID unitID={unitID} setUnitID={setUnitID} />
       default:
         return (
-            <PropertyType propertyType={propertyType} setPropertyType={setPropertyType} />
+          <PropertyAddress
+            propertyAddress={propertyAddress}
+            setPropertyAddress={setPropertyAddress}
+          />
         )
     }
   }
   return getStage()
 }
 
-export default ClientDetails
+export default PropertyDetails
 
 const Wrapper = ({ children, header, subHead }) => {
   return (
@@ -46,72 +54,111 @@ const Wrapper = ({ children, header, subHead }) => {
   )
 }
 
-const PropertyType = ({ propertyType, setPropertyType }) => {
+const PropertyAddress = ({ propertyAddress, setPropertyAddress }) => {
   return (
-    <Wrapper header="Property type" subHead="This is where you enter the type of property being sold or rented.">
+    <Wrapper
+      header="Property address"
+      subHead="This is where you provide the details of the property being sold/rented. You can select from existing property data."
+    >
       <div>
         <div className="mb-10">
           <input
             type="radio"
             name="type"
-            value="flat"
+            value="existing"
             className="cursor-pointer mr-2"
-            checked={propertyType === "flat"}
-            onChange={(e) => setPropertyType(e.target.value)}
+            checked={propertyAddress === "existing"}
+            onChange={(e) => setPropertyAddress(e.target.value)}
           />
-          <span>Flat/apartment</span>
+          <span>Choose from existing property data</span>
         </div>
 
         <div>
+          <ul className="list-disc ml-6">
+            <li>
+              <span>Enter new address</span>
+            </li>
+          </ul>
+          <br />
           <input
-            type="radio"
-            name="type"
-            value="warehouse"
-            className="cursor-pointer mr-2"
-            checked={propertyType === "warehouse"}
-            onChange={(e) => setPropertyType(e.target.value)}
+            type="text"
+            name="propertyAddress"
+            value={propertyAddress}
+            onChange={(e) => setClientName(e.target.value)}
+            placeholder="Enter new address"
+            className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 ml-6"
           />
-          <span>Warehouse/storage facility</span>
-        </div>
-
-        <div>
-          <input
-            type="radio"
-            name="type"
-            value="home"
-            className="cursor-pointer mr-2"
-            checked={propertyType === "home"}
-            onChange={(e) => setPropertyType(e.target.value)}
-          />
-          <span>Whole home</span>
         </div>
       </div>
     </Wrapper>
   )
 }
 
-const ApplicationType = ({ applicationType, setApplicationType }) => {
-    return (
-      <Wrapper
-        header="Application Type"
-        subHead="This is where you select the type of agreement type you are having with this client. Typically, you would have a sale or rental agreement."
-      >
-        <ul className="list-disc ml-6">
-          <li>
-            <p className="font-semibold opacity-70">Application type</p>
-            <select
-              value={applicationType}
-              onChange={(e) => setApplicationType(e.target.value)}
-              className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
-            >
-              <option value="" className="pointer-events-none">
-                Select application type
-              </option>
-              <option value="Property rental">Property rental</option>
-              <option value="Property purchase">Property purchase</option>
-            </select>
-          </li>
-        </ul>
-      </Wrapper>
-    )
+const UnitID = ({ unitID, setUnitID }) => {
+  return (
+    <Wrapper
+      header="Unit ID"
+      subHead="This is where you enter the identity of the property unit being prospected. A 
+        property can have sub-units within it. This is to identify the specific unit the prospect is interested in"
+    >
+      <ul className="list-disc ml-6 mb-8">
+        <li>
+          <p className="font-semibold opacity-70">Unit ID</p>
+          <input
+            type="text"
+            value={unitID}
+            placeholder="Enter unit ID"
+            onChange={(e) => setUnitID(e.target.value)}
+            className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
+          />
+        </li>
+      </ul>
+    </Wrapper>
+  )
+}
+
+const PremisesChecklist = ({ premisesChecklist, setPremisesChecklist }) => {
+  const handleInputChange = (event) => {
+    const { name, value } = event.target
+
+    setPremisesChecklist((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }))
   }
+
+  const checkboxData = [
+    { name: "livingRoom", label: "Living rooms" },
+    { name: "bedroom", label: "Bed room" },
+    { name: "kitchen", label: "Kitchen" },
+    { name: "officeSpace", label: "Office space" },
+    { name: "garden", label: "Garden" },
+    { name: "store", label: "Store" },
+    { name: "garage", label: "Garage" },
+    { name: "furnishing", label: "Furnishing" },
+    { name: "parkingSpace", label: "Parking Space" },
+    { name: "restrooms", label: "Rest rooms" },
+  ]
+
+  return (
+    <Wrapper
+      header="Premises physical specifics"
+      subHead="This is where you enter the details of the type of property you are selling/renting to this client."
+    >
+      <div className="grid gap-4">
+        {checkboxData.map((item) => (
+          <div key={item.name} className="mb-2.5">
+            <input
+              name={item.name}
+              type="checkbox"
+              value={premisesChecklist[item.name]}
+              onChange={handleInputChange}
+              className="cursor-pointer [&:not(input:checked)]:appearance-none outline-none accent- h-5 w-5 border border-[#B1B1B4] bg-[#E2E4F0] rounded-sm mr-2 "
+            />
+            <span className="mt-[-3px]">{item.label}</span>
+          </div>
+        ))}
+      </div>
+    </Wrapper>
+  )
+}

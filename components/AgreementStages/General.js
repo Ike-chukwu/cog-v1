@@ -1,6 +1,6 @@
 import { Fragment } from "react"
 
-const ClientDetails = ({
+const General = ({
   subStage,
   propertyType,
   setPropertyType,
@@ -11,7 +11,7 @@ const ClientDetails = ({
     switch (subStage) {
       case 1:
         return (
-          <PropertyType
+            <PropertyType
             propertyType={propertyType}
             setPropertyType={setPropertyType}
           />
@@ -25,7 +25,7 @@ const ClientDetails = ({
         )
       default:
         return (
-          <PropertyType
+            <PropertyType
             propertyType={propertyType}
             setPropertyType={setPropertyType}
           />
@@ -35,7 +35,7 @@ const ClientDetails = ({
   return getStage()
 }
 
-export default ClientDetails
+export default General
 
 const Wrapper = ({ children, header, subHead }) => {
   return (

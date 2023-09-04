@@ -9,6 +9,7 @@ import { FiBell } from "react-icons/fi"
 const AddAgreement = () => {
   const [activeStage, setActiveStage] = useState(1)
   const [activeSubStage, setActiveSubStage] = useState(1)
+
   // General
   const [applicationType, setApplicationType] = useState("")
   const [propertyType, setPropertyType] = useState("")
@@ -19,14 +20,14 @@ const AddAgreement = () => {
     LGA: "",
     ward: "",
   })
-  const [checklist, setChecklist] = useState({
-    CAC: "",
-    tax: "",
-    creditReport: "",
-    identity: "",
-    creditReportTwo: "",
-    confirmation: "",
-    policeReport: "",
+  const [premisesChecklist, setPremisesChecklist] = useState({
+    livingRoom: "",
+    kitchen: "",
+    bedroom: "",
+    officeSpace: "",
+    garden: "",
+    store: "",
+    garage: "",
   })
   const [unitID, setUnitID] = useState("")
   const [unitFeatures, setUnitFeatures] = useState({
@@ -136,18 +137,21 @@ const AddAgreement = () => {
       subStages: [],
     },
   ]
-
+  const handleSubStageChange = (newSubStage) => {
+    setSubStage(newSubStage);
+  };
+  
   const handleNextSubStage = () => {
-    if (activeSubStage < stagesData[activeStage].subStages.length) {
-      setActiveSubStage((prevSubStage) => prevSubStage + 1)
-    } else handleNextStage()
-  }
+    if (activeSubStage < stagesData[activeStage - 1].subStages.length) {
+      setActiveSubStage((prevSubStage) => prevSubStage + 1);
+    } else handleNextStage();
+  };
 
   const handlePreviousSubStage = () => {
-    if (activeSubStage > 0) {
-      setActiveSubStage((prevSubStage) => prevSubStage - 1)
-    } else handlePreviousStage()
-  }
+    if (activeSubStage > 1) {
+      setActiveSubStage((prevSubStage) => prevSubStage - 1);
+    } else handlePreviousStage();
+  };
 
   const handleNextStage = () => {
     if (activeStage < stagesData.length - 1) {
@@ -209,15 +213,19 @@ const AddAgreement = () => {
                 <PropertyDetails
                   subStage={activeSubStage}
                   unitID={unitID}
+                  activeStage={activeStage} // Pass activeStage as a prop
+                  activeSubStage={activeSubStage} // Pass activeSubStage as a prop
                   location={location}
                   propertyType={propertyType}
                   unitFeatures={unitFeatures}
-                  applicationType={applicationType}
                   setUnitID={setUnitID}
                   setLocation={setLocation}
                   setPropertyType={setPropertyType}
                   setUnitFeatures={setUnitFeatures}
                   setApplicationType={setApplicationType}
+                  premisesChecklist={premisesChecklist}
+                  setPremisesChecklist={setPremisesChecklist}
+                  onSubStageChange={handleSubStageChange}
                 />
               )}
               {activeStage === 3 && <></>}
