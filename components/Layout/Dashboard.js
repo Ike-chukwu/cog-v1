@@ -4,7 +4,7 @@ import { useState } from "react"
 import { IoExitOutline } from "react-icons/io5"
 import { RiHome5Fill } from "react-icons/ri"
 
-const Dashboard = ({ children }) => {
+const Dashboard = ({ children, className }) => {
   const menus = [
     {
       link: "",
@@ -84,7 +84,9 @@ const Dashboard = ({ children }) => {
         </div>
       </div>
 
-      <div className="grow overflow-y-scroll h-screen">{children}</div>
+      <div className={`grow overflow-y-scroll h-screen ${className}`}>
+        {children}
+      </div>
     </div>
   )
 }
