@@ -1,50 +1,43 @@
-import Image from "next/image"
-import React, { Fragment } from "react"
+import { Fragment } from "react"
 
 const ClientDetails = ({
   subStage,
-  upload,
-  checklist,
-  clientType,
+  newImport,
+  setNewImport,
   clientName,
-  clientContact,
-  setUpload,
-  setChecklist,
-  setClientType,
   setClientName,
+  clientAddress,
+  clientContact,
+  setClientAddress,
   setClientContact,
 }) => {
   const getStage = () => {
     switch (subStage) {
       case 1:
-        return (
-          <ClientType clientType={clientType} setClientType={setClientType} />
-        )
+        return <NewImport newImport={newImport} setNewImport={setNewImport} />
       case 2:
         return (
-          <ClientName clientName={clientName} setClientName={setClientName} />
+          <ClientName
+            clientName={clientName}
+            setClientName={setClientName}
+          />
         )
       case 3:
+        return (
+          <ClientAddress
+            clientAddress={clientAddress}
+            setClientAddress={setClientAddress}
+          />
+        )
+      case 4:
         return (
           <ClientContact
             clientContact={clientContact}
             setClientContact={setClientContact}
           />
         )
-      case 4:
-        return (
-          <VerificationChecklist
-            clientType={clientType}
-            checklist={checklist}
-            setChecklist={setChecklist}
-          />
-        )
-      case 5:
-        return <VerificationUpload upload={upload} setUpload={setUpload} />
       default:
-        return (
-          <ClientType clientType={clientType} setClientType={setClientType} />
-        )
+        return <NewImport newImport={newImport} setNewImport={setNewImport} />
     }
   }
   return getStage()
@@ -65,32 +58,35 @@ const Wrapper = ({ children, header, subHead }) => {
   )
 }
 
-const ClientType = ({ clientType, setClientType }) => {
+const NewImport = ({ newImport, setNewImport }) => {
   return (
-    <Wrapper header="Client type" subHead="Select client type">
+    <Wrapper
+      header="Client details"
+      subHead="This is where you enter the type of property being sold or rented. You can select from existing client data."
+    >
       <div>
         <div className="mb-10">
           <input
             type="radio"
             name="type"
-            value="company"
+            value="existing"
             className="cursor-pointer mr-2"
-            checked={clientType === "company"}
-            onChange={(e) => setClientType(e.target.value)}
+            checked={newImport === "existing"}
+            onChange={(e) => setNewImport(e.target.value)}
           />
-          <span>Company/organization</span>
+          <span>Choose from existing client data</span>
         </div>
 
-        <div>
+        <div className="mb-10">
           <input
             type="radio"
             name="type"
-            value="induvidual"
+            value="new"
             className="cursor-pointer mr-2"
-            checked={clientType === "induvidual"}
-            onChange={(e) => setClientType(e.target.value)}
+            checked={newImport === "new"}
+            onChange={(e) => setNewImport(e.target.value)}
           />
-          <span>Individual</span>
+          <span>New client</span>
         </div>
       </div>
     </Wrapper>
@@ -99,14 +95,18 @@ const ClientType = ({ clientType, setClientType }) => {
 
 const ClientName = ({ clientName, setClientName }) => {
   return (
-    <Wrapper header="Client name" subHead="Enter client name">
-      <ul className="list-disc ml-6">
+    <Wrapper
+      header="Client details"
+      subHead="This is where you enter the type of property being sold or rented. You can select from existing client data."
+    >
+      <ul className="list-disc ml-6 mb-8 flex flex-col gap-6">
         <li>
-          <p className="font-semibold opacity-70">Client name</p>
+          <p className="font-semibold opacity-70">Client's Name</p>
           <input
             type="text"
+            name="clientName"
             value={clientName}
-            placeholder="Enter state"
+            placeholder="Enter client's name"
             onChange={(e) => setClientName(e.target.value)}
             className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
           />
@@ -115,41 +115,22 @@ const ClientName = ({ clientName, setClientName }) => {
     </Wrapper>
   )
 }
-const ClientContact = ({ clientContact, setClientContact }) => {
-  const handleInputChange = (event) => {
-    const { name, value } = event.target
 
-    setClientContact((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }))
-  }
+const ClientContact = ({ clientContact, setClientContact }) => {
   return (
     <Wrapper
-      header="Client contact"
-      subHead="This is where you enter the contact details of the prospect"
+      header="Client details"
+      subHead="This is where you enter the type of property being sold or rented. You can select from existing client data."
     >
-      <ul className="grid gap-8 list-disc ml-6">
+      <ul className="list-disc ml-6 mb-8 flex flex-col gap-6">
         <li>
-          <p className="font-semibold opacity-70">Email address</p>
-          <input
-            type="email"
-            name="email"
-            value={clientContact.email}
-            placeholder="Enter email address"
-            onChange={handleInputChange}
-            className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
-          />
-        </li>
-
-        <li>
-          <p className="font-semibold opacity-70">Phone number</p>
+          <p className="font-semibold opacity-70">Client's Phone number</p>
           <input
             type="text"
-            name="number"
-            value={clientContact.number}
-            onChange={handleInputChange}
-            placeholder="Enter phone number"
+            name="clientContact"
+            value={clientContact}
+            placeholder="Enter client's phone number"
+            onChange={(e) => setClientContact(e.target.value)}
             className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
           />
         </li>
@@ -158,141 +139,25 @@ const ClientContact = ({ clientContact, setClientContact }) => {
   )
 }
 
-const VerificationChecklist = ({ clientType, checklist, setChecklist }) => {
-  const handleInputChange = (event) => {
-    const { name, value } = event.target
-
-    setChecklist((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }))
-  }
-
+const ClientAddress = ({ clientAddress, setClientAddress }) => {
   return (
     <Wrapper
-      header="Verification checklist"
-      subHead="Select identity verification type"
+      header="Client details"
+      subHead="This is where you enter the type of property being sold or rented. You can select from existing client data."
     >
-      <div className="grid gap-4">
-        {clientType === "company" && (
-          <Fragment>
-            <div>
-              <input
-                name="CAC"
-                type="checkbox"
-                value={checklist.CAC}
-                onChange={handleInputChange}
-                className="cursor-pointer [&:not(input:checked)]:appearance-none outline-none accent- h-5 w-5 border border-[#B1B1B4] bg-[#E2E4F0] rounded-sm mr-2"
-              />
-              <span>CAC Incorporation Certificate</span>
-            </div>
-            <div>
-              <input
-                name="tax"
-                type="checkbox"
-                value={checklist.tax}
-                onChange={handleInputChange}
-                className="cursor-pointer [&:not(input:checked)]:appearance-none outline-none accent- h-5 w-5 border border-[#B1B1B4] bg-[#E2E4F0] rounded-sm mr-2"
-              />
-              <span>Tax certificate</span>
-            </div>
-            <div>
-              <input
-                type="checkbox"
-                name="creditReport"
-                value={checklist.creditReport}
-                onChange={handleInputChange}
-                className="cursor-pointer [&:not(input:checked)]:appearance-none outline-none accent- h-5 w-5 border border-[#B1B1B4] bg-[#E2E4F0] rounded-sm mr-2"
-              />
-              <span>Credit report</span>
-            </div>
-          </Fragment>
-        )}
-        {clientType === "induvidual" && (
-          <Fragment>
-            <div>
-              <input
-                name="identity"
-                type="checkbox"
-                value={checklist.identity}
-                onChange={handleInputChange}
-                className="cursor-pointer [&:not(input:checked)]:appearance-none outline-none accent- h-5 w-5 border border-[#B1B1B4] bg-[#E2E4F0] rounded-sm mr-2"
-              />
-              <span>
-                National identity certificate e.g International passport, NIN
-                etc
-              </span>
-            </div>
-            <div>
-              <input
-                type="checkbox"
-                name="creditReportTwo"
-                onChange={handleInputChange}
-                value={checklist.creditReportTwo}
-                className="cursor-pointer [&:not(input:checked)]:appearance-none outline-none accent- h-5 w-5 border border-[#B1B1B4] bg-[#E2E4F0] rounded-sm mr-2"
-              />
-              <span>Credit report</span>
-            </div>
-            <div>
-              <input
-                type="checkbox"
-                name="confirmation"
-                onChange={handleInputChange}
-                value={checklist.confirmation}
-                className="cursor-pointer [&:not(input:checked)]:appearance-none outline-none accent- h-5 w-5 border border-[#B1B1B4] bg-[#E2E4F0] rounded-sm mr-2"
-              />
-              <span>Employment confirmation</span>
-            </div>
-            <div>
-              <input
-                type="checkbox"
-                name="policeReport"
-                onChange={handleInputChange}
-                value={checklist.policeReport}
-                className="cursor-pointer [&:not(input:checked)]:appearance-none outline-none accent- h-5 w-5 border border-[#B1B1B4] bg-[#E2E4F0] rounded-sm mr-2"
-              />
-              <span>Police report</span>
-            </div>
-          </Fragment>
-        )}
-      </div>
-    </Wrapper>
-  )
-}
-
-const VerificationUpload = ({ upload, setUpload }) => {
-  const handleFile = (e) => {
-    const file = e.target.files[0]
-    const url = URL.createObjectURL(file)
-
-    setUpload(url)
-  }
-  return (
-    <Wrapper
-      header="Verification upload"
-      subHead="Upload identity verification selection"
-    >
-      <input type="file" id="file" className="hidden" onChange={handleFile} />
-      <label
-        htmlFor="file"
-        className="border border-dashed border-primary p-4 flex items-center gap-12 cursor-pointer"
-      >
-        <Image
-          src="/assets/icons/download-icon.png"
-          alt="Download"
-          width={60}
-          height={60}
-          priority
-        />
-
-        <div>
-          <h4 className="uppercase text-lg">
-            Drag file here or <span className="text-primary">browse</span>
-          </h4>
-          <p className="my-1 opacity-70">Supported file types: JPG, PNG, PDF</p>
-          <p className="opacity-70">The file size can be up to 20MB</p>
-        </div>
-      </label>
+      <ul className="list-disc ml-6 mb-8 flex flex-col gap-6">
+        <li>
+          <p className="font-semibold opacity-70">Client's Address</p>
+          <input
+            type="text"
+            name="clientAddress"
+            value={clientAddress}
+            placeholder="Enter client's address"
+            onChange={(e) => setClientAddress(e.target.value)}
+            className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
+          />
+        </li>
+      </ul>
     </Wrapper>
   )
 }

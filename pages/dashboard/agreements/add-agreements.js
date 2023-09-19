@@ -1,4 +1,7 @@
+import ClientDetails from "@/components/AgreementStages/ClientDetails"
 import General from "@/components/AgreementStages/General"
+import GuarantorDetails from "@/components/AgreementStages/GuarantorDetails"
+import LandlordDetails from "@/components/AgreementStages/LandlordDetails"
 import PropertyDetails from "@/components/AgreementStages/PropertyDetails"
 import AgreementSummary from "@/components/AgreementStages/Summary"
 import Dashboard from "@/components/Layout/Dashboard"
@@ -37,7 +40,7 @@ const AddAgreement = () => {
   })
 
   // Client Details
-  const [clientType, setClientType] = useState("old")
+  const [clientType, setClientType] = useState("")
   const [clientName, setClientName] = useState("")
   const [clientContact, setClientContact] = useState({
     address: "",
@@ -45,7 +48,7 @@ const AddAgreement = () => {
   })
 
   // Landlord Details
-  const [landlordType, setLandlordType] = useState("old")
+  const [newImport, setNewImport] = useState("")
   const [landlordName, setLandlordName] = useState("")
   const [landlordContact, setLandlordContact] = useState({
     address: "",
@@ -102,7 +105,7 @@ const AddAgreement = () => {
     },
     {
       stage: "Landlord Details",
-      subStages: ["Import/New", "Name", "Address"],
+      subStages: ["Import/New", "Name", "Address", "Contact"],
     },
 
     {
@@ -112,7 +115,7 @@ const AddAgreement = () => {
 
     {
       stage: "Guarantor Details",
-      subStages: ["Contact", "Name", "Address"],
+      subStages: ["Name", "Address", "Contact"],
     },
 
     {
@@ -137,21 +140,18 @@ const AddAgreement = () => {
       subStages: [],
     },
   ]
-  const handleSubStageChange = (newSubStage) => {
-    setSubStage(newSubStage);
-  };
-  
+
   const handleNextSubStage = () => {
-    if (activeSubStage < stagesData[activeStage - 1].subStages.length) {
-      setActiveSubStage((prevSubStage) => prevSubStage + 1);
-    } else handleNextStage();
-  };
+    if (activeSubStage < stagesData[activeStage].subStages.length) {
+      setActiveSubStage((prevSubStage) => prevSubStage + 1)
+    } else handleNextStage()
+  }
 
   const handlePreviousSubStage = () => {
-    if (activeSubStage > 1) {
-      setActiveSubStage((prevSubStage) => prevSubStage - 1);
-    } else handlePreviousStage();
-  };
+    if (activeSubStage > 0) {
+      setActiveSubStage((prevSubStage) => prevSubStage - 1)
+    } else handlePreviousStage()
+  }
 
   const handleNextStage = () => {
     if (activeStage < stagesData.length - 1) {
@@ -213,9 +213,7 @@ const AddAgreement = () => {
                 <PropertyDetails
                   subStage={activeSubStage}
                   unitID={unitID}
-                  activeStage={activeStage} // Pass activeStage as a prop
-                  activeSubStage={activeSubStage} // Pass activeSubStage as a prop
-                  location={location}
+                  activeStage={activeStage}
                   propertyType={propertyType}
                   unitFeatures={unitFeatures}
                   setUnitID={setUnitID}
@@ -225,12 +223,25 @@ const AddAgreement = () => {
                   setApplicationType={setApplicationType}
                   premisesChecklist={premisesChecklist}
                   setPremisesChecklist={setPremisesChecklist}
-                  onSubStageChange={handleSubStageChange}
                 />
               )}
-              {activeStage === 3 && <></>}
-              {activeStage === 4 && <></>}
-              {activeStage === 5 && <></>}
+              {activeStage === 3 && (
+                <LandlordDetails
+                  newImport={newImport}
+                  setNewImport={setNewImport}
+                  subStage={activeSubStage}
+                />
+              )}
+              {activeStage === 4 && (
+                <ClientDetails
+                  newImport={newImport}
+                  setNewImport={setNewImport}
+                  subStage={activeSubStage}
+                />
+              )}
+              {activeStage === 5 && (
+                <GuarantorDetails subStage={activeSubStage} />
+              )}
               {activeStage === 6 && <AgreementSummary agreement={agreement} />}
             </Fragment>
 
