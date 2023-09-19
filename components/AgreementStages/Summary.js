@@ -1,71 +1,95 @@
-import React from "react"
-
-const ProspectSummary = ({ prospect }) => {
+const AgreementSummary = ({ agreement }) => {
   const {
-    clientName,
-    clientType,
-    clientContact,
-    gender,
-    religion,
-    tribe,
-    occupation,
-    ageRange,
     applicationType,
     propertyType,
-    location,
-    unitID,
-    unitFeatures,
-    signingDate,
-  } = prospect
+    landlordName,
+    landlordContact,
+    landlordAddress,
+    clientName,
+    clientContact,
+    clientAddress,
+    guarantorName,
+    guarantorAddress,
+    guarantorContact,
+    propertyManagerType,
+    propertyManagerName,
+    propertyManagerAddress,
+    propertyManagerContact,
+    rentalAmount,
+    rentalFrequency,
+    selectedOptions,
+    accessDays,
+    terminateDays,
+  } = agreement
   return (
     <article className="flex flex-col gap-16">
       <h3 className="text-3xl text-[#2255A0] font-semibold">
-        Prospect summary
+        Agreement summary
       </h3>
 
       <article className="flex flex-col gap-10 w-full">
         <div>
-          <h2 className="text-2xl font-medium">Client Information</h2>
+          <h2 className="text-2xl font-medium">Buyer Details</h2>
 
           <div className="border border-borderGrey rounded-lg p-4 mt-4 flex flex-col gap-6">
             <div className="flex flex-col">
-              <small>Name:</small>
+              <small>Buyer Name:</small>
               <span>{clientName}</span>
             </div>
 
             <div className="flex flex-col">
-              <small>Client type:</small>
-              <span>{clientType}</span>
+              <small>Buyer type:</small>
+              <span>...</span>
             </div>
 
             <div className="flex flex-col">
               <small>Email address:</small>
-              <span>{clientContact.email}</span>
+              <span>...</span>
             </div>
 
             <div className="flex flex-col">
               <small>Phone number:</small>
-              <span>{clientContact.number}</span>
+              <span>{clientContact}</span>
             </div>
 
             <div className="flex flex-col">
-              <small>Gender:</small>
-              <span>{gender}</span>
+              <small>Address:</small>
+              <span>{clientAddress}</span>
             </div>
 
             <div className="flex flex-col">
-              <small>Religion:</small>
-              <span>{religion}</span>
+              <small>Agreement date</small>
+              <span>...</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-medium">Seller details</h2>
+
+          <div className="border border-borderGrey rounded-lg p-4 mt-4 flex flex-col gap-6">
+            <div className="flex flex-col">
+              <small>Seller name</small>
+              <span>{landlordName}</span>
             </div>
 
             <div className="flex flex-col">
-              <small>Tribe:</small>
-              <span>{tribe}</span>
+              <small>Landlord type</small>
+              <span>...</span>
             </div>
 
             <div className="flex flex-col">
-              <small>Age:</small>
-              <span>{ageRange}</span>
+              <small>Email address</small>
+              <span>...</span>
+            </div>
+
+            <div className="flex flex-col">
+              <small>Phone number</small>
+              <span>{landlordContact}</span>
+            </div>
+            <div className="flex flex-col">
+              <small>Address</small>
+              <span>{landlordAddress}</span>
             </div>
           </div>
         </div>
@@ -75,72 +99,108 @@ const ProspectSummary = ({ prospect }) => {
 
           <div className="border border-borderGrey rounded-lg p-4 mt-4 flex flex-col gap-6">
             <div className="flex flex-col">
-              <small>Application type:</small>
-              <span>{applicationType}</span>
-            </div>
-
-            <div className="flex flex-col">
               <small>Property type:</small>
               <span>{propertyType}</span>
             </div>
 
             <div className="flex flex-col">
-              <small>Property name:</small>
-              <span></span>
+              <small>Property Address</small>
+              <span>{propertyAddress}</span>
             </div>
 
             <div className="flex flex-col">
-              <small>Location:</small>
-              <div>
-                {Object.values(location).map((l, i) => (
-                  <span key={i}>{l}, </span>
-                ))}
-              </div>
+              <small>Agreement type</small>
+              <span>{applicationType}</span>
             </div>
 
             <div className="flex flex-col">
-              <small>Unit ID:</small>
-              <span>{unitID}</span>
+              <small>Premises physical specification</small>
+              <span>{premisesChecklist}</span>
             </div>
 
             <div className="flex flex-col">
-              <small>Unit features:</small>
-              <div className="grid gap-2">
-                {Object.values(unitFeatures).map((feature, i) => (
-                  <span key={i}>{feature}</span>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex flex-col">
-              <small>Potential move in date:</small>
-              <span>{signingDate}</span>
+              <small>Potential move in date</small>
+              <span>...</span>
             </div>
           </div>
         </div>
 
         <div>
-          <h2 className="text-2xl font-medium">Financial details</h2>
+          <h2 className="text-2xl font-medium">Property Manager Details</h2>
 
           <div className="border border-borderGrey rounded-lg p-4 mt-4 flex flex-col gap-6">
             <div className="flex flex-col">
-              <small>Rental fee at inception:</small>
-              <span></span>
+              <small>Property manager name</small>
+              <span>{propertyManagerName}</span>
             </div>
 
             <div className="flex flex-col">
-              <small>Subsequent rental fee:</small>
-              <span></span>
+              <small>Property manager type</small>
+              <span>{propertyManagerType}</span>
             </div>
 
             <div className="flex flex-col">
-              <small>Service charges:</small>
-              <span></span>
+              <small>Email address</small>
+              <span>...</span>
             </div>
 
             <div className="flex flex-col">
-              <small>Agreement period:</small>
-              <span></span>
+              <small>Phone number</small>
+              <span>{propertyManagerContact}</span>
+            </div>
+            <div className="flex flex-col">
+              <small>Address</small>
+              <span>{propertyManagerAddress}</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-medium">Entire Agreement</h2>
+          <div className="border border-borderGrey rounded-lg p-4 mt-4 flex flex-col gap-6">
+            <div className="flex flex-col">
+              <p>
+                This agreement constitutes the entire agreement between the
+                parties and supersedes all prior negotiations, understandings,
+                and agreements between the parties.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-medium">Governing Law</h2>
+          <div className="border border-borderGrey rounded-lg p-4 mt-4 flex flex-col gap-6">
+            <div className="flex flex-col">
+              <p>
+                This agreement shall be governed by and construed in accordance
+                with the laws of The Federal Republic of Nigeria.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-medium">Withness/Guarantor Details</h2>
+
+          <div className="border border-borderGrey rounded-lg p-4 mt-4 flex flex-col gap-6">
+            <div className="flex flex-col">
+              <small>Guarantor name</small>
+              <span>{guarantorName}</span>
+            </div>
+
+            <div className="flex flex-col">
+              <small>Email address</small>
+              <span>...</span>
+            </div>
+
+            <div className="flex flex-col">
+              <small>Phone number</small>
+              <span>{guarantorContact}</span>
+            </div>
+            <div className="flex flex-col">
+              <small>Address</small>
+              <span>{guarantorAddress}</span>
             </div>
           </div>
         </div>
@@ -149,4 +209,4 @@ const ProspectSummary = ({ prospect }) => {
   )
 }
 
-export default ProspectSummary
+export default AgreementSummary

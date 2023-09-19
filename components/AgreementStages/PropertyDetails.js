@@ -1,4 +1,4 @@
-import { Fragment } from "react"
+import { Fragment } from "react";
 
 const PropertyDetails = ({
   subStage,
@@ -17,29 +17,29 @@ const PropertyDetails = ({
             propertyAddress={propertyAddress}
             setPropertyAddress={setPropertyAddress}
           />
-        )
+        );
       case 2:
         return (
           <PremisesChecklist
             premisesChecklist={premisesChecklist}
             setPremisesChecklist={setPremisesChecklist}
           />
-        )
+        );
       case 3:
-        return <UnitID unitID={unitID} setUnitID={setUnitID} />
+        return <UnitID unitID={unitID} setUnitID={setUnitID} />;
       default:
         return (
           <PropertyAddress
             propertyAddress={propertyAddress}
             setPropertyAddress={setPropertyAddress}
           />
-        )
+        );
     }
-  }
-  return getStage()
-}
+  };
+  return getStage();
+};
 
-export default PropertyDetails
+export default PropertyDetails;
 
 const Wrapper = ({ children, header, subHead }) => {
   return (
@@ -51,8 +51,8 @@ const Wrapper = ({ children, header, subHead }) => {
 
       <Fragment>{children}</Fragment>
     </div>
-  )
-}
+  );
+};
 
 const PropertyAddress = ({ propertyAddress, setPropertyAddress }) => {
   return (
@@ -84,15 +84,15 @@ const PropertyAddress = ({ propertyAddress, setPropertyAddress }) => {
             type="text"
             name="propertyAddress"
             value={propertyAddress}
-            onChange={(e) => setClientName(e.target.value)}
+            onChange={(e) => setPropertyAddress(e.target.value)}
             placeholder="Enter new address"
             className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 ml-6"
           />
         </div>
       </div>
     </Wrapper>
-  )
-}
+  );
+};
 
 const UnitID = ({ unitID, setUnitID }) => {
   return (
@@ -114,18 +114,18 @@ const UnitID = ({ unitID, setUnitID }) => {
         </li>
       </ul>
     </Wrapper>
-  )
-}
+  );
+};
 
 const PremisesChecklist = ({ premisesChecklist, setPremisesChecklist }) => {
   const handleInputChange = (event) => {
-    const { name, value } = event.target
+    const { name, checked } = event.target;
 
     setPremisesChecklist((prevData) => ({
       ...prevData,
-      [name]: value,
-    }))
-  }
+      [name]: checked,
+    }));
+  };
 
   const checkboxData = [
     { name: "livingRoom", label: "Living rooms" },
@@ -138,7 +138,7 @@ const PremisesChecklist = ({ premisesChecklist, setPremisesChecklist }) => {
     { name: "furnishing", label: "Furnishing" },
     { name: "parkingSpace", label: "Parking Space" },
     { name: "restrooms", label: "Rest rooms" },
-  ]
+  ];
 
   return (
     <Wrapper
@@ -151,7 +151,7 @@ const PremisesChecklist = ({ premisesChecklist, setPremisesChecklist }) => {
             <input
               name={item.name}
               type="checkbox"
-              value={premisesChecklist[item.name]}
+              checked={premisesChecklist[item.name]}
               onChange={handleInputChange}
               className="cursor-pointer [&:not(input:checked)]:appearance-none outline-none accent- h-5 w-5 border border-[#B1B1B4] bg-[#E2E4F0] rounded-sm mr-2 "
             />
@@ -160,5 +160,5 @@ const PremisesChecklist = ({ premisesChecklist, setPremisesChecklist }) => {
         ))}
       </div>
     </Wrapper>
-  )
-}
+  );
+};

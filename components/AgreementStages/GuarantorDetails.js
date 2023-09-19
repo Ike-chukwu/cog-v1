@@ -2,8 +2,6 @@ import { Fragment } from "react"
 
 const GuarantorDetails = ({
   subStage,
-  newImport,
-  setNewImport,
   guarantorName,
   setGuarantorName,
   guarantorAddress,
@@ -61,40 +59,6 @@ const Wrapper = ({ children, header, subHead }) => {
   )
 }
 
-const NewImport = ({ newImport, setNewImport }) => {
-  return (
-    <Wrapper
-      header="Guarantor details"
-      subHead="This is where you enter the type of property being sold or rented. You can select from existing guarantor data."
-    >
-      <div>
-        <div className="mb-10">
-          <input
-            type="radio"
-            name="type"
-            value="existing"
-            className="cursor-pointer mr-2"
-            checked={newImport === "existing"}
-            onChange={(e) => setNewImport(e.target.value)}
-          />
-          <span>Choose from existing guarantor data</span>
-        </div>
-
-        <div className="mb-10">
-          <input
-            type="radio"
-            name="type"
-            value="new"
-            className="cursor-pointer mr-2"
-            checked={newImport === "new"}
-            onChange={(e) => setNewImport(e.target.value)}
-          />
-          <span>New guarantor</span>
-        </div>
-      </div>
-    </Wrapper>
-  )
-}
 
 const GuarantorName = ({ guarantorName, setGuarantorName }) => {
   return (
@@ -104,12 +68,12 @@ const GuarantorName = ({ guarantorName, setGuarantorName }) => {
     >
       <ul className="list-disc ml-6 mb-8 flex flex-col gap-6">
         <li>
-          <p className="font-semibold opacity-70">Guarantor's Name</p>
+          <p className="font-semibold opacity-70">Guarantorapos;s Name</p>
           <input
             type="text"
             name="guarantorName"
             value={guarantorName}
-            placeholder="Enter guarantor's name"
+            placeholder="Enter guarantorapos;s name"
             onChange={(e) => setGuarantorName(e.target.value)}
             className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
           />
@@ -127,12 +91,12 @@ const GuarantorContact = ({ guarantorContact, setGuarantorContact }) => {
     >
       <ul className="list-disc ml-6 mb-8 flex flex-col gap-6">
         <li>
-          <p className="font-semibold opacity-70">Guarantor's Phone number</p>
+          <p className="font-semibold opacity-70">Guarantorapos;s Phone number</p>
           <input
             type="text"
             name="guarantorContact"
             value={guarantorContact}
-            placeholder="Enter guarantor's phone number"
+            placeholder="Enter guarantorapos;s phone number"
             onChange={(e) => setGuarantorContact(e.target.value)}
             className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
           />
@@ -150,12 +114,12 @@ const GuarantorAddress = ({ guarantorAddress, setGuarantorAddress }) => {
     >
       <ul className="list-disc ml-6 mb-8 flex flex-col gap-6">
         <li>
-          <p className="font-semibold opacity-70">Guarantor's Address</p>
+          <p className="font-semibold opacity-70">Guarantorapos;s Address</p>
           <input
             type="text"
             name="guarantorAddress"
             value={guarantorAddress}
-            placeholder="Enter guarantor's address"
+            placeholder="Enter guarantorapos;s address"
             onChange={(e) => setGuarantorAddress(e.target.value)}
             className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
           />

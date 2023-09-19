@@ -5,11 +5,11 @@ const LandlordDetails = ({
   newImport,
   setNewImport,
   landlordName,
-  setlandLordName,
-  landlordAddress,
+  setLandlordName,
   landlordContact,
-  setlandlordAddress,
   setLandlordContact,
+  landlordAddress,
+  setLandlordAddress
 }) => {
   const getStage = () => {
     switch (subStage) {
@@ -19,14 +19,14 @@ const LandlordDetails = ({
         return (
           <LandlordName
             landlordName={landlordName}
-            setlandLordName={setlandLordName}
+            setlandLordName={setLandlordName}
           />
         )
       case 3:
         return (
           <LandlordAddress
             landlordAddress={landlordAddress}
-            setlandLordAddress={setlandlordAddress}
+            setLandlordAddress={setLandlordAddress}
           />
         )
       case 4:
@@ -101,12 +101,12 @@ const LandlordName = ({ landlordName, setlandlordName }) => {
     >
       <ul className="list-disc ml-6 mb-8 flex flex-col gap-6">
         <li>
-          <p className="font-semibold opacity-70">Landlord's Name</p>
+          <p className="font-semibold opacity-70">Landlordapos;s Name</p>
           <input
             type="text"
             name="landLordName"
             value={landlordName}
-            placeholder="Enter landlord's name"
+            placeholder="Enter landlordapos;s name"
             onChange={(e) => setlandlordName(e.target.value)}
             className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
           />
@@ -124,12 +124,12 @@ const LandlordContact = ({ landlordContact, setlandlordContact }) => {
     >
       <ul className="list-disc ml-6 mb-8 flex flex-col gap-6">
         <li>
-          <p className="font-semibold opacity-70">Landlord's Phone number</p>
+          <p className="font-semibold opacity-70">Landlordapos;s Phone number</p>
           <input
             type="text"
             name="landLordContact"
             value={landlordContact}
-            placeholder="Enter landlord's phone number"
+            placeholder="Enter landlordapos;s phone number"
             onChange={(e) => setlandlordContact(e.target.value)}
             className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
           />
@@ -147,12 +147,12 @@ const LandlordAddress = ({ landlordAddress, setlandlordAddress }) => {
     >
       <ul className="list-disc ml-6 mb-8 flex flex-col gap-6">
         <li>
-          <p className="font-semibold opacity-70">Landlord's Address</p>
+          <p className="font-semibold opacity-70">Landlordapos;s Address</p>
           <input
             type="text"
             name="landLordAddress"
             value={landlordAddress}
-            placeholder="Enter landlord's address"
+            placeholder="Enter landlordapos;s address"
             onChange={(e) => setlandlordAddress(e.target.value)}
             className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
           />

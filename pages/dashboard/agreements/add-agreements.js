@@ -3,7 +3,9 @@ import General from "@/components/AgreementStages/General"
 import GuarantorDetails from "@/components/AgreementStages/GuarantorDetails"
 import LandlordDetails from "@/components/AgreementStages/LandlordDetails"
 import PropertyDetails from "@/components/AgreementStages/PropertyDetails"
+import PropertyManagerDetails from "@/components/AgreementStages/PropertyManagerDetails"
 import AgreementSummary from "@/components/AgreementStages/Summary"
+import Terms from "@/components/AgreementStages/Terms"
 import Dashboard from "@/components/Layout/Dashboard"
 import ProgressBar from "@/components/UI/Dashboard/ProgressBar"
 import { Fragment, useState } from "react"
@@ -18,80 +20,69 @@ const AddAgreement = () => {
   const [propertyType, setPropertyType] = useState("")
 
   // Property Details
-  const [location, setLocation] = useState({
-    state: "",
-    LGA: "",
-    ward: "",
-  })
+  const [propertyAddress, setPropertyAddress] = useState("")
   const [premisesChecklist, setPremisesChecklist] = useState({
-    livingRoom: "",
-    kitchen: "",
-    bedroom: "",
-    officeSpace: "",
-    garden: "",
-    store: "",
-    garage: "",
+    livingRoom: false,
+    kitchen: false,
+    bedroom: false,
+    officeSpace: false,
+    garden: false,
+    store: false,
+    garage: false,
   })
   const [unitID, setUnitID] = useState("")
-  const [unitFeatures, setUnitFeatures] = useState({
-    sittingRooms: "",
-    bedRooms: "",
-    restRooms: "",
-  })
 
   // Client Details
   const [clientType, setClientType] = useState("")
   const [clientName, setClientName] = useState("")
-  const [clientContact, setClientContact] = useState({
-    address: "",
-    number: "",
-  })
+  const [clientAddress, setClientAddress] = useState("")
+  const [clientContact, setClientContact] = useState("")
 
   // Landlord Details
   const [newImport, setNewImport] = useState("")
   const [landlordName, setLandlordName] = useState("")
-  const [landlordContact, setLandlordContact] = useState({
-    address: "",
-    number: "",
-  })
+  const [landlordAddress, setLandlordAddress] = useState("")
+  const [landlordContact, setLandlordContact] = useState("")
 
-  // Guarantor Details
+  // State for GuarantorDetails
   const [guarantorName, setGuarantorName] = useState("")
-  const [guarantorContact, setGuarantorContact] = useState({
-    address: "",
-    number: "",
-  })
+  const [guarantorAddress, setGuarantorAddress] = useState("")
+  const [guarantorContact, setGuarantorContact] = useState("")
 
-  // Property Manager Details
+  // State for PropertyManagerDetails
   const [propertyManagerType, setPropertyManagerType] = useState("")
   const [propertyManagerName, setPropertyManagerName] = useState("")
-  const [propertyManagerContact, setPropertyManagerContact] = useState({
-    address: "",
-    number: "",
-  })
-  // Terms
-  const [totalAmount, setTotalAmount] = useState("")
-  const [RenewalFrequency, setRenewalFrequency] = useState("")
-  const [isPet, setIsPet] = useState("")
-  const [isSmoking, setIsSmoking] = useState("")
-  const [isBusiness, setIsBusiness] = useState("")
-  const [isSecurity, setIsSecurity] = useState("")
-  const [noticeDays, setNoticeDays] = useState({
-    acess: "",
-    terminate: "",
-  })
-  const [isServiceCharge, setIsServiceCharge] = useState("")
-  const [isResponsibeForService, setIsResponsibeForService] = useState("")
+  const [propertyManagerAddress, setPropertyManagerAddress] = useState("")
+  const [propertyManagerContact, setPropertyManagerContact] = useState("")
+
+  // State for Terms
+  const [rentalAmount, setRentalAmount] = useState("")
+  const [rentalFrequency, setRentalFrequency] = useState("")
+  const [selectedOptions, setSelectedOptions] = useState([])
+  const [terminateDays, setTerminateDays] = useState("")
+  const [accessDays, setAccessDays] = useState("")
 
   const agreement = {
-    clientName,
-    clientType,
-    clientContact,
     applicationType,
     propertyType,
-    location,
     unitID,
-    unitFeatures,
+    newImport,
+    landlordName,
+    landlordContact,
+    clientName,
+    clientContact,
+    guarantorName,
+    guarantorAddress,
+    guarantorContact,
+    propertyManagerType,
+    propertyManagerName,
+    propertyManagerAddress,
+    propertyManagerContact,
+    rentalAmount,
+    rentalFrequency,
+    selectedOptions,
+    accessDays,
+    terminateDays,
   }
 
   const stagesData = [
@@ -120,7 +111,7 @@ const AddAgreement = () => {
 
     {
       stage: "Property Manager Details",
-      subStages: ["Type", "Contact", "Name", "Address"],
+      subStages: ["Type", "Name", "Address", "Contact"],
     },
 
     {
@@ -142,30 +133,37 @@ const AddAgreement = () => {
   ]
 
   const handleNextSubStage = () => {
-    if (activeSubStage < stagesData[activeStage].subStages.length) {
+    const totalSubStages = stagesData[activeStage - 1].subStages.length
+    if (activeSubStage < totalSubStages) {
       setActiveSubStage((prevSubStage) => prevSubStage + 1)
-    } else handleNextStage()
+    } else {
+      handleNextStage()
+    }
   }
 
   const handlePreviousSubStage = () => {
-    if (activeSubStage > 0) {
+    if (activeSubStage > 1) {
       setActiveSubStage((prevSubStage) => prevSubStage - 1)
-    } else handlePreviousStage()
+    } else {
+      handlePreviousStage()
+    }
   }
-
+  
   const handleNextStage = () => {
     if (activeStage < stagesData.length - 1) {
       setActiveStage((prevStage) => prevStage + 1)
       setActiveSubStage(1)
     }
   }
-
+  
   const handlePreviousStage = () => {
     if (activeStage > 0) {
       setActiveStage((prevStage) => prevStage - 1)
-      setActiveSubStage(stagesData[activeStage - 1].subStages.length - 1)
+      setActiveSubStage(1)
     }
   }
+  
+  console.log( "active stage:", activeStage, "active substage:", activeSubStage )
   return (
     <Dashboard>
       <section className="p-8 pt-10 grid min-h-full">
@@ -203,6 +201,7 @@ const AddAgreement = () => {
             <Fragment>
               {activeStage === 1 && (
                 <General
+                  subStage={activeSubStage}
                   propertyType={propertyType}
                   setPropertyType={setPropertyType}
                   applicationType={applicationType}
@@ -212,40 +211,81 @@ const AddAgreement = () => {
               {activeStage === 2 && (
                 <PropertyDetails
                   subStage={activeSubStage}
-                  unitID={unitID}
-                  activeStage={activeStage}
-                  propertyType={propertyType}
-                  unitFeatures={unitFeatures}
-                  setUnitID={setUnitID}
-                  setLocation={setLocation}
-                  setPropertyType={setPropertyType}
-                  setUnitFeatures={setUnitFeatures}
-                  setApplicationType={setApplicationType}
+                  propertyAddress={propertyAddress}
+                  setPropertyAddress={setPropertyAddress}
                   premisesChecklist={premisesChecklist}
                   setPremisesChecklist={setPremisesChecklist}
+                  unitID={unitID}
+                  setUnitID={setUnitID}
                 />
               )}
               {activeStage === 3 && (
                 <LandlordDetails
+                  subStage={activeSubStage}
                   newImport={newImport}
                   setNewImport={setNewImport}
-                  subStage={activeSubStage}
+                  landlordName={landlordName}
+                  setLandLordName={setLandlordName}
+                  landlordContact={landlordContact}
+                  setLandlordContact={setLandlordContact}
                 />
               )}
               {activeStage === 4 && (
                 <ClientDetails
+                  subStage={activeSubStage}
                   newImport={newImport}
                   setNewImport={setNewImport}
-                  subStage={activeSubStage}
+                  clientName={clientName}
+                  setClientName={setClientName}
+                  clientAddress={clientAddress}
+                  setClientAddress={setClientAddress}
+                  clientContact={clientContact}
+                  setClientContact={setClientContact}
                 />
               )}
               {activeStage === 5 && (
-                <GuarantorDetails subStage={activeSubStage} />
+                <GuarantorDetails
+                  subStage={activeSubStage}
+                  guarantorName={guarantorName}
+                  setGuarantorName={setGuarantorName}
+                  guarantorAddress={guarantorAddress}
+                  guarantorContact={guarantorContact}
+                  setGuarantorAddress={setGuarantorAddress}
+                  setGuarantorContact={setGuarantorContact}
+                />
               )}
-              {activeStage === 6 && <AgreementSummary agreement={agreement} />}
+              {activeStage === 6 && (
+                <PropertyManagerDetails
+                  subStage={activeSubStage}
+                  propertyManagerType={propertyManagerType}
+                  setPropertyManagerType={setPropertyManagerType}
+                  propertyManagerName={propertyManagerName}
+                  setPropertyManagerName={setPropertyManagerName}
+                  propertyManagerAddress={propertyManagerAddress}
+                  propertyManagerContact={propertyManagerContact}
+                  setPropertyManagerAddress={setPropertyManagerAddress}
+                  setPropertyManagerContact={setPropertyManagerContact}
+                />
+              )}
+              {activeStage === 7 && (
+                <Terms
+                  subStage={activeSubStage}
+                  setRentalAmount={setRentalAmount} 
+                  rentalAmount={rentalAmount}
+                  rentalFrequency={rentalFrequency}
+                  setRentalFrequency={setRentalFrequency}
+                  selectedOptions={selectedOptions}
+                  setSelectedOptions={setSelectedOptions}
+                  setTerminateDays={setTerminateDays}
+                  terminateDays={terminateDays}
+                  accessDays={accessDays}
+                  setAccessDays={setAccessDays}
+                />
+              )}
+              {activeStage === 8 && <AgreementSummary agreement={agreement} />}
             </Fragment>
 
-            {activeStage !== 6 && (
+            {activeStage !== 8 && (
               <div className="flex gap-3 items-end justify-end mt-auto">
                 <button
                   disabled={activeStage === 1 && activeSubStage === 1}
@@ -264,7 +304,7 @@ const AddAgreement = () => {
             )}
           </div>
 
-          {activeStage === 6 && (
+          {activeStage === 8 && (
             <div className="flex flex-col gap-3">
               <button
                 onClick={handleNextSubStage}
