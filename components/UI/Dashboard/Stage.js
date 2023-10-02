@@ -13,9 +13,11 @@ const Stage = ({
     <div className="mt-3">
       <div className="relative bg-white">
         <div
-          className={`inline-grid place-items-center border h-6 w-6 rounded-full mr-2 ${
-            isActive && "border-[#049561] text-[#049561]"
-          } ${isCompleted && "border-[#049561] bg-[#049561]"}`}
+          className={`inline-grid place-items-center border h-7 w-7 rounded-full mr-2 ${
+            isActive ? "border-green-600 text-green-700" : "border-zinc-400"
+          } ${
+            isCompleted ? "border-green-600 bg-green-700" : "border-zinc-400"
+          }`}
         >
           <span>
             {isCompleted ? (

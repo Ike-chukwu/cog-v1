@@ -8,6 +8,7 @@ import TopNav from "@/components/TopNav"
 import PD from "@/styles/propertyDetails.module.css"
 
 import Image from "next/image"
+import Link from "next/link"
 
 function PropertyDetails() {
   const router = useRouter()
@@ -40,7 +41,9 @@ function PropertyDetails() {
               </a>{" "}
             </p>
 
-            <button className={PD.applybtn}>Apply now</button>
+            <button className={PD.applybtn}>
+              <Link href="/for-rentals/rental-form">Apply now</Link>
+            </button>
           </div>
 
           {/* listing details */}
