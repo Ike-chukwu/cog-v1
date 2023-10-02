@@ -1,5 +1,6 @@
 import { Fragment, useRef } from "react"
 import FileInput from "../UI/Dashboard/File"
+import Input from "../UI/Dashboard/Input"
 
 const Appearance = ({
   subStage,
