@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { useRouter } from "next/router"
 import Arrow from "public/assets/icons/Arrow.png"
 import Location from "public/assets/icons/Location.png"
 import seacrh from "public/assets/icons/Search.png"
@@ -11,7 +12,10 @@ import biodun from "public/assets/images/biodun.png"
 import iPhone from "public/assets/images/iPhone.png"
 import Image8 from "public/assets/images/image 8.png"
 import lady from "public/assets/images/lady.png"
+import NEMSA from "public/assets/images/nemsa.png"
+import NIESV from "public/assets/images/niesv.png"
 import { useEffect, useState } from "react"
+
 import Layout from "../components/Layout/Layout"
 export default function Home() {
   return (
@@ -50,18 +54,47 @@ const Header = () => {
 }
 
 const Seacrh = () => {
-  const handleClick = () => {
-    console.log("Clicked")
+  const [searchValue, SetSearchValue] = useState("")
+  const [searchLocation, SetsearchLocation] = useState("")
+  const router = useRouter()
+  const Whole = "home"
+  const Warehouse = "warehouse"
+  const Flatapartment = "flatapartment"
+  const handleClick = (e) => {
+    e.preventDefault()
+    router.push(
+      `/for-rentals/properties?text=${encodeURIComponent(
+        searchValue
+      )}&text2=${encodeURIComponent(searchLocation)}`
+    )
+  }
+  const handleClic = (e) => {
+    e.preventDefault()
+    router.push(`/for-rentals/properties?text=${encodeURIComponent(Whole)}`)
+  }
+  const Warehous = (e) => {
+    e.preventDefault()
+    router.push(`/for-rentals/properties?text=${encodeURIComponent(Warehouse)}`)
+  }
+  const Flatapartmen = (e) => {
+    e.preventDefault()
+    router.push(
+      `/for-rentals/properties?text=${encodeURIComponent(Flatapartment)}`
+    )
   }
   return (
     <>
-      <main className="flex mt-10 bg-lighterGrey lg:w-1/2 md:w-3/4 m-auto justify-between h-10 pl-2">
+      <div className="flex mt-10 bg-lighterGrey lg:w-1/2 md:w-3/4 m-auto justify-between h-10 pl-2">
         <div className="w-full flex items-center">
           <Image src={seacrh} alt="" />
           <input
             type="text"
             className="bg-lighterGrey h-full w-3/6 ml-2 pl-2 outline-none "
             placeholder="What property type are you looking for?"
+            value={searchValue}
+            onChange={(e) => {
+              SetSearchValue(e.currentTarget.value)
+            }}
           />
           <Image src={stroke} className="items-center ml-2" alt="" />
           <Image src={Location} className="items-center ml-6 mr-4" alt="" />
@@ -69,6 +102,10 @@ const Seacrh = () => {
             type="text"
             className="h-full bg-lighterGrey w-28 pl-2 outline-none"
             placeholder="Local Area"
+            value={searchLocation}
+            onChange={(e) => {
+              SetsearchLocation(e.currentTarget.value)
+            }}
           />
         </div>
         <div
@@ -77,22 +114,35 @@ const Seacrh = () => {
         >
           Submit
         </div>
-      </main>
+      </div>
       <div>
         <ul className="flex justify-center mt-4 text-lightGrey">
-          <li className="py-1 px-2" onClick={handleClick}>
+          <li className="py-1 px-2 cursor-pointer" onClick={Warehouse}>
             Higlights
           </li>
-          <li className="py-1 px-2 mx-1 items-center  border-2 border-Grey rounded-full">
+          <li
+            className="py-1 px-2 mx-1 items-center  border-2 border-Grey rounded-full cursor-pointer "
+            onClick={Warehous}
+          >
             Warehouse/storage facility
           </li>
-          <li className="py-1 px-2 mx-1 items-center  border-2 border-Grey rounded-full">
+          <li
+            className="py-1 px-2 mx-1 items-center  border-2 border-Grey rounded-full cursor-pointer"
+            onClick={Flatapartmen}
+          >
             Flat/apartment
           </li>
-          <li className="py-1 px-2 mx-1 items-center  border-2 border-Grey rounded-full">
+          <li
+            className="py-1 px-2 mx-1 items-center  border-2 border-Grey rounded-full cursor-pointer "
+            onClick={handleClic}
+          >
             Whole home
           </li>
         </ul>
+      </div>
+      <div className="flex items-center justify-center gap-40 my-16">
+        <Image src={NEMSA} alt="NEMSA" />
+        <Image src={NIESV} alt="NIESV" />
       </div>
     </>
   )

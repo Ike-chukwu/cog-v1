@@ -2,17 +2,17 @@ export const offline = [
   {
     to: "",
     value: "Edit details",
-    src: "/assets/icons/edit-icon.svg",
+    src: "/assets/icons/editicon.svg",
   },
   {
     to: "",
     value: "Delete detail",
-    src: "/assets/icons/delete-icon.svg",
+    src: "/assets/icons/deleteicon.svg",
   },
   {
     to: "/dashboard/all-inbounds/prospect",
     value: "View details",
-    src: "/assets/icons/view-icon.svg",
+    src: "/assets/icons/viewicon.svg",
   },
 ]
 
@@ -20,12 +20,12 @@ export const online = [
   {
     to: "",
     value: "Delete detail",
-    src: "/assets/icons/delete-icon.svg",
+    src: "/assets/icons/deleteicon.svg",
   },
   {
     to: "/dashboard/all-inbounds/prospect",
     value: "View details",
-    src: "/assets/icons/view-icon.svg",
+    src: "/assets/icons/viewicon.svg",
   },
 ]
 

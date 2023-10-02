@@ -1,4 +1,3 @@
-
 import Dashboard from "@/components/Layout/Dashboard"
 import Card from "@/components/UI/Dashboard/Card"
 import EmptyState from "@/components/UI/Dashboard/EmptyState"
@@ -32,12 +31,23 @@ export default function Marketplace() {
 
   const data = [] // Placeholder
 
+  const options = [
+    {
+      link: "/dashboard/marketplace/add-marketplace",
+      content: "Listing website",
+    },
+    {
+      link: "/dashboard/marketplace/all-marketplace",
+      content: "Listing manager",
+    },
+  ]
+
   return (
     <Dashboard className="p-8">
       <Header header="Marketplace" subHeader="" name="Opeyemi Cheesecake" />
 
       <div className="grid gap-6 my-10">
-        <ManagerOptions />
+        <ManagerOptions options={options} />
 
         <div className="flex justify-evenly">
           {cardContent.map((content, i) => (
@@ -70,4 +80,3 @@ export default function Marketplace() {
     </Dashboard>
   )
 }
-
