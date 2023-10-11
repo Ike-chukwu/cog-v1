@@ -98,12 +98,12 @@ const ClientName = ({ clientName, setClientName }) => {
     >
       <ul className="list-disc ml-6 mb-8 flex flex-col gap-6">
         <li>
-          <p className="font-semibold opacity-70">Clientapos;s Name</p>
+          <p className="font-semibold opacity-70">Client{"'"}s Name</p>
           <input
             type="text"
             name="clientName"
             value={clientName}
-            placeholder="Enter clientapos;s name"
+            placeholder="Enter client's name"
             onChange={(e) => setClientName(e.target.value)}
             className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
           />
@@ -121,12 +121,12 @@ const ClientContact = ({ clientContact, setClientContact }) => {
     >
       <ul className="list-disc ml-6 mb-8 flex flex-col gap-6">
         <li>
-          <p className="font-semibold opacity-70">Clientapos;s Phone number</p>
+          <p className="font-semibold opacity-70">Client{"'"}s Phone number</p>
           <input
             type="text"
             name="clientContact"
             value={clientContact}
-            placeholder="Enter clientapos;s phone number"
+            placeholder="Enter client's phone number"
             onChange={(e) => setClientContact(e.target.value)}
             className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
           />
@@ -144,12 +144,12 @@ const ClientAddress = ({ clientAddress, setClientAddress }) => {
     >
       <ul className="list-disc ml-6 mb-8 flex flex-col gap-6">
         <li>
-          <p className="font-semibold opacity-70">Clientapos;s Address</p>
+          <p className="font-semibold opacity-70">Client{"'"}s Address</p>
           <input
             type="text"
             name="clientAddress"
             value={clientAddress}
-            placeholder="Enter clientapos;s address"
+            placeholder="Enter client's address"
             onChange={(e) => setClientAddress(e.target.value)}
             className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
           />

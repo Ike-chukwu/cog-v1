@@ -90,7 +90,7 @@ const PropertyType = ({ propertyType, setPropertyType }) => {
             checked={propertyType === "home"}
             onChange={(e) => setPropertyType(e.target.value)}
           />
-          <span>Whole home</span>
+          <span>Single Dwelling</span>
         </div>
       </div>
     </Wrapper>

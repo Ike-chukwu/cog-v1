@@ -93,7 +93,7 @@ const NewImport = ({ newImport, setNewImport }) => {
   )
 }
 
-const LandlordName = ({ landlordName, setlandlordName }) => {
+const LandlordName = ({ landlordName, setLandlordName }) => {
   return (
     <Wrapper
       header="Landlord details"
@@ -101,13 +101,13 @@ const LandlordName = ({ landlordName, setlandlordName }) => {
     >
       <ul className="list-disc ml-6 mb-8 flex flex-col gap-6">
         <li>
-          <p className="font-semibold opacity-70">Landlordapos;s Name</p>
+          <p className="font-semibold opacity-70">Landlord{"'"}s Name</p>
           <input
             type="text"
-            name="landLordName"
+            name="landlordName"
             value={landlordName}
-            placeholder="Enter landlordapos;s name"
-            onChange={(e) => setlandlordName(e.target.value)}
+            placeholder="Enter landlord's name"
+            onChange={(e) => setLandlordName(e.target.value)}
             className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
           />
         </li>
@@ -116,7 +116,7 @@ const LandlordName = ({ landlordName, setlandlordName }) => {
   )
 }
 
-const LandlordContact = ({ landlordContact, setlandlordContact }) => {
+const LandlordContact = ({ landlordContact, setLandlordContact }) => {
   return (
     <Wrapper
       header="Landlord details"
@@ -124,13 +124,13 @@ const LandlordContact = ({ landlordContact, setlandlordContact }) => {
     >
       <ul className="list-disc ml-6 mb-8 flex flex-col gap-6">
         <li>
-          <p className="font-semibold opacity-70">Landlordapos;s Phone number</p>
+          <p className="font-semibold opacity-70">Landlord{"'"}s Phone number</p>
           <input
             type="text"
-            name="landLordContact"
+            name="landlordContact"
             value={landlordContact}
-            placeholder="Enter landlordapos;s phone number"
-            onChange={(e) => setlandlordContact(e.target.value)}
+            placeholder="Enter landlord's phone number"
+            onChange={(e) => setLandlordContact(e.target.value)}
             className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
           />
         </li>
@@ -139,7 +139,7 @@ const LandlordContact = ({ landlordContact, setlandlordContact }) => {
   )
 }
 
-const LandlordAddress = ({ landlordAddress, setlandlordAddress }) => {
+const LandlordAddress = ({ landlordAddress, setLandlordAddress }) => {
   return (
     <Wrapper
       header="Landlord details"
@@ -147,13 +147,13 @@ const LandlordAddress = ({ landlordAddress, setlandlordAddress }) => {
     >
       <ul className="list-disc ml-6 mb-8 flex flex-col gap-6">
         <li>
-          <p className="font-semibold opacity-70">Landlordapos;s Address</p>
+          <p className="font-semibold opacity-70">Landlord{"'"}s Address</p>
           <input
             type="text"
-            name="landLordAddress"
+            name="landlordAddress"
             value={landlordAddress}
-            placeholder="Enter landlordapos;s address"
-            onChange={(e) => setlandlordAddress(e.target.value)}
+            placeholder="Enter landlord's address"
+            onChange={(e) => setLandlordAddress(e.target.value)}
             className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
           />
         </li>

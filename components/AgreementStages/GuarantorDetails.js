@@ -68,12 +68,12 @@ const GuarantorName = ({ guarantorName, setGuarantorName }) => {
     >
       <ul className="list-disc ml-6 mb-8 flex flex-col gap-6">
         <li>
-          <p className="font-semibold opacity-70">Guarantorapos;s Name</p>
+          <p className="font-semibold opacity-70">Guarantor{"'"}s Name</p>
           <input
             type="text"
             name="guarantorName"
             value={guarantorName}
-            placeholder="Enter guarantorapos;s name"
+            placeholder="Enter guarantor's name"
             onChange={(e) => setGuarantorName(e.target.value)}
             className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
           />
@@ -91,12 +91,12 @@ const GuarantorContact = ({ guarantorContact, setGuarantorContact }) => {
     >
       <ul className="list-disc ml-6 mb-8 flex flex-col gap-6">
         <li>
-          <p className="font-semibold opacity-70">Guarantorapos;s Phone number</p>
+          <p className="font-semibold opacity-70">Guarantor{"'"}s Phone number</p>
           <input
             type="text"
             name="guarantorContact"
             value={guarantorContact}
-            placeholder="Enter guarantorapos;s phone number"
+            placeholder="Enter guarantor's phone number"
             onChange={(e) => setGuarantorContact(e.target.value)}
             className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
           />
@@ -114,12 +114,12 @@ const GuarantorAddress = ({ guarantorAddress, setGuarantorAddress }) => {
     >
       <ul className="list-disc ml-6 mb-8 flex flex-col gap-6">
         <li>
-          <p className="font-semibold opacity-70">Guarantorapos;s Address</p>
+          <p className="font-semibold opacity-70">Guarantor{"'"}s Address</p>
           <input
             type="text"
             name="guarantorAddress"
             value={guarantorAddress}
-            placeholder="Enter guarantorapos;s address"
+            placeholder="Enter guarantor's address"
             onChange={(e) => setGuarantorAddress(e.target.value)}
             className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
           />

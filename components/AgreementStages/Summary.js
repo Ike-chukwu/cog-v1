@@ -2,6 +2,7 @@ const AgreementSummary = ({ agreement }) => {
   const {
     applicationType,
     propertyType,
+    propertyAddress,
     landlordName,
     landlordContact,
     landlordAddress,
@@ -15,6 +16,7 @@ const AgreementSummary = ({ agreement }) => {
     propertyManagerName,
     propertyManagerAddress,
     propertyManagerContact,
+    premisesChecklist,
     rentalAmount,
     rentalFrequency,
     selectedOptions,
@@ -115,7 +117,7 @@ const AgreementSummary = ({ agreement }) => {
 
             <div className="flex flex-col">
               <small>Premises physical specification</small>
-              <span>{premisesChecklist}</span>
+              {/* <span>{premisesChecklist}</span> */}
             </div>
 
             <div className="flex flex-col">

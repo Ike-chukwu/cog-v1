@@ -1,3 +1,4 @@
+
 // Prospect index code soon to be remodelled by Leye
 import Dashboard from "@/components/Layout/Dashboard"
 import Image from "next/image"
@@ -192,10 +193,10 @@ const Agreement = () => {
                       You have no recent activities
                     </h1>
                     <p>
-                      Create a new prospect by through the Prospect manager
+                      Create a new agreement by through the Prospect manager
                       dropdown
                     </p>
-                    <p>Go to Prospect manager &gt; Add new prospect.</p>
+                    <p>Go to Prospect manager &gt; Add new agreement.</p>
                   </div>
                 </div>
                 <figure>

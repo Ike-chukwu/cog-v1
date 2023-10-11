@@ -1,12 +1,9 @@
-import ClientDetails from "@/components/AgreementStages/ClientDetails"
-import General from "@/components/AgreementStages/General"
-import GuarantorDetails from "@/components/AgreementStages/GuarantorDetails"
-import LandlordDetails from "@/components/AgreementStages/LandlordDetails"
-import PropertyDetails from "@/components/AgreementStages/PropertyDetails"
-import PropertyManagerDetails from "@/components/AgreementStages/PropertyManagerDetails"
-import AgreementSummary from "@/components/AgreementStages/Summary"
-import Terms from "@/components/AgreementStages/Terms"
 import Dashboard from "@/components/Layout/Dashboard"
+import Amount from "@/components/OfferStages/Amount"
+import ClientDetails from "@/components/OfferStages/ClientDetails"
+import DueDate from "@/components/OfferStages/DueDate"
+import PropertyDetails from "@/components/OfferStages/PropertyDetails"
+import OfferSummary from "@/components/OfferStages/Summary"
 import ProgressBar from "@/components/UI/Dashboard/ProgressBar"
 import { Fragment, useState } from "react"
 import { FiBell } from "react-icons/fi"
@@ -89,67 +86,21 @@ const AddAgreement = () => {
 
   const stagesData = [
     {
-      stage: "General",
-      subStages: ["Type of property", "Agreement Type"],
+      stage: "Property details",
     },
-    {
-      stage: "Property Details",
-      subStages: ["Property Address", "Premises physical specifics", "Unit ID"],
-    },
-    {
-      stage: "Landlord Details",
-      subStages: ["Import/New", "Name", "Address", "Contact"],
-    },
-
     {
       stage: "Client Details",
-      subStages: ["Import/New", "Name", "Address", "Contact"],
     },
-
     {
-      stage: "Guarantor Details",
-      subStages: ["Name", "Address", "Contact"],
+      stage: "Amount",
     },
-
     {
-      stage: "Property Manager Details",
-      subStages: ["Type", "Name", "Address", "Contact"],
+      stage: "Due date",
     },
-
-    {
-      stage: "Terms",
-      subStages: [
-        "Rental Amount",
-        "Use of property",
-        "Security Deposit",
-        "Notices",
-        "Services",
-        "Improvements, repairs and maintenance",
-      ],
-    },
-
     {
       stage: "Summary",
-      subStages: [],
     },
   ]
-
-  const handleNextSubStage = () => {
-    const totalSubStages = stagesData[activeStage - 1].subStages.length
-    if (activeSubStage < totalSubStages) {
-      setActiveSubStage((prevSubStage) => prevSubStage + 1)
-    } else {
-      handleNextStage()
-    }
-  }
-
-  const handlePreviousSubStage = () => {
-    if (activeSubStage > 1) {
-      setActiveSubStage((prevSubStage) => prevSubStage - 1)
-    } else {
-      handlePreviousStage()
-    }
-  }
 
   const handleNextStage = () => {
     if (activeStage < stagesData.length) {
@@ -171,9 +122,9 @@ const AddAgreement = () => {
       <section className="p-8 pt-10 grid min-h-full">
         <header className="flex items-center justify-between">
           <div>
-            <h2 className="text-3xl font-semibold">Agreements</h2>
+            <h2 className="text-3xl font-semibold">Offers</h2>
             <h3 className="text-xl font-semibold opacity-50 mt-4">
-              Add Agreement
+              Make offers
             </h3>
           </div>
 
@@ -202,37 +153,13 @@ const AddAgreement = () => {
           <div className="border flex flex-col border-primary w-3/5 p-6 mx-auto overflow-y-scroll">
             <Fragment>
               {activeStage === 1 && (
-                <General
-                  subStage={activeSubStage}
-                  propertyType={propertyType}
-                  setPropertyType={setPropertyType}
-                  applicationType={applicationType}
-                  setApplicationType={setApplicationType}
-                />
-              )}
-              {activeStage === 2 && (
                 <PropertyDetails
                   subStage={activeSubStage}
                   propertyAddress={propertyAddress}
                   setPropertyAddress={setPropertyAddress}
-                  premisesChecklist={premisesChecklist}
-                  setPremisesChecklist={setPremisesChecklist}
-                  unitID={unitID}
-                  setUnitID={setUnitID}
                 />
               )}
-              {activeStage === 3 && (
-                <LandlordDetails
-                  subStage={activeSubStage}
-                  newImport={newImport}
-                  setNewImport={setNewImport}
-                  landlordName={landlordName}
-                  setLandLordName={setLandlordName}
-                  landlordContact={landlordContact}
-                  setLandlordContact={setLandlordContact}
-                />
-              )}
-              {activeStage === 4 && (
+              {activeStage === 2 && (
                 <ClientDetails
                   subStage={activeSubStage}
                   newImport={newImport}
@@ -245,59 +172,23 @@ const AddAgreement = () => {
                   setClientContact={setClientContact}
                 />
               )}
-              {activeStage === 5 && (
-                <GuarantorDetails
-                  subStage={activeSubStage}
-                  guarantorName={guarantorName}
-                  setGuarantorName={setGuarantorName}
-                  guarantorAddress={guarantorAddress}
-                  guarantorContact={guarantorContact}
-                  setGuarantorAddress={setGuarantorAddress}
-                  setGuarantorContact={setGuarantorContact}
-                />
-              )}
-              {activeStage === 6 && (
-                <PropertyManagerDetails
-                  subStage={activeSubStage}
-                  propertyManagerType={propertyManagerType}
-                  setPropertyManagerType={setPropertyManagerType}
-                  propertyManagerName={propertyManagerName}
-                  setPropertyManagerName={setPropertyManagerName}
-                  propertyManagerAddress={propertyManagerAddress}
-                  propertyManagerContact={propertyManagerContact}
-                  setPropertyManagerAddress={setPropertyManagerAddress}
-                  setPropertyManagerContact={setPropertyManagerContact}
-                />
-              )}
-              {activeStage === 7 && (
-                <Terms
-                  subStage={activeSubStage}
-                  setRentalAmount={setRentalAmount}
-                  rentalAmount={rentalAmount}
-                  rentalFrequency={rentalFrequency}
-                  setRentalFrequency={setRentalFrequency}
-                  selectedOptions={selectedOptions}
-                  setSelectedOptions={setSelectedOptions}
-                  setTerminateDays={setTerminateDays}
-                  terminateDays={terminateDays}
-                  accessDays={accessDays}
-                  setAccessDays={setAccessDays}
-                />
-              )}
-              {activeStage === 8 && <AgreementSummary agreement={agreement} />}
+              {activeStage === 3 && <Amount subStage={activeSubStage} />}
+              {activeStage === 4 && <DueDate subStage={activeSubStage} />}
+
+              {activeStage === 5 && <OfferSummary agreement={agreement} />}
             </Fragment>
 
-            {activeStage !== 8 && (
+            {activeStage !== 5 && (
               <div className="flex gap-3 items-end justify-end mt-auto">
                 <button
                   disabled={activeStage === 1 && activeSubStage === 1}
-                  onClick={handlePreviousSubStage}
+                  onClick={handlePreviousStage}
                   className="text-primary border border-primary w-40 p-2 rounded-md hover:text-white hover:bg-primary disabled:pointer-events-none disabled:opacity-70"
                 >
                   Back
                 </button>
                 <button
-                  onClick={handleNextSubStage}
+                  onClick={handleNextStage}
                   className="bg-primary text-white border border-primary w-40 p-2 rounded-md hover:bg-white hover:text-primary"
                 >
                   Continue
@@ -306,19 +197,88 @@ const AddAgreement = () => {
             )}
           </div>
 
-          {activeStage === 8 && (
+          {activeStage === 5 && (
             <div className="flex flex-col gap-3">
               <button
-                onClick={handleNextSubStage}
-                className="bg-primary text-white border border-primary w-40 p-2 rounded-md hover:bg-white hover:text-primary"
+                onClick={handleNextStage}
+                className="bg-primary flex justify-center text-white border border-primary w-40 p-2 rounded-md hover:bg-white hover:text-primary text-xs"
               >
-                Submit
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-[14px] h-[14px] mr-2 "
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"
+                    className=""
+                  />
+                </svg>
+                Send
               </button>
               <button
                 onClick={handlePreviousStage}
-                className="text-primary border border-primary w-40 p-2 rounded-md hover:text-white hover:bg-primary"
+                className="text-primary flex justify-center border border-primary w-40 p-2 rounded-md hover:text-white hover:bg-primary text-xs"
               >
-                Edit
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-[14px] h-[14px] mr-2 "
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
+                  />
+                </svg>
+                Download
+              </button>
+              <button
+                onClick={handlePreviousStage}
+                className="text-primary flex justify-center border border-primary w-40 p-2 rounded-md hover:text-white hover:bg-primary text-xs"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-[14px] h-[14px] mr-2 "
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
+                  />
+                </svg>
+                Bookmark
+              </button>
+              <button
+                onClick={handlePreviousStage}
+                className="text-primary border flex justify-center border-primary w-40 p-2 rounded-md hover:text-white hover:bg-primary text-xs"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-[14px] h-[14px] mr-2 "
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3"
+                  />
+                </svg>
+                Back
               </button>
             </div>
           )}

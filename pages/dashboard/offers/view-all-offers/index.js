@@ -2,14 +2,14 @@ import Dashboard from "@/components/Layout/Dashboard"
 import Options from "@/components/Options"
 import Tabs from "@/components/Tabs"
 import { offline, online, prospects } from "@/data/placeholder"
-// import AllAgreements from "@/pages/temp/all-agreements"
+// import AllOffers from "@/pages/temp/all-offers"
 import { useState } from "react"
 import { BsFilter } from "react-icons/bs"
 import { FiBell } from "react-icons/fi"
 
-const AllAgreements = () => {
+const AllOffers = () => {
   const [active, setActive] = useState(0)
-  const tabs = ["All agreements", "Rental", "For sale"]
+  const tabs = ["All offers", "Rental", "For sale"]
 
   const handleClick = (index) => {
     setActive(index)
@@ -20,9 +20,9 @@ const AllAgreements = () => {
       <section className="p-8">
         <header className="flex items-center justify-between">
           <div>
-            <h2 className="text-3xl font-semibold">Agreement</h2>
+            <h2 className="text-3xl font-semibold">Offers</h2>
             <h3 className="text-xl font-semibold opacity-50 mt-4">
-              All Agreement
+              All offers
             </h3>
           </div>
 
@@ -72,7 +72,7 @@ const AllAgreements = () => {
 
           <div className="grid text-left mt-6">
             {prospects.map((prospect, i) => (
-              <Agreement key={i} data={prospect} />
+              <Offer key={i} data={prospect} />
             ))}
           </div>
         </div>
@@ -81,9 +81,9 @@ const AllAgreements = () => {
   )
 }
 
-export default AllAgreements
+export default AllOffers
 
-const Agreement = ({ data }) => {
+const Offer = ({ data }) => {
   const { id, date, name, propertyName, status } = data
   const [show, setShow] = useState(false)
 
