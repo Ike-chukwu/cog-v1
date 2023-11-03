@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image"
-import { useRouter } from "next/router"
+// import { useRouter } from "next/router"
 import { useState } from "react"
 import OfferBox from "../../../../components/DashboardData/offers/OfferBox"
 import { OfferButton } from "../../../../components/DashboardData/offers/OfferButton"
@@ -10,7 +10,7 @@ import { OfferData } from "../../../../data/OfferData"
 import check from "../../../../public/assets/icons/check.png"
 
 const Index = () => {
-  const router = useRouter()
+  // const router = useRouter()
   const [currentStage, setCurrentStage] = useState(1)
 
   const handleContinue = () => {

@@ -18,6 +18,8 @@ const Index = () => {
     forSale: false,
   })
 
+  setOpenStatus((status) => (openStatus = status))
+
   const handleAllOffer = () => {
     setTableFilter({
       allOffers: true,

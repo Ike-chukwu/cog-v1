@@ -12,9 +12,12 @@ const Prospects = () => {
   const popupRef = useRef()
 
   const togglePopupHandler = (e) => {
+    e.preventDefault()
     setOpenPopup((val) => !val)
   }
   const closePopupHandler = (e) => {
+    e.preventDefault()
+
     setOpenPopup(false)
   }
 

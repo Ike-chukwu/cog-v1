@@ -52,7 +52,7 @@ function PropertyDetails() {
             <p className={PD.listingDetailsText}>Listing details</p>
             <div className={PD.topDetail}>
               <div className={PD.imageContMain}>
-                <Image src={item.image} />
+                <Image src={item.image} alt="" />
               </div>
 
               <div className={PD.topDetDIVTWO}>
@@ -136,7 +136,7 @@ function PropertyDetails() {
               </div>
 
               <div className={PD.propertyDetail_scnd_IMG}>
-                <Image src={item.image} />
+                <Image src={item.image} alt="" />
               </div>
             </section>
           </div>

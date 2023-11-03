@@ -13,7 +13,7 @@ import { useRouter } from "next/router"
 
 function Index() {
   const router = useRouter()
-  const { itemId } = router.query
+  // const { itemId } = router.query
   return (
     <main>
       <Navbar />
@@ -111,7 +111,7 @@ function Index() {
             {data.map((item) => {
               return (
                 <div key={item.id} className={BR_styles.properties}>
-                  <Image src={item.image} />
+                  <Image src={item.image} alt="Item Image" />
                   <div className={BR_styles.cardDIV}>
                     <p className={BR_styles.addressT}> {item.address} </p>
                     <p className={BR_styles.cityT}>{item.city} </p>
