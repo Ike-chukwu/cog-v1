@@ -8,7 +8,7 @@ import ProgressBar from "@/components/UI/Dashboard/ProgressBar"
 import { Fragment, useState } from "react"
 
 const AddMarketplace = () => {
-  const stagesData = [
+  let stagesData = [
     {
       stage: "Entity details",
       subStages: ["Business description/tagline", "Web link", "Social media"],

@@ -10,9 +10,9 @@ import sort from "../../../../public/assets/icons/sort.svg"
 import viewicon from "../../../../public/assets/icons/viewicon.svg"
 
 const Index = () => {
-  const [openStatus, setOpenStatus] = useState(false)
-  const [openFilter, setOpenFilter] = useState(false)
-  const [tableFilter, setTableFilter] = useState({
+  let [openStatus, setOpenStatus] = useState(false)
+  let [openFilter, setOpenFilter] = useState(false)
+  let [tableFilter, setTableFilter] = useState({
     allOffers: true,
     rentals: false,
     forSale: false,
@@ -53,25 +53,22 @@ const Index = () => {
           <div className="bg-text-green rounded-[45px] p-2 flex justify-between items-center w-fit">
             <button
               onClick={handleAllOffer}
-              className={`font-semibold font-inter text-base text-white w-[149px] h-[50px] ${
-                tableFilter.allOffers ? "bg-cog-color rounded-[30px]" : ""
-              }`}
+              className={`font-semibold font-inter text-base text-white w-[149px] h-[50px] ${tableFilter.allOffers ? "bg-cog-color rounded-[30px]" : ""
+                }`}
             >
               All offers
             </button>
             <button
               onClick={handleRentals}
-              className={`font-semibold font-inter text-base text-white w-[149px] h-[50px] ${
-                tableFilter.rentals ? "bg-cog-color rounded-[30px]" : ""
-              }`}
+              className={`font-semibold font-inter text-base text-white w-[149px] h-[50px] ${tableFilter.rentals ? "bg-cog-color rounded-[30px]" : ""
+                }`}
             >
               Rentals
             </button>
             <button
               onClick={handleForSale}
-              className={`font-semibold font-inter text-base text-white w-[149px] h-[50px] ${
-                tableFilter.forSale ? "bg-cog-color rounded-[30px]" : ""
-              }`}
+              className={`font-semibold font-inter text-base text-white w-[149px] h-[50px] ${tableFilter.forSale ? "bg-cog-color rounded-[30px]" : ""
+                }`}
             >
               For sale
             </button>
@@ -172,9 +169,8 @@ const Index = () => {
               {prospects.map((item, i) => (
                 <tr
                   key={item.id}
-                  className={`p-8 h-[70px] flex justify-between items-center w-full text-left ${
-                    i % 2 === 0 ? "border-2" : "border-0"
-                  }`}
+                  className={`p-8 h-[70px] flex justify-between items-center w-full text-left ${i % 2 === 0 ? "border-2" : "border-0"
+                    }`}
                 >
                   <td className="text-[#386A8B]">
                     <button className="w-4 h-4 border-2 rounded mr-2"></button>
@@ -185,11 +181,10 @@ const Index = () => {
                   <td>{item.propertyName}</td>
                   <td>
                     <button
-                      className={`text-white p-2 rounded-[10px] w-[85px] h-[34px] ${
-                        item.status === "Pending"
+                      className={`text-white p-2 rounded-[10px] w-[85px] h-[34px] ${item.status === "Pending"
                           ? "bg-[#FFA902]"
                           : "bg-[#049561]"
-                      }`}
+                        }`}
                     >
                       {item.status}
                     </button>
