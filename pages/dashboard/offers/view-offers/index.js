@@ -18,7 +18,7 @@ const Index = () => {
     forSale: false,
   })
 
-  setOpenStatus((status) => (openStatus = status))
+  // setOpenStatus((status) => (openStatus = status))
 
   const handleAllOffer = () => {
     setTableFilter({
@@ -182,8 +182,8 @@ const Index = () => {
                   <td>
                     <button
                       className={`text-white p-2 rounded-[10px] w-[85px] h-[34px] ${item.status === "Pending"
-                          ? "bg-[#FFA902]"
-                          : "bg-[#049561]"
+                        ? "bg-[#FFA902]"
+                        : "bg-[#049561]"
                         }`}
                     >
                       {item.status}
