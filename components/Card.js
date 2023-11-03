@@ -1,8 +1,8 @@
 import Image from "next/image"
 import { AiOutlineHeart } from "react-icons/ai"
 
-import camera from "/public/assets/icons/Vector.svg"
 import Home from "/public/assets/icons/picture.png"
+import camera from "/public/assets/icons/vector.svg"
 import hex from "/public/assets/images/Group.png"
 import Bed from "/public/assets/images/image 12.png"
 import Toilet from "/public/assets/images/image 16.png"
