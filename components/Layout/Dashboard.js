@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
+import { useRouter } from "next/router"
 import { useState } from "react"
 import { IoExitOutline } from "react-icons/io5"
 import { RiHome5Fill } from "react-icons/ri"
@@ -115,6 +116,7 @@ const Menu = ({ menu }) => {
 }
 
 const SubMenu = ({ submenus, active, setActive }) => {
+  const { pathname } = useRouter()
   return (
     <ul className="ml-4">
       {submenus &&
@@ -126,9 +128,10 @@ const SubMenu = ({ submenus, active, setActive }) => {
               <Link href={link}>
                 <button
                   className={`inline-flex items-center gap-3 p-4 w-full rounded-md hover:bg-primary hover:text-white ${
-                    active === submenu && "text-primary"
+                    (active === link || pathname.startsWith(link)) &&
+                    "text-primary"
                   }`}
-                  onClick={() => setActive(submenu)}
+                  onClick={() => setActive(link)}
                 >
                   <RiHome5Fill className="text-2xl" />
                   {subcontent}

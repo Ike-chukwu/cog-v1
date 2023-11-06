@@ -1,5 +1,5 @@
 import Image from "next/image"
-import React, { Fragment } from "react"
+import { Fragment } from "react"
 
 const ClientDetails = ({
   subStage,
@@ -180,7 +180,7 @@ const VerificationChecklist = ({ clientType, checklist, setChecklist }) => {
               <input
                 name="CAC"
                 type="checkbox"
-                value={checklist.CAC}
+                checked={checklist.CAC}
                 onChange={handleInputChange}
                 className="cursor-pointer [&:not(input:checked)]:appearance-none outline-none accent- h-5 w-5 border border-[#B1B1B4] bg-[#E2E4F0] rounded-sm mr-2"
               />
@@ -190,7 +190,7 @@ const VerificationChecklist = ({ clientType, checklist, setChecklist }) => {
               <input
                 name="tax"
                 type="checkbox"
-                value={checklist.tax}
+                checked={checklist.tax}
                 onChange={handleInputChange}
                 className="cursor-pointer [&:not(input:checked)]:appearance-none outline-none accent- h-5 w-5 border border-[#B1B1B4] bg-[#E2E4F0] rounded-sm mr-2"
               />
@@ -200,7 +200,7 @@ const VerificationChecklist = ({ clientType, checklist, setChecklist }) => {
               <input
                 type="checkbox"
                 name="creditReport"
-                value={checklist.creditReport}
+                checked={checklist.creditReport}
                 onChange={handleInputChange}
                 className="cursor-pointer [&:not(input:checked)]:appearance-none outline-none accent- h-5 w-5 border border-[#B1B1B4] bg-[#E2E4F0] rounded-sm mr-2"
               />
@@ -214,7 +214,7 @@ const VerificationChecklist = ({ clientType, checklist, setChecklist }) => {
               <input
                 name="identity"
                 type="checkbox"
-                value={checklist.identity}
+                checked={checklist.identity}
                 onChange={handleInputChange}
                 className="cursor-pointer [&:not(input:checked)]:appearance-none outline-none accent- h-5 w-5 border border-[#B1B1B4] bg-[#E2E4F0] rounded-sm mr-2"
               />
@@ -228,7 +228,7 @@ const VerificationChecklist = ({ clientType, checklist, setChecklist }) => {
                 type="checkbox"
                 name="creditReportTwo"
                 onChange={handleInputChange}
-                value={checklist.creditReportTwo}
+                checked={checklist.creditReportTwo}
                 className="cursor-pointer [&:not(input:checked)]:appearance-none outline-none accent- h-5 w-5 border border-[#B1B1B4] bg-[#E2E4F0] rounded-sm mr-2"
               />
               <span>Credit report</span>
@@ -238,7 +238,7 @@ const VerificationChecklist = ({ clientType, checklist, setChecklist }) => {
                 type="checkbox"
                 name="confirmation"
                 onChange={handleInputChange}
-                value={checklist.confirmation}
+                checked={checklist.confirmation}
                 className="cursor-pointer [&:not(input:checked)]:appearance-none outline-none accent- h-5 w-5 border border-[#B1B1B4] bg-[#E2E4F0] rounded-sm mr-2"
               />
               <span>Employment confirmation</span>
@@ -248,7 +248,7 @@ const VerificationChecklist = ({ clientType, checklist, setChecklist }) => {
                 type="checkbox"
                 name="policeReport"
                 onChange={handleInputChange}
-                value={checklist.policeReport}
+                checked={checklist.policeReport}
                 className="cursor-pointer [&:not(input:checked)]:appearance-none outline-none accent- h-5 w-5 border border-[#B1B1B4] bg-[#E2E4F0] rounded-sm mr-2"
               />
               <span>Police report</span>
@@ -272,7 +272,13 @@ const VerificationUpload = ({ upload, setUpload }) => {
       header="Verification upload"
       subHead="Upload identity verification selection"
     >
-      <input type="file" id="file" className="hidden" onChange={handleFile} />
+      <input
+        type="file"
+        id="file"
+        className="hidden"
+        accept=".jpg, .png, .pdf"
+        onChange={handleFile}
+      />
       <label
         htmlFor="file"
         className="border border-dashed border-primary p-4 flex items-center gap-12 cursor-pointer"

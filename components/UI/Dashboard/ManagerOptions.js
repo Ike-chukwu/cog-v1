@@ -5,11 +5,11 @@ import { MdOutlineAddCircle, MdOutlineRemoveRedEye } from "react-icons/md"
 const placeholderOpts = [
   {
     link: "",
-    content: "Listing website",
+    content: "Option 1",
   },
   {
     link: "",
-    content: "Listing manager",
+    content: "Option 2",
   },
 ]
 
