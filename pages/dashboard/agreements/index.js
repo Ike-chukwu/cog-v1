@@ -1,3 +1,5 @@
+
+// Prospect index code soon to be remodelled by Leye
 import Dashboard from "@/components/Layout/Dashboard"
 import Image from "next/image"
 import Link from "next/link"
