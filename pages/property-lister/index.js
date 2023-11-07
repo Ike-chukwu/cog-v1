@@ -1,6 +1,6 @@
+import Card from "@/components/Card"
 import Layout from "@/components/Layout/Layout"
 import TopNav from "@/components/TopNav"
-import Card from "@/components/card"
 import Image from "next/image"
 import {
   AiFillInstagram,

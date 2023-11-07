@@ -35,7 +35,7 @@ const Index = () => {
       text: "",
     },
   ]
-  const [content, setContent] = useState(contents[0])
+  // const [content, setContent] = useState(contents[0])
 
   const getStage = () => {
     switch (stage) {
@@ -114,7 +114,7 @@ const Wrapper = ({ header, subHead, children }) => {
 
   useEffect(() => {
     getStage()
-  }, [content])
+  }, [content, getStage])
 
   return (
     <div className="p-8">

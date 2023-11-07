@@ -158,7 +158,7 @@ const AddProspect = () => {
     }
   }
 
-  const handleProspect = () => {}
+  // const handleProspect = () => {}
 
   return (
     <Dashboard className="p-8 grid min-h-full">
