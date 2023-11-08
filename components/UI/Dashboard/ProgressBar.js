@@ -1,4 +1,4 @@
-import Stage from "./Stage"
+import Stage from "./Stage";
 
 const ProgressBar = ({ stagesData, activeStage, activeSubStage }) => {
   return (
@@ -8,14 +8,15 @@ const ProgressBar = ({ stagesData, activeStage, activeSubStage }) => {
           key={i}
           stageNumber={i + 1}
           stage={stage.stage}
-          subStages={stage.subStages}
+          // Pass the subStages prop only if it exists
+          {...(stage.subStages && { subStages: stage.subStages })}
           activeSubStage={activeSubStage}
           isActive={activeStage === i + 1}
           isCompleted={i + 1 < activeStage}
         />
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default ProgressBar
+export default ProgressBar;

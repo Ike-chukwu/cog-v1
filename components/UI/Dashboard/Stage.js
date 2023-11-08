@@ -1,5 +1,5 @@
-import { FiCheck } from "react-icons/fi"
-import SubStage from "./SubStage"
+import { FiCheck } from "react-icons/fi";
+import SubStage from "./SubStage";
 
 const Stage = ({
   stage,
@@ -31,7 +31,7 @@ const Stage = ({
         <span className="font-[550] opacity-70">{stage}</span>
       </div>
 
-      {isActive && (
+      {isActive && subStages && subStages.length > 0 && (
         <div>
           {subStages.map((sub, i) => (
             <SubStage
@@ -45,7 +45,7 @@ const Stage = ({
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Stage
+export default Stage;
