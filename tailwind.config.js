@@ -21,6 +21,11 @@ module.exports = {
         keyColor: "#A69FF7",
         searchColor: "#DFE0A5",
         cardColor: " #F5F5F5",
+        borderGrey: "#B1B1B4",
+        lightGreen: "#E0E9EC",
+        primaryGreen: "#386A8B",
+        dark: "#001827",
+        borderGrey: "#EAEAEA",
         "default-yellow": "rgba(224, 202, 4, 1)",
         "minor-text": "rgba(75, 75, 75, 1)",
         "main-text": "rgba(17, 12, 74, 1)",
@@ -37,6 +42,11 @@ module.exports = {
       fontFamily: {
         euclid: "Euclid",
         inter: "Inter",
+      },
+
+      borderRadius: {
+        "045": "45px",
+        "030": "30px",
       },
     },
   },

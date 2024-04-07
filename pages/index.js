@@ -41,11 +41,11 @@ export default function Home() {
 
 const Header = () => {
   return (
-    <header className="flex-col justify-center text-center">
-      <h1 className="flex justify-center text-center text-primary mt-36 mb-2 text-4xl font-bold">
+    <header className="flex-col justify-center text-center ">
+      <h1 className="flex justify-center text-center text-primary mt-36 mb-10 text-5xl font-bold">
         The property rental and sales <br /> experience just got better
       </h1>
-      <small className="text-xs leading-snug text-lightGrey">
+      <small className="text-base font-medium leading-snug text-lightGrey">
         Either you are a real estate renter, buyer or manager, we make <br />{" "}
         your operations seamless.
       </small>
@@ -56,6 +56,7 @@ const Header = () => {
 const Seacrh = () => {
   const [searchValue, SetSearchValue] = useState("")
   const [searchLocation, SetsearchLocation] = useState("")
+  const [type, setType] = useState("rent")
   const router = useRouter()
   const Whole = "home"
   const Warehouse = "warehouse"
@@ -84,7 +85,25 @@ const Seacrh = () => {
   }
   return (
     <>
-      <div className="flex mt-10 bg-lighterGrey lg:w-1/2 md:w-3/4 m-auto justify-between h-10 pl-2">
+      <div className="bg-lightGreen py-[.3rem] px-2 w-max rounded-045 mt-14 mb-2 font-medium mx-auto text-white">
+        <button
+          onClick={() => setType("rent")}
+          className={`py-2 transition-all duration-150 ease-in px-4 rounded-030 ${
+            type == "rent" ? "bg-primaryGreen bg-opacity-100" : "bg-opacity-0"
+          }`}
+        >
+          Rent
+        </button>
+        <button
+          onClick={() => setType("buy")}
+          className={`py-2 transition-all duration-150 ease-in px-4 rounded-030 ${
+            type == "buy" ? "bg-primaryGreen bg-opacity-100" : "bg-opacity-0"
+          }}`}
+        >
+          Buy
+        </button>
+      </div>
+      <div className="flex bg-lighterGrey lg:w-1/2 md:w-3/4 m-auto justify-between h-10 pl-2">
         <div className="w-full flex items-center">
           <Image src={seacrh} alt="" />
           <input
@@ -140,6 +159,7 @@ const Seacrh = () => {
           </li>
         </ul>
       </div>
+      <h1 className="text-lightGrey font-medium mx-auto w-max mt-16 text-xl">Built for and trusted by</h1>
       <div className="flex items-center justify-center gap-40 my-16">
         <Image src={NEMSA} alt="NEMSA" />
         <Image src={NIESV} alt="NIESV" />
