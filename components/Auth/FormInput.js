@@ -1,5 +1,7 @@
 import Image from "next/image"
 import { useState } from "react"
+import view from '@/public/assets/images/view.png';
+
 
 const FormInput = ({ type, placeholder, styles, svg }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -17,11 +19,14 @@ const FormInput = ({ type, placeholder, styles, svg }) => {
   return (
     <div className="relative">
       {type === "text" || type === "password" ? (
+        <>
         <input
           type={type}
           className={`py-4 border-2 text-black placeholder:text-black border-borderGrey px-5 rounded-lg w-full outline-none ${styles}`}
           placeholder={placeholder}
         />
+        {type ==="password" && <Image src={view} alt="" className="absolute z-20 bottom-4 right-5" />}
+        </>
       ) : (
         type.includes("dropdown") && (
           <>
@@ -32,7 +37,7 @@ const FormInput = ({ type, placeholder, styles, svg }) => {
                 {selectedOption || placeholder}
               </div>
               <div
-                className={`absolute px-2 py-3  top-full left-0 w-full bg-white border-2 border-borderGrey rounded-lg overflow-hidden transition-all duration-300 ease-in-out ${
+                className={`absolute px-2 py-3 z-10  top-full left-0 w-full bg-white border-2 border-borderGrey rounded-lg overflow-hidden transition-all duration-300 ease-in-out ${
                   isOpen ? "max-h-48 opacity-100" : "max-h-0 opacity-0"
                 }`}
               >
@@ -40,11 +45,12 @@ const FormInput = ({ type, placeholder, styles, svg }) => {
                   value=""
                   disabled
                   hidden
-                  className="pointer-events-none mb-3"
+                  className="pointer-events-none"
                 >
                   {placeholder}
                 </option>
                 <option
+                className="mb-3 cursor-pointer"
                   value="corporate organization"
                   onClick={() => handleOptionSelect("Corporate Organization")}
                 >
@@ -53,6 +59,7 @@ const FormInput = ({ type, placeholder, styles, svg }) => {
                 {type.includes("client") ? (
                   <option
                     value="individual"
+                    className="cursor-pointer"
                     onClick={() => handleOptionSelect("Individual")}
                   >
                     Individual
@@ -60,6 +67,7 @@ const FormInput = ({ type, placeholder, styles, svg }) => {
                 ) : (
                   <option
                     value="freelance"
+                    className="cursor-pointer"
                     onClick={() => handleOptionSelect("Freelance")}
                   >
                     Freelance
@@ -71,25 +79,11 @@ const FormInput = ({ type, placeholder, styles, svg }) => {
               className={`absolute bottom-4 right-5 cursor-pointer`}
               onClick={toggleDropdown}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
             </div>
           </>
         )
       )}
-      {svg && <Image src={svg} alt="" className="absolute bottom-4 right-5" />}
+      {svg && <Image src={svg} alt="" className="absolute z-20 bottom-4 right-5" />}
     </div>
   )
 }
