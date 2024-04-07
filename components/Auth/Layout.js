@@ -13,7 +13,7 @@ export const Layout = ({ children, styles, img }) => {
           alt="img"
           className={`w-full ${
             path.includes("login") ? "h-screen" : "h-max"
-          } object-cover`}
+          } object-cover ${styles}`}
         />
       </div>
 

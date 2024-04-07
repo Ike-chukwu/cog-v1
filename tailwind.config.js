@@ -26,6 +26,7 @@ module.exports = {
         primaryGreen: "#386A8B",
         dark: "#001827",
         borderGrey: "#EAEAEA",
+        darkGreyText: "#4B5B65",
         "default-yellow": "rgba(224, 202, 4, 1)",
         "minor-text": "rgba(75, 75, 75, 1)",
         "main-text": "rgba(17, 12, 74, 1)",

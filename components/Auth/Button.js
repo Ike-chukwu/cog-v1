@@ -1,8 +1,9 @@
 import Image from "next/image"
 
-export const Button = ({ text, variant = "withBg", img, styles }) => {
+export const Button = ({ text, variant = "withBg", img, styles, onclick }) => {
   return (
     <button
+    onClick={onclick}
       className={`${
         variant === "withBg"
           ? "bg-primary text-white"
