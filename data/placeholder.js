@@ -23,7 +23,7 @@ export const online = [
     src: "/assets/icons/deleteicon.svg",
   },
   {
-    to: "/dashboard/all-inbounds/prospect",
+    to: "/dashboard/all-inbounds",
     value: "View details",
     src: "/assets/icons/viewicon.svg",
   },

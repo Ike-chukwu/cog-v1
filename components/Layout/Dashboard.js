@@ -55,6 +55,7 @@ const Dashboard = ({ children, className }) => {
       submenus: [],
     },
   ]
+  // REDESIGN THIS
 
   return (
     <div className="flex">

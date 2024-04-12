@@ -1,5 +1,5 @@
-
 // Prospect index code soon to be remodelled by Leye
+import { Card } from "@/components/Dashboard/Card"
 import Dashboard from "@/components/Layout/Dashboard"
 import Image from "next/image"
 import Link from "next/link"
@@ -117,53 +117,9 @@ const Agreement = () => {
           </div>
 
           <div className="pt-10 flex justify-between gap-x-5">
-            <div className="w-full max-w-[367px] bg-[#386A8B] border-2 border-[#386A8B] p-5 text-white">
-              <div className="flex justify-end pb-1">
-                <Image
-                  src="/assets/images/file-icon-white.svg"
-                  alt="file-icon-white"
-                  width={15}
-                  height={19}
-                />
-              </div>
-              <h1 className="font-semibold">Total agreements</h1>
-              <h1 className="font-bold text-[32px] mt-6 mb-8">3</h1>
-              <p className="font-semibold">
-                + Increased by 30% since July 2022
-              </p>
-            </div>
-
-            <div className="w-full max-w-[367px] border-2 border-[#386A8B] p-5">
-              <div className="flex justify-end pb-1">
-                <Image
-                  src="/assets/images/file-icon-blue.svg"
-                  alt="file-icon-white"
-                  width={15}
-                  height={19}
-                />
-              </div>
-              <h1 className="font-semibold">Closed agreements</h1>
-              <h1 className="font-bold text-[32px] mt-6 mb-8">2</h1>
-              <p className="text-[#049561] font-semibold">
-                + Increased by 30% since July 2022
-              </p>
-            </div>
-
-            <div className="w-full max-w-[367px] border-2 border-[#386A8B] p-5">
-              <div className="flex justify-end pb-1">
-                <Image
-                  src="/assets/images/file-icon-blue.svg"
-                  alt="file-icon-white"
-                  width={15}
-                  height={19}
-                />
-              </div>
-              <h1 className="font-semibold">Open agreements</h1>
-              <h1 className="font-bold text-[32px] mt-6 mb-8">1</h1>
-              <p className="text-[#E00525] font-semibold">
-                + Increased by 30% since July 2022
-              </p>
-            </div>
+            {[...Array(3)].map((_, index) => (
+              <Card key={index} header={'Total agreements'} val={2} metric={'increased by x% since july 2022'} />
+            ))}
           </div>
 
           <div className="flex pt-10">
