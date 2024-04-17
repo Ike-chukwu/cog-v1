@@ -37,7 +37,24 @@ const Dashboard = ({ children, className }) => {
     {
       link: "",
       content: "Manager",
-      submenus: [],
+      submenus: [
+        {
+          link: "/dashboard/manager/rent",
+          subcontent: "Rent",
+        },
+        {
+          link: "/dashboard/manager/services",
+          subcontent: "Services",
+        },
+        {
+          link: "/dashboard/manager/tenant",
+          subcontent: "Tenant",
+        },
+        {
+          link: "/dashboard/manager/property",
+          subcontent: "Property",
+        },
+      ],
     },
     {
       link: "",
@@ -128,9 +145,10 @@ const SubMenu = ({ submenus, active, setActive }) => {
             <li key={i}>
               <Link href={link}>
                 <button
-                  className={`inline-flex items-center gap-3 p-4 w-full rounded-md hover:bg-primary hover:text-white ${(active === link || pathname.startsWith(link)) &&
+                  className={`inline-flex items-center gap-3 p-4 w-full rounded-md hover:bg-primary hover:text-white ${
+                    (active === link || pathname.startsWith(link)) &&
                     "text-primary"
-                    }`}
+                  }`}
                   onClick={() => setActive(link)}
                 >
                   <RiHome5Fill className="text-2xl" />

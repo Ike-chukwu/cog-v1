@@ -46,8 +46,8 @@ const PropertyLister = () => {
         <div className="flex justify-between mt-4">
           <div className="ml-10 font-bold">Featured properties </div>
           <div className="flex">
-            <Image src={left} />
-            <Image src={right} />
+            <Image src={left} alt='' />
+            <Image src={right} alt="" />
           </div>
         </div>
         <div className="x-factor heey flex ">{Array(6).fill(<Card />)}</div>
