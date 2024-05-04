@@ -13,10 +13,12 @@ import {
 import { createWrapper } from "next-redux-wrapper"
 // //  The reason for setting up redux-toolkit this was is because it's recommended by nextjs, to accomodate SSR
 import rentalFormSlice from "./rentalFormSlice"
+import stageSlice from "./stageSlice"
 
 // // Lets combined all reducers, just import your slice and add it's name here
 const allReducers = combineReducers({
   rentalFormSlice,
+  stageSlice,
 })
 
 const configStore = () =>

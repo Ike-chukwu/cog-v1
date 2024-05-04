@@ -1,58 +1,30 @@
 import Dashboard from "@/components/Layout/Dashboard"
+import ProspectSummary from "@/components/ProspectStages/Summary"
 import ProgressBar from "@/components/UI/Dashboard/ProgressBar"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import { FiBell } from "react-icons/fi"
-
-import ProspectSummary from "@/components/ProspectStages/Summary"
 import { Summary as AgreementSummary } from "../../temp/make-agreements"
 import { Summary as OfferSummary } from "../../temp/make-offers"
 
 const Index = () => {
   const router = useRouter()
-  let { stage } = router.query
+  // use stage slice context to get the stage
+  const { stage } = router.query
 
-  if (!stage) {
-    stage = "prospect"
-  }
-
-  const contents = [
-    {
-      href: "",
-      text: "Make offers",
-    },
-    {
-      href: "",
-      text: "Issue agreement",
-    },
-    {
-      href: "",
-      text: "Request payment",
-    },
-    {
-      href: "",
-      text: "",
-    },
-  ]
-  // const [content, setContent] = useState(contents[0])
-
-  const getStage = () => {
-    switch (stage) {
-      case "prospect":
-        return <ProspectStage />
-      case "offer":
-        return <OfferStage />
-      case "agreement":
-        return <AgreementStage />
-      case "payment":
-        return <PaymentStage />
-      default:
-        return <ProspectStage />
-    }
-  }
-
-  return <Dashboard>{getStage()}</Dashboard>
+  return (
+    <>
+      {
+        <Dashboard>
+          {stage === "prospect" && <ProspectStage />}
+          {stage === "offer" && <OfferStage />}
+          {stage === "agreement" && <AgreementStage />}
+          {stage === "payment" && <PaymentStage />}
+        </Dashboard>
+      }
+    </>
+  )
 }
 
 export default Index
@@ -69,24 +41,26 @@ const Wrapper = ({ header, subHead, children }) => {
   ]
   const contents = [
     {
-      href: "",
-      text: "Make offers",
+      href: "offer",
+      text: "Make offer",
+      edit: "",
     },
     {
-      href: "",
+      href: "agreement",
       text: "Issue agreement",
+      edit: "",
     },
     {
-      href: "",
+      href: "payment",
       text: "Request payment",
     },
     {
-      href: "",
-      text: "",
+      href: "/dashboard/all-prospects",
+      text: "pay",
     },
   ]
   const [activeStage, setActiveStage] = useState(1)
-  const [content, setContent] = useState(contents[0])
+  const [content, setContent] = useState(contents[activeStage - 1])
 
   const getStage = () => {
     switch (stage) {
@@ -114,7 +88,8 @@ const Wrapper = ({ header, subHead, children }) => {
 
   useEffect(() => {
     getStage()
-  }, [content, getStage])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stage])
 
   return (
     <div className="p-8">
@@ -155,7 +130,13 @@ const Wrapper = ({ header, subHead, children }) => {
           <button className="p-2 border border-primary text-primary rounded-md hover:bg-primary hover:text-white">
             Edit
           </button>
-          <button className="p-2 border border-primary text-primary rounded-md hover:bg-primary hover:text-white">
+
+          <button
+            onClick={() => {
+              router.push("/dashboard/prospects/all-prospects")
+            }}
+            className="p-2 border border-primary text-primary rounded-md hover:bg-primary hover:text-white"
+          >
             Close
           </button>
         </div>

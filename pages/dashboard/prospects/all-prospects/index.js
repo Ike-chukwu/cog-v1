@@ -8,6 +8,7 @@ import { BsFilter } from "react-icons/bs"
 
 const AllProspects = () => {
   const [active, setActive] = useState(0)
+ 
   const tabs = ["All prospects", "Rental", "For sale"]
 
   const handleClick = (index) => {
