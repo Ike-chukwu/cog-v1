@@ -1,4 +1,5 @@
 import ApplicationType from "./application-type"
+import GeneralStage from "./general"
 import PropertyTypes from "./property-types"
 
 const General = ({
@@ -17,6 +18,10 @@ const General = ({
   console.log("subStage", subStage)
   const getStage = () => {
     switch (subStage) {
+      case 0:
+        return (
+          <GeneralStage clientType={clientType} setClientType={setClientType} />
+        )
       case 1:
         return (
           <PropertyTypes

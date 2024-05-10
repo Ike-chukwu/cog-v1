@@ -1,5 +1,6 @@
 import Wrapper from "@/components/manager/wrapper"
 import ApplicationType from "./application-type"
+import PropertyDetailsSubStage from "./property-details"
 import PropertyName from "./property-name"
 import UnitDetails from "./unit-details"
 
@@ -18,6 +19,8 @@ const PropertyDetails = ({
 }) => {
   const getStage = () => {
     switch (subStage) {
+      case 0:
+        return <PropertyDetailsSubStage />
       case 1:
         return (
           <PropertyName

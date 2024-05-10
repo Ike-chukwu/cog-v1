@@ -5,13 +5,14 @@ import SigningDate from "@/components/ProspectStages/SigningDate"
 import ProspectSummary from "@/components/ProspectStages/Summary"
 import Header from "@/components/UI/Dashboard/Header"
 import ProgressBar from "@/components/UI/Dashboard/ProgressBar"
-import General from "@/components/manager/offfers/stages/general"
-import PropertyDetails from "@/components/manager/offfers/stages/property-details"
+import General from "@/components/manager/clients/stages/general"
+import PropertyDetails from "@/components/manager/clients/stages/property-details"
+
 import { Fragment, useState } from "react"
 
 const AddNewClient = () => {
   const [activeStage, setActiveStage] = useState(1)
-  const [activeSubStage, setActiveSubStage] = useState(1)
+  const [activeSubStage, setActiveSubStage] = useState(0)
 
   // Client Details
   const [clientType, setClientType] = useState("company")
@@ -119,7 +120,6 @@ const AddNewClient = () => {
       stage: "Summary",
       subStages: [],
     },
-    {},
   ]
 
   // console.log({
@@ -135,6 +135,7 @@ const AddNewClient = () => {
   }
 
   const handlePreviousSubStage = () => {
+    // if (activeSubStage === 0) setActiveStage(0)
     if (activeSubStage > 0) {
       setActiveSubStage((prevSubStage) => prevSubStage - 1)
     } else handlePreviousStage()

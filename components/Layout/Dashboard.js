@@ -40,19 +40,23 @@ const Dashboard = ({ children, className }) => {
       submenus: [
         {
           link: "/dashboard/manager/rent",
-          subcontent: "Rent",
+          subcontent: "Payments",
         },
         {
           link: "/dashboard/manager/services",
           subcontent: "Services",
         },
         {
-          link: "/dashboard/manager/tenant",
-          subcontent: "Tenant",
+          link: "/dashboard/manager/clients",
+          subcontent: "Clients",
         },
         {
           link: "/dashboard/manager/property",
           subcontent: "Property",
+        },
+        {
+          link: "/dashboard/manager/landlord",
+          subcontent: "Landlord",
         },
       ],
     },

@@ -10,7 +10,7 @@ export const offline = [
     src: "/assets/icons/deleteicon.svg",
   },
   {
-    to: "/dashboard/all-inbounds/prospect",
+    to: "/dashboard/manager/clients/1",
     value: "View details",
     src: "/assets/icons/viewicon.svg",
   },
