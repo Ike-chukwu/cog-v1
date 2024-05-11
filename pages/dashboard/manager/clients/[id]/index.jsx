@@ -1,6 +1,7 @@
 import Dashboard from "@/components/Layout/Dashboard"
 import Header from "@/components/UI/Dashboard/Header"
-import BarComponent from "@/components/manager/clients/barchart"
+import BarComponent from "@/components/manager/clients/bar-component"
+import ClientTable from "@/components/manager/clients/client-table"
 import PieChartExample from "@/components/manager/clients/piechart"
 import Link from "next/link"
 import { useRouter } from "next/router"
@@ -111,7 +112,9 @@ const AddNewClient = () => {
                   </Link>
                 </div>
 
-                <div></div>
+                <div className="overflow-auto h-[239px]">
+                  <ClientTable />
+                </div>
               </div>
             </div>
           </div>
