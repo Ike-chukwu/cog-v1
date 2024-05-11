@@ -1,7 +1,10 @@
 import DropdownButton from "@/components/shared/dropdown-btn"
 import { createColumnHelper } from "@tanstack/react-table"
-import { IoInformationCircleOutline } from "react-icons/io5"
-import { MdOutlineEdit, MdOutlineMoreVert } from "react-icons/md"
+import {
+  IoArrowForwardSharp,
+  IoInformationCircleOutline,
+} from "react-icons/io5"
+import { MdOutlineEdit } from "react-icons/md"
 import { TiDeleteOutline } from "react-icons/ti"
 
 const getColumnDefinitions = () => {
@@ -42,7 +45,7 @@ const getColumnDefinitions = () => {
     columnHelper.accessor("date", {
       header: () => <span className="text-[8px] text-[#B1B1B4]">Date</span>,
       cell: (info) => (
-        <span className="text-[#009FE3] text-[8px]">{info.getValue()}</span>
+        <span className="text-[#386A8B] text-[8px]">{info.getValue()}</span>
       ),
     }),
 
@@ -65,7 +68,7 @@ const getColumnDefinitions = () => {
       header: () => <span className="text-[8px] text-[#B1B1B4]">Status</span>,
       cell: (info) => (
         <p
-          className={`text-center w-[45px] border py-1 rounded-[5px] text-[8px] ${
+          className={`text-center w-[45px] font-[400] border py-1 rounded-[5px] text-[8px] ${
             info.getValue() === "Paid" && " bg-[#9FF1CA] text-[#049561] "
           } 
           ${info.getValue() === "Pending" && " text-[#FFA902] bg-[#FFA9024F]"} 
@@ -87,7 +90,11 @@ const getColumnDefinitions = () => {
       header: "",
       cell: (info) => (
         <DropdownButton
-          label={<MdOutlineMoreVert size="1.5rem" />}
+          label={
+            <span className="bg-[#E9E9EC] rounded-[5px] p-1">
+              <IoArrowForwardSharp color="#00000033" size="1rem" />{" "}
+            </span>
+          }
           options={options}
           className="bg-transparent w-fit p-0 text-black border-0"
           popoverClassName="w-[150px]"

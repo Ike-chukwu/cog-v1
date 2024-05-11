@@ -1,11 +1,8 @@
-// Prospect index code soon to be remodelled by Leye
 import { Card } from "@/components/Dashboard/Card"
 import Dashboard from "@/components/Layout/Dashboard"
 import DropdownButton from "@/components/shared/dropdown-btn"
 import Image from "next/image"
 import Link from "next/link"
-import { useRouter } from "next/router"
-import { useRef, useState } from "react"
 
 const recentActivities = (
   <div className="mr-10">
@@ -24,7 +21,7 @@ const recentActivities = (
         </figure>
         <div className="flex flex-col gap-y-3">
           <h1 className="text-[#19191A] text-[18px] font-semibold">
-            Offer sent to Ajibola Quadri for Ikorodu property
+            Rent notice - Ajibola Quadri
           </h1>
           <p className="text-[#B1B1B4]">Fri Jun 15,2022 GMT 13:00</p>
         </div>
@@ -34,21 +31,6 @@ const recentActivities = (
 )
 
 const Property = () => {
-  const [openPopup, setOpenPopup] = useState(false)
-  const router = useRouter()
-
-  const popupRef = useRef()
-
-  const togglePopupHandler = (e) => {
-    e.preventDefault()
-    setOpenPopup((val) => !val)
-  }
-  const closePopupHandler = (e, nextPage) => {
-    e.preventDefault()
-    router.push(nextPage)
-    setOpenPopup(false)
-  }
-
   const dropdownOptions = [
     {
       label: "Add new client",

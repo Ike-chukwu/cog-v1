@@ -6,14 +6,12 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table"
-import getColumnDefinitions from "./client-table-column"
-import { ManagerClientPlaceholder } from "./client-table-placeholder"
+import getColumnDefinitions from "./view-all-table-column"
+import { ViewAllTablePlaceholder } from "./view-all-table-placeholder"
 
 const columns = getColumnDefinitions()
-const ClientTable = () => {
-  const [data, _setData] = useState(() => [...ManagerClientPlaceholder])
-
-  //   const tableData = data
+const ViewAllTable = () => {
+  const [data, _setData] = useState(() => [...ViewAllTablePlaceholder])
 
   const table = useReactTable({
     data,
@@ -23,11 +21,11 @@ const ClientTable = () => {
 
   return (
     <table className=" w-full">
-      <thead className="mb-5">
+      <thead className="mb-12 py-12">
         {table.getHeaderGroups().map((headerGroup) => (
           <tr key={headerGroup.id} className="text-left">
             {headerGroup.headers.map((header) => (
-              <th key={header.id} className={`${inter.className}`}>
+              <th key={header.id} className={`pb-6 ${inter.className}`}>
                 {header.isPlaceholder
                   ? null
                   : flexRender(
@@ -39,11 +37,11 @@ const ClientTable = () => {
           </tr>
         ))}
       </thead>
-      <tbody className="pt-6">
+      <tbody className={`pt-12`}>
         {table.getRowModel().rows.map((row) => (
           <tr key={row.id} className="border-b border-[#C4C4C4]">
             {row.getVisibleCells().map((cell) => (
-              <td key={cell.id} className="py-4">
+              <td key={cell.id} className={`py-4 ${inter.className}`}>
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
               </td>
             ))}
@@ -54,4 +52,4 @@ const ClientTable = () => {
   )
 }
 
-export default ClientTable
+export default ViewAllTable

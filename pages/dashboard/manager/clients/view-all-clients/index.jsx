@@ -2,7 +2,8 @@ import Dashboard from "@/components/Layout/Dashboard"
 import Options from "@/components/Options"
 import Tabs from "@/components/Tabs"
 import Header from "@/components/UI/Dashboard/Header"
-import { offline, online, prospects } from "@/data/placeholder"
+import ViewAllTable from "@/components/manager/clients/view-all-table"
+import { offline, online } from "@/data/placeholder"
 import { useState } from "react"
 import { BsFilter } from "react-icons/bs"
 
@@ -38,26 +39,15 @@ const ViewAllClients = () => {
           </button>
         </div>
 
-        <div className="grid grid-cols-6 mt-10 font-bold">
-          <div className="flex items-center">
-            <input
-              type="checkbox"
-              className="cursor-pointer [&:not(input:checked)]:appearance-none outline-none accent-primary h-5 w-5 border border-primary rounded-sm mr-2"
-            />
-            <span>Prospect ID</span>
-          </div>
-          <span>Date</span>
-          <span>Client name</span>
-          <span>Property name</span>
-          <span>Source</span>
-          <span>Status</span>
+        <div className="grid  mt-10 font-bold">
+          <ViewAllTable />
         </div>
 
-        <div className="grid text-left mt-6">
+        {/* <div className="grid text-left mt-6">
           {prospects.map((prospect, i) => (
             <Prospect key={i} data={prospect} />
           ))}
-        </div>
+        </div> */}
       </div>
     </Dashboard>
   )

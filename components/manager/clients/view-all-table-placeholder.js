@@ -1,0 +1,58 @@
+export const ViewAllTablePlaceholder = [
+  {
+    clientId: "#657899832",
+    name: "Adetunji Tobi",
+    occupiedProperty: "Gold villa",
+    dueDate: "12 April 2023, 12:43 AM",
+    amount: 3500000.0,
+  },
+  {
+    clientId: "#787754567",
+    name: "Adetunji Tobi",
+    occupiedProperty: "Magenta Rose Residentials",
+    dueDate: "12 April 2023, 12:43 AM",
+    amount: 1500000000.1,
+  },
+  {
+    clientId: "#657899832",
+    name: "Adetunji Tobi",
+    occupiedProperty: "Platinum suites",
+    dueDate: "12 April 2023, 12:43 AM",
+    amount: 700000.0,
+  },
+  {
+    clientId: "#787754567",
+    name: "Adetunji Tobi",
+    occupiedProperty: "Ikorodu property",
+    dueDate: "12 April 2023, 12:43 AM",
+    amount: 150000.0,
+  },
+  {
+    clientId: "#787754567",
+    name: "Adetunji Tobi",
+    occupiedProperty: "Platinum suites",
+    dueDate: "12 April 2023, 12:43 AM",
+    amount: 12000000.0,
+  },
+  {
+    clientId: "#787754567",
+    name: "Adetunji Tobi",
+    occupiedProperty: "Silver apartments",
+    dueDate: "12 April 2023, 12:43 AM",
+    amount: 1000000.0,
+  },
+  {
+    clientId: "#787754567",
+    name: "Adetunji Tobi",
+    occupiedProperty: "Premium warehouse",
+    dueDate: "12 April 2023, 12:43 AM",
+    amount: 950000.0,
+  },
+  {
+    clientId: "#787754567",
+    name: "Adetunji Tobi",
+    occupiedProperty: "Silver apartments",
+    dueDate: "12 April 2023, 12:43 AM",
+    amount: 3500.0,
+  },
+]

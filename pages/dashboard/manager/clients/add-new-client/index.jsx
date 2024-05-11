@@ -138,8 +138,6 @@ const AddNewClient = () => {
     // if (activeSubStage === 0) setActiveStage(0)
     if (activeSubStage > 0) {
       setActiveSubStage((prevSubStage) => prevSubStage - 1)
-    } else if (activeSubStage === 0) {
-      setActiveSubStage(0)
     } else handlePreviousStage()
   }
 

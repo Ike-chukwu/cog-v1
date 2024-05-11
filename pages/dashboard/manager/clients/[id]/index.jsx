@@ -58,8 +58,8 @@ const AddNewClient = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-5">
-              <div className="rounded-[10px] border border-[#62909F] p-3 grid gap-3">
+            <div className="grid grid-cols-[40%_56%] gap-5">
+              <div className=" rounded-[10px] border border-[#62909F] p-3 grid gap-3">
                 <div>
                   <div className="flex justify-between">
                     <p className="font-bold text-[#4B4B4B]">Unpaid</p>
@@ -87,8 +87,6 @@ const AddNewClient = () => {
                 <div>
                   <div className="flex justify-between">
                     <p className="font-bold text-[#4B4B4B]">Paid</p>
-
-                    {/* <Link href="#">View all</Link> */}
                   </div>
                   <p className="text-lg text-[#4B4B4B]">$ 20,000.00</p>
                   <BarComponent
