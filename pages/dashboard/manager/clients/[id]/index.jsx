@@ -29,7 +29,7 @@ const AddNewClient = () => {
           </div>
         </section>
 
-        <section className="grid grid-cols-2 gap-3">
+        <section className="grid  grid-cols-[65%_30%] gap-3">
           <div className="grid gap-3">
             <div className="grid grid-cols-3 gap-3 ">
               <div className="rounded-[10px] border border-[#62909F] grid gap-8 place-items-center p-5">

@@ -19,38 +19,38 @@ const PropertyDetails = ({
 }) => {
   const getStage = () => {
     switch (subStage) {
-      case 0:
-        return <PropertyDetailsSubStage />
       case 1:
+        return <PropertyDetailsSubStage />
+      case 2:
         return (
           <PropertyName
             applicationType={applicationType}
             setApplicationType={setApplicationType}
           />
         )
-      case 2:
+      case 3:
         return (
           <ApplicationType
             applicationType={applicationType}
             setApplicationType={setApplicationType}
           />
         )
-      case 3:
+      case 4:
         return (
           <UnitDetails
             applicationType={applicationType}
             setApplicationType={setApplicationType}
           />
         )
-      case 4:
-        return <UnitID unitID={unitID} setUnitID={setUnitID} />
       case 5:
-        return (
-          <UnitFeatures
-            unitFeatures={unitFeatures}
-            setUnitFeatures={setUnitFeatures}
-          />
-        )
+        return <UnitID unitID={unitID} setUnitID={setUnitID} />
+      // case 5:
+      //   return (
+      //     <UnitFeatures
+      //       unitFeatures={unitFeatures}
+      //       setUnitFeatures={setUnitFeatures}
+      //     />
+      //   )
       default:
         return (
           <ApplicationType

@@ -22,7 +22,7 @@ const ClientTable = () => {
   })
 
   return (
-    <table className=" w-full">
+    <table className="w-full">
       <thead className="mb-5">
         {table.getHeaderGroups().map((headerGroup) => (
           <tr key={headerGroup.id} className="text-left">
@@ -39,6 +39,7 @@ const ClientTable = () => {
           </tr>
         ))}
       </thead>
+
       <tbody className="pt-6">
         {table.getRowModel().rows.map((row) => (
           <tr key={row.id} className="border-b border-[#C4C4C4]">

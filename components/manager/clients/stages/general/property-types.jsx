@@ -17,6 +17,20 @@ const PropertyTypes = ({ clientType, setClientType }) => {
               height={24}
               alt="sth"
             />
+            <span>Flat/apartment</span>
+          </div>
+
+          <Toggle />
+        </li>
+
+        <li className="flex items-center justify-between">
+          <div className="flex gap-3">
+            <Image
+              src="/assets/icons/stop-circle.svg"
+              width={24}
+              height={24}
+              alt="sth"
+            />
             <span>Warehouse/storage facility</span>
           </div>
 
@@ -59,7 +73,7 @@ const PropertyTypes = ({ clientType, setClientType }) => {
               height={24}
               alt="sth"
             />
-            <span>Rent shop space</span>
+            <span>Retail shop space</span>
           </div>
 
           <Toggle />

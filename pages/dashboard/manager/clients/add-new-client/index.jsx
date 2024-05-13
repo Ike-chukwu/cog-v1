@@ -1,18 +1,18 @@
 import Dashboard from "@/components/Layout/Dashboard"
-import Amount from "@/components/ProspectStages/Amount"
-import Demography from "@/components/ProspectStages/Demography"
 import SigningDate from "@/components/ProspectStages/SigningDate"
 import ProspectSummary from "@/components/ProspectStages/Summary"
 import Header from "@/components/UI/Dashboard/Header"
 import ProgressBar from "@/components/UI/Dashboard/ProgressBar"
+import ClientDetails from "@/components/manager/clients/stages/client-details"
 import General from "@/components/manager/clients/stages/general"
+import GuarantorDetails from "@/components/manager/clients/stages/guarantor-details"
 import PropertyDetails from "@/components/manager/clients/stages/property-details"
 
 import { Fragment, useState } from "react"
 
 const AddNewClient = () => {
   const [activeStage, setActiveStage] = useState(1)
-  const [activeSubStage, setActiveSubStage] = useState(0)
+  const [activeSubStage, setActiveSubStage] = useState(1)
 
   // Client Details
   const [clientType, setClientType] = useState("company")
@@ -93,8 +93,9 @@ const AddNewClient = () => {
       subStages: ["Types of property", "Application type"],
     },
     {
-      stage: "Property Details",
+      stage: "Property details",
       subStages: [
+        "",
         "Property name",
         "Application type",
         "Unit details",
@@ -102,7 +103,7 @@ const AddNewClient = () => {
       ],
     },
     {
-      stage: "Tenant details",
+      stage: "Client details",
       subStages: [
         "Type",
         "Name",
@@ -203,7 +204,7 @@ const AddNewClient = () => {
               />
             )}
             {activeStage === 3 && (
-              <Demography
+              <ClientDetails
                 clientType={clientType}
                 subStage={activeSubStage}
                 tribe={tribe}
@@ -223,7 +224,7 @@ const AddNewClient = () => {
               />
             )}
             {activeStage === 4 && (
-              <Amount
+              <GuarantorDetails
                 subStage={activeSubStage}
                 totalAmount={totalAmount}
                 renewalAmount={renewalAmount}

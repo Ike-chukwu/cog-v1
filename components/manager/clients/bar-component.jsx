@@ -10,8 +10,6 @@ const BarComponent = ({
   const width = `${(value / total) * 100}%`
   const recurringWidth = `${(recurring / value) * 100}%`
 
-  console.log({ recurringColor, oneTimeColor })
-
   return (
     <div className="mb-4 mt-2">
       <div className="grid ">
@@ -43,7 +41,6 @@ const BarComponent = ({
             }}
           ></div>
         </div>
-        {/* <span className="ml-2">${value.toFixed(2)}</span> */}
       </div>
     </div>
   )
