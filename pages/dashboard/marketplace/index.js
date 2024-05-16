@@ -1,5 +1,5 @@
 import Dashboard from "@/components/Layout/Dashboard"
-import Card from "@/components/UI/Dashboard/Card"
+import {Card} from "@/components/Dashboard/Card"
 import EmptyState from "@/components/UI/Dashboard/EmptyState"
 import Header from "@/components/UI/Dashboard/Header"
 import ManagerOptions from "@/components/UI/Dashboard/ManagerOptions"
@@ -49,9 +49,14 @@ export default function Marketplace() {
       <div className="grid gap-6 my-10">
         <ManagerOptions options={options} />
 
-        <div className="flex justify-evenly">
-          {cardContent.map((content, i) => (
-            <Card key={i} content={content} />
+        <div className="pt-10 flex justify-between gap-x-5">
+          {[...Array(3)].map((_, index) => (
+            <Card
+              key={index}
+              header={"Listed properties"}
+              val={10}
+              metric={"increased by x% since july 2022"}
+            />
           ))}
         </div>
 

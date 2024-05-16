@@ -2,7 +2,7 @@ import Stage from "./Stage";
 
 const ProgressBar = ({ stagesData, activeStage, activeSubStage }) => {
   return (
-    <div>
+    <div className="max-w-fit">
       {stagesData.map((stage, i) => (
         <Stage
           key={i}
@@ -12,6 +12,7 @@ const ProgressBar = ({ stagesData, activeStage, activeSubStage }) => {
           {...(stage.subStages && { subStages: stage.subStages })}
           activeSubStage={activeSubStage}
           isActive={activeStage === i + 1}
+          activeStage={activeStage}
           isCompleted={i + 1 < activeStage}
         />
       ))}

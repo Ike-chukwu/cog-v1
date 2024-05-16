@@ -3,49 +3,34 @@ import { Card } from "@/components/Dashboard/Card"
 import Dashboard from "@/components/Layout/Dashboard"
 import Image from "next/image"
 import Link from "next/link"
-import arrow_down_svg from "public/assets/images/arrow-down.svg"
+import { useRouter } from "next/router"
 import no_recent_activity_img from "public/assets/images/no-recent-act.svg"
 import { useRef, useState } from "react"
 
-const Agreement = () => {
+const Property = () => {
   const [openPopup, setOpenPopup] = useState(false)
+  const router = useRouter()
 
   const popupRef = useRef()
 
   const togglePopupHandler = (e) => {
+    e.preventDefault()
     setOpenPopup((val) => !val)
   }
-  const closePopupHandler = (e) => {
+  const closePopupHandler = (e, nextPage) => {
+    e.preventDefault()
+    router.push(nextPage)
     setOpenPopup(false)
   }
 
-  const recentActivities = (
-    <div className="mr-10">
-      {[...Array(4)].map((_, i) => (
-        <div
-          key={i}
-          className="flex gap-x-10 p-4 border-b-[#E8E8EE] border-b-2 mr-10"
-        >
-          <figure className="bg-[#9FF1CA] grid place-items-center rounded-[50%] h-[50px] w-[50px]">
-            <Image src={arrow_down_svg} alt="file-icon-white" />
-          </figure>
-          <div className="flex flex-col gap-y-3">
-            <h1 className="text-[#19191A] text-[18px] font-semibold">
-              Agreement with Ajibola Quadri for Ikorodu property
-            </h1>
-            <p className="text-[#B1B1B4]">Fri Jun 15,2022 GMT 13:00</p>
-          </div>
-        </div>
-      ))}
-    </div>
-  )
+  const recentActivities = <div className="mr-10"></div>
 
   return (
     <Dashboard>
       <main className="p-10">
         <nav className="flex justify-between">
           <div>
-            <h1 className="text-[#4B4B4B] text-[38px] font-bold">Agreement</h1>
+            <h1 className="text-[#4B4B4B] text-[38px] font-bold">Properties</h1>
           </div>
           <div>
             <div className="flex items-center gap-x-12 mb-2">
@@ -74,7 +59,7 @@ const Agreement = () => {
                 className="bg-[#386A8B] text-white rounded-[4px] px-6 py-2 ml-auto"
                 onClick={togglePopupHandler}
               >
-                Manage agreements
+                Prospect manager
               </button>
 
               {openPopup && (
@@ -82,35 +67,35 @@ const Agreement = () => {
                   className="absolute right-0 top-[45px] bg-white border-[#62909F] border-[1px] text-[15px]"
                   ref={popupRef}
                 >
-                  <Link href="agreements/add-agreements">
-                    <span
-                      className="flex p-2 gap-x-2 hover:bg-[#D2F4FF] cursor-pointer whitespace-no-wrap"
-                      onClick={closePopupHandler}
-                    >
-                      <Image
-                        src="/assets/images/fi_add.svg"
-                        alt="Add Icon"
-                        width={20}
-                        height={20}
-                      />{" "}
-                      Add new agreement
-                    </span>
-                  </Link>
+                  <span
+                    className="flex p-2 gap-x-2 hover:bg-[#D2F4FF] cursor-pointer whitespace-no-wrap"
+                    onClick={(e) =>
+                      closePopupHandler(e, "property/add-properties")
+                    }
+                  >
+                    <Image
+                      src="/assets/images/fi_add.svg"
+                      alt="Add Icon"
+                      width={20}
+                      height={20}
+                    />{" "}
+                    Add new property
+                  </span>
 
-                  <Link href="agreements/all-agreements">
-                    <span
-                      className="flex p-2 gap-x-2 hover:bg-[#D2F4FF] cursor-pointer whitespace-no-wrap"
-                      onClick={closePopupHandler}
-                    >
-                      <Image
-                        src="/assets/images/fi_eye.svg"
-                        alt="Eye Icon"
-                        width={20}
-                        height={20}
-                      />{" "}
-                      View all agreements
-                    </span>
-                  </Link>
+                  <span
+                    className="flex p-2 gap-x-2 hover:bg-[#D2F4FF] cursor-pointer whitespace-no-wrap"
+                    onClick={(e) =>
+                      closePopupHandler(e, "property/all-properties")
+                    }
+                  >
+                    <Image
+                      src="/assets/images/fi_eye.svg"
+                      alt="Eye Icon"
+                      width={20}
+                      height={20}
+                    />{" "}
+                    View all properties
+                  </span>
                 </div>
               )}
             </div>
@@ -118,16 +103,26 @@ const Agreement = () => {
 
           <div className="pt-10 flex justify-between gap-x-5">
             {[...Array(3)].map((_, index) => (
-              <Card key={index} header={'Total agreements'} val={2} metric={'increased by x% since july 2022'} />
+              <Card
+                key={index}
+                header={"Total agreements"}
+                val={2}
+                metric={"increased by x% since july 2022"}
+              />
             ))}
           </div>
 
           <div className="flex pt-10">
-            <div className="relative ml-auto">
-              <button className="text-[#386A8B] border-[#62909F] border-[1px] font-semibold bg-white rounded-[4px] px-6 py-2 ml-auto">
-                View custom report
-              </button>
-            </div>
+            <Link
+              href={"/dashboard/manager/property/custom-report"}
+              className="ml-auto"
+            >
+              <div className="relative ">
+                <button className="text-[#386A8B] border-[#62909F] border-[1px] font-semibold bg-white rounded-[4px] px-6 py-2 ml-auto">
+                  View custom report
+                </button>
+              </div>
+            </Link>
           </div>
 
           <div className="mt-20 border-[#62909F] border-2">
@@ -149,10 +144,10 @@ const Agreement = () => {
                       You have no recent activities
                     </h1>
                     <p>
-                      Create a new agreement by through the Prospect manager
+                      Create a new prospect by through the Prospect manager
                       dropdown
                     </p>
-                    <p>Go to Prospect manager &gt; Add new agreement.</p>
+                    <p>Go to Prospect manager &gt; Add new prospect.</p>
                   </div>
                 </div>
                 <figure>
@@ -167,4 +162,4 @@ const Agreement = () => {
   )
 }
 
-export default Agreement
+export default Property

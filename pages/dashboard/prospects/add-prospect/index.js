@@ -110,7 +110,7 @@ const AddProspect = () => {
     {
       stage: "Demography",
       subStages:
-        clientType === "induvidual"
+        clientType === "individual"
           ? ["Gender", "Religion", "Tribe", "Occupation", "Age range"]
           : ["Industry type", "Years of establishment"],
     },
@@ -145,7 +145,7 @@ const AddProspect = () => {
   }
 
   const handleNextStage = () => {
-    if (activeStage < stagesData.length - 1) {
+    if (activeStage < stagesData.length) {
       setActiveStage((prevStage) => prevStage + 1)
       setActiveSubStage(1)
     }
@@ -161,10 +161,12 @@ const AddProspect = () => {
   // const handleProspect = () => {}
 
   return (
-    <Dashboard className="p-8 grid min-h-full">
+    <Dashboard className="p-8 grid min-h-full max-w-full">
       <Header header="Prospect" subHeader="Add Prospect" name="Anna Hunt" />
       {/* Main */}
-      <div className="m-8 mb-0 p-8 border border-primary flex justify-between h-[80vh]">
+      <div
+        className={`m-8 mb-0 p-8 border border-primary flex justify-between h-[80vh]`}
+      >
         <ProgressBar
           stagesData={stagesData}
           activeStage={activeStage}
@@ -263,7 +265,7 @@ const AddProspect = () => {
         </div>
 
         {activeStage === 6 && (
-          <div className="flex flex-col gap-3">
+          <div className="ml-2 flex flex-col gap-3">
             <button
               onClick={handleNextSubStage}
               className="bg-primary text-white border border-primary w-40 p-2 rounded-md hover:bg-white hover:text-primary"
