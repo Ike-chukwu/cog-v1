@@ -1,6 +1,9 @@
 import { cn } from "@/utils"
+import { useFormContext } from "react-hook-form"
 
 const Input = ({ label, name, className, options, type, ...inputProps }) => {
+  const { register } = useFormContext()
+
   return (
     <div className="grid">
       {label && (
@@ -10,6 +13,8 @@ const Input = ({ label, name, className, options, type, ...inputProps }) => {
       )}
       {type === "select" ? (
         <select
+          {...register(name)}
+          {...inputProps}
           className={cn(
             "mb-4 w-72 text-black border border-gray-200 p-2",
             className
@@ -31,6 +36,7 @@ const Input = ({ label, name, className, options, type, ...inputProps }) => {
             options.map((option) => (
               <div key={option.value} className="mb-4 flex items-center mr-4">
                 <input
+                  {...register(name)}
                   {...inputProps}
                   type={type}
                   value={option.value}
@@ -43,6 +49,7 @@ const Input = ({ label, name, className, options, type, ...inputProps }) => {
       ) : type === "checkbox" ? (
         <div>
           <input
+            {...register(name)}
             {...inputProps}
             type={type}
             className={cn("mr-2", className)}
@@ -58,6 +65,7 @@ const Input = ({ label, name, className, options, type, ...inputProps }) => {
               </span>
             )}
             <input
+              {...register(name)}
               {...inputProps}
               placeholder={`${
                 inputProps.placeholder === "₦" ? "" : inputProps.placeholder

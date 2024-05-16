@@ -1,6 +1,6 @@
 import Wrapper from "@/components/manager/wrapper"
 
-const ApplicationType = ({ applicationType, setApplicationType }) => {
+const ApplicationType = ({ register }) => {
   return (
     <Wrapper
       header="Application Type"
@@ -10,8 +10,7 @@ const ApplicationType = ({ applicationType, setApplicationType }) => {
         <li>
           <p className="font-semibold opacity-70">Application type</p>
           <select
-            value={applicationType}
-            onChange={(e) => setApplicationType(e.target.value)}
+            {...register("propertyDetailsApplicationType")}
             className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
           >
             <option value="" className="pointer-events-none">

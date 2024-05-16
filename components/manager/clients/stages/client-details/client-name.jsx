@@ -1,19 +1,19 @@
 import Input from "@/components/UI/input"
 import Wrapper from "@/components/manager/wrapper"
 
-const GuarantorAddress = () => {
+const ClientName = () => {
   return (
     <Wrapper
-      header="Guarantor Address"
-      subHead="Kindly enter the address of the guarantor."
+      header="Client Name"
+      subHead="Kindly enter the name of the client."
     >
       <ul className="list-disc ml-6">
         <li>
-          <p className="font-semibold opacity-70">Guarantor Address</p>
+          <p className="font-semibold opacity-70">Client Name</p>
 
           <Input
-            name="guarantorAddress"
-            placeholder="Enter address"
+            name="clientName"
+            placeholder="Enter Name"
             className="bg-[#F5F7F9] py-1 px-2 mt-4 placeholder:text-[#B1B1B4] border border-primary rounded-none"
           />
         </li>
@@ -22,4 +22,4 @@ const GuarantorAddress = () => {
   )
 }
 
-export default GuarantorAddress
+export default ClientName

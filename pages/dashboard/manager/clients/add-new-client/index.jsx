@@ -1,91 +1,37 @@
 import Dashboard from "@/components/Layout/Dashboard"
-import SigningDate from "@/components/ProspectStages/SigningDate"
-import ProspectSummary from "@/components/ProspectStages/Summary"
 import Header from "@/components/UI/Dashboard/Header"
 import ProgressBar from "@/components/UI/Dashboard/ProgressBar"
 import ClientDetails from "@/components/manager/clients/stages/client-details"
 import General from "@/components/manager/clients/stages/general"
 import GuarantorDetails from "@/components/manager/clients/stages/guarantor-details"
 import PropertyDetails from "@/components/manager/clients/stages/property-details"
+import NewClientSummary from "@/components/manager/clients/stages/summary"
 
 import { Fragment, useState } from "react"
+import { FormProvider, useForm, useWatch } from "react-hook-form"
 
 const AddNewClient = () => {
   const [activeStage, setActiveStage] = useState(1)
   const [activeSubStage, setActiveSubStage] = useState(1)
 
-  // Client Details
-  const [clientType, setClientType] = useState("company")
-  const [clientName, setClientName] = useState("")
-  const [clientContact, setClientContact] = useState({
-    email: "",
-    number: "",
-  })
-  const [checklist, setChecklist] = useState({
-    CAC: false,
-    tax: false,
-    creditReport: false,
-    identity: false,
-    creditReportTwo: false,
-    confirmation: false,
-    policeReport: false,
-  })
-  const [upload, setUpload] = useState("")
-
-  // Property Details
-  const [applicationType, setApplicationType] = useState("")
-  const [propertyType, setPropertyType] = useState("")
-  const [location, setLocation] = useState({
-    state: "",
-    LGA: "",
-    ward: "",
-  })
-  const [unitID, setUnitID] = useState("")
-  const [unitFeatures, setUnitFeatures] = useState({
-    sittingRooms: "",
-    bedRooms: "",
-    restRooms: "",
-  })
-
-  // Demography
-  const [gender, setGender] = useState("")
-  const [religion, setReligion] = useState("")
-  const [tribe, setTribe] = useState("")
-  const [occupation, setOccupation] = useState({
-    occupation: "",
-    industryType: "",
-  })
-  const [ageRange, setAgeRange] = useState("")
-  const [industryType, setIndustryType] = useState("")
-  const [establishment, setEstablishment] = useState("")
-
-  // Amount
-  const [totalAmount, setTotalAmount] = useState("")
-  const [renewalAmount, setRenewalAmount] = useState({
-    subsequent: "",
-    recurring: "",
-  })
-  const [agreementPeriod, setAgreementPeriod] = useState("")
-
-  // Signing Date
-  const [signingDate, setSigningDate] = useState("")
-
-  const prospect = {
-    clientName,
-    clientType,
-    clientContact,
-    gender,
-    religion,
-    tribe,
-    occupation,
-    ageRange,
-    applicationType,
-    propertyType,
-    location,
-    unitID,
-    unitFeatures,
-    signingDate,
+  const saveToLocalstorage = (data) => {
+    localStorage.setItem("manager-new-client-data", JSON.stringify(data))
   }
+
+  const methods = useForm()
+  const {
+    register,
+    control,
+    handleSubmit,
+    watch,
+    setValue,
+    formState: { errors },
+  } = methods
+
+  const propertyDetailsIfPropertyIsNew =
+    watch("existingProperty") === "yes"
+      ? ["Property name", "Application type", "Unit details", "Payment style"]
+      : []
 
   const stagesData = [
     {
@@ -94,13 +40,7 @@ const AddNewClient = () => {
     },
     {
       stage: "Property details",
-      subStages: [
-        "",
-        "Property name",
-        "Application type",
-        "Unit details",
-        "Payment style",
-      ],
+      subStages: ["-", ...propertyDetailsIfPropertyIsNew],
     },
     {
       stage: "Client details",
@@ -122,13 +62,6 @@ const AddNewClient = () => {
       subStages: [],
     },
   ]
-
-  // console.log({
-  //   activeStage,
-  //   activeSubStage,
-  //   cjeck: stagesData[activeStage - 1].subStages,
-  // })
-
   const handleNextSubStage = () => {
     if (activeSubStage < stagesData[activeStage - 1].subStages.length) {
       setActiveSubStage((prevSubStage) => prevSubStage + 1)
@@ -136,7 +69,6 @@ const AddNewClient = () => {
   }
 
   const handlePreviousSubStage = () => {
-    // if (activeSubStage === 0) setActiveStage(0)
     if (activeSubStage > 0) {
       setActiveSubStage((prevSubStage) => prevSubStage - 1)
     } else handlePreviousStage()
@@ -151,134 +83,122 @@ const AddNewClient = () => {
 
   const handlePreviousStage = () => {
     if (activeStage > 0) {
-      setActiveStage((prevStage) => prevStage - 1)
-      setActiveSubStage(stagesData[activeStage - 1].subStages.length - 1)
+      setActiveStage((prev) => {
+        // this is the previous stage
+        const prevStage = prev - 1
+
+        /**
+         * remember stagesData is zero indexed so you have to go back one step further to match.
+         * prevStage to it's corresponding index in the array
+         */
+        setActiveSubStage(stagesData[prevStage - 1].subStages.length)
+        return prevStage
+      })
     }
   }
 
-  // const handleProspect = () => {}
+  const formValues = useWatch({ control })
+
+  const onSubmit = (data) => {
+    if (window !== undefined)
+      localStorage.setItem("manager-new-client-data", JSON.stringify(data))
+  }
+
+  const renderForms = (activeStage) => {
+    switch (activeStage) {
+      case 1:
+        return <General register={register} subStage={activeSubStage} />
+
+      case 2:
+        return (
+          <PropertyDetails
+            register={register}
+            setValue={setValue}
+            activeSubStage={activeSubStage}
+            subStages={stagesData[1].subStages}
+          />
+        )
+      case 3:
+        return <ClientDetails register={register} subStage={activeSubStage} />
+
+      case 4:
+        return (
+          <GuarantorDetails subStage={activeSubStage} register={register} />
+        )
+
+      case 5:
+        return <NewClientSummary />
+    }
+  }
+  const currentForm = renderForms(activeStage)
 
   return (
     <Dashboard className="p-8 grid min-h-full max-w-full">
       <Header header="Clients" subHeader="Set terms" name="Anna Hunt" />
       {/* Main */}
-      <div
-        className={`m-8 mb-0 p-8 border border-primary flex justify-between h-[80vh]`}
-      >
-        <ProgressBar
-          stagesData={stagesData}
-          activeStage={activeStage}
-          activeSubStage={activeSubStage}
-        />
+      <FormProvider {...methods}>
+        <form action="" onSubmit={handleSubmit(onSubmit)}>
+          <div
+            className={`m-8 mb-0 p-8 border border-primary flex justify-between h-[80vh]`}
+          >
+            <ProgressBar
+              stagesData={stagesData}
+              activeStage={activeStage}
+              activeSubStage={activeSubStage}
+            />
 
-        <div className="border flex flex-col border-primary w-3/5 p-6 mx-auto overflow-y-scroll">
-          <Fragment>
-            {activeStage === 1 && (
-              <General
-                subStage={activeSubStage}
-                upload={upload}
-                checklist={checklist}
-                clientType={clientType}
-                clientName={clientName}
-                clientContact={clientContact}
-                setUpload={setUpload}
-                setChecklist={setChecklist}
-                setClientType={setClientType}
-                setClientName={setClientName}
-                setClientContact={setClientContact}
-              />
-            )}
-            {activeStage === 2 && (
-              <PropertyDetails
-                subStage={activeSubStage}
-                unitID={unitID}
-                location={location}
-                propertyType={propertyType}
-                unitFeatures={unitFeatures}
-                applicationType={applicationType}
-                setUnitID={setUnitID}
-                setLocation={setLocation}
-                setPropertyType={setPropertyType}
-                setUnitFeatures={setUnitFeatures}
-                setApplicationType={setApplicationType}
-              />
-            )}
-            {activeStage === 3 && (
-              <ClientDetails
-                clientType={clientType}
-                subStage={activeSubStage}
-                tribe={tribe}
-                gender={gender}
-                religion={religion}
-                ageRange={ageRange}
-                occupation={occupation}
-                industryType={industryType}
-                establishment={establishment}
-                setTribe={setTribe}
-                setGender={setGender}
-                setReligion={setReligion}
-                setAgeRange={setAgeRange}
-                setOccupation={setOccupation}
-                setIndustryType={setIndustryType}
-                setEstablishment={setEstablishment}
-              />
-            )}
-            {activeStage === 4 && (
-              <GuarantorDetails
-                subStage={activeSubStage}
-                totalAmount={totalAmount}
-                renewalAmount={renewalAmount}
-                agreementPeriod={agreementPeriod}
-                setTotalAmount={setTotalAmount}
-                setRenewalAmount={setRenewalAmount}
-                setAgreementPeriod={setAgreementPeriod}
-              />
-            )}
-            {activeStage === 5 && (
-              <SigningDate
-                signingDate={signingDate}
-                setSigningDate={setSigningDate}
-              />
-            )}
-            {activeStage === 6 && <ProspectSummary prospect={prospect} />}
-          </Fragment>
+            <div className="border flex flex-col border-primary w-3/5 p-6 mx-auto overflow-y-scroll">
+              <Fragment>{currentForm}</Fragment>
 
-          {activeStage !== 6 && (
-            <div className="flex gap-3 items-end justify-end mt-auto">
-              <button
-                disabled={activeStage === 1 && activeSubStage === 1}
-                onClick={handlePreviousSubStage}
-                className="text-primary border border-primary w-40 p-2 rounded-md hover:text-white hover:bg-primary disabled:pointer-events-none disabled:opacity-70"
-              >
-                Back
-              </button>
-              <button
-                onClick={handleNextSubStage}
-                className="bg-primary text-white border border-primary w-40 p-2 rounded-md hover:bg-white hover:text-primary"
-              >
-                Continue
-              </button>
+              {activeStage !== 5 && (
+                <div className="flex gap-3 items-end justify-end mt-auto">
+                  <button
+                    type="button"
+                    disabled={activeStage === 1 && activeSubStage === 1}
+                    onClick={handlePreviousSubStage}
+                    className="text-primary border border-primary w-40 p-2 rounded-md hover:text-white hover:bg-primary disabled:pointer-events-none disabled:opacity-70"
+                  >
+                    Back
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      handleNextSubStage()
+                      saveToLocalstorage(formValues)
+                    }}
+                    className="bg-primary text-white border border-primary w-40 p-2 rounded-md hover:bg-white hover:text-primary"
+                  >
+                    Continue
+                  </button>
+                </div>
+              )}
             </div>
-          )}
-        </div>
 
-        {activeStage === 6 && (
-          <div className="ml-2 flex flex-col gap-3">
-            <button
-              onClick={handleNextSubStage}
-              className="bg-primary text-white border border-primary w-40 p-2 rounded-md hover:bg-white hover:text-primary"
-            >
-              Submit
-            </button>
-            <button
-              onClick={handlePreviousStage}
-              className="text-primary border border-primary w-40 p-2 rounded-md hover:text-white hover:bg-primary"
-            >
-              Edit
-            </button>
-          </div>
-        )}
-      </div>
+            {activeStage === 5 && (
+              <div className="ml-2 flex flex-col gap-3">
+                <button
+                  onClick={handleNextSubStage}
+                  className="bg-primary text-white border border-primary w-40 p-2 rounded-md hover:bg-white hover:text-primary"
+                >
+                  Submit
+                </button>
+                <button
+                  onClick={handlePreviousStage}
+                  className="text-primary border border-primary w-40 p-2 rounded-md hover:text-white hover:bg-primary"
+                >
+                  Edit
+                </button>
+              </div>
+            )}
+          </div>{" "}
+          <button
+            type="submit"
+            className="bg-primary text-white border border-primary w-40 p-2 rounded-md hover:bg-white hover:text-primary"
+          >
+            Submit
+          </button>
+        </form>
+      </FormProvider>
     </Dashboard>
   )
 }

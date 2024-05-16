@@ -1,7 +1,7 @@
 import Input from "@/components/UI/input"
 import Wrapper from "../../../wrapper"
 
-const ApplicationType = ({ clientType, setClientType }) => {
+const ApplicationType = ({ register }) => {
   return (
     <Wrapper
       header="General"
@@ -11,6 +11,8 @@ const ApplicationType = ({ clientType, setClientType }) => {
         <h2>Application Type</h2>
 
         <Input
+          name="generalApplicationType"
+          register={register}
           type="select"
           options={[
             { label: "Select application type", value: "" },

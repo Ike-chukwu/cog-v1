@@ -2,47 +2,17 @@ import ApplicationType from "./application-type"
 import GeneralStage from "./general"
 import PropertyTypes from "./property-types"
 
-const General = ({
-  subStage,
-  upload,
-  checklist,
-  clientType,
-  clientName,
-  clientContact,
-  setUpload,
-  setChecklist,
-  setClientType,
-  setClientName,
-  setClientContact,
-}) => {
-  console.log("subStage", subStage)
+const General = ({ subStage, register }) => {
   const getStage = () => {
     switch (subStage) {
       case 0:
-        return (
-          <GeneralStage clientType={clientType} setClientType={setClientType} />
-        )
+        return <GeneralStage register={register} />
       case 1:
-        return (
-          <PropertyTypes
-            clientType={clientType}
-            setClientType={setClientType}
-          />
-        )
+        return <PropertyTypes register={register} />
       case 2:
-        return (
-          <ApplicationType
-            clientName={clientName}
-            setClientName={setClientName}
-          />
-        )
+        return <ApplicationType register={register} />
       default:
-        return (
-          <PropertyTypes
-            clientType={clientType}
-            setClientType={setClientType}
-          />
-        )
+        return <PropertyTypes register={register} />
     }
   }
   return getStage()

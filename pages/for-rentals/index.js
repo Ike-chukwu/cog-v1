@@ -23,7 +23,7 @@ function Index() {
         <p className={BR_styles.properties_text}>Properties</p>
 
         <div>
-          {/* <label for="my-select" className={BR_styles.button}>Property type</label> */}
+          {/* <label htmlFor="my-select" className={BR_styles.button}>Property type</label> */}
           {/* i'm not going to make it dynamic, whoever is handling this should use the commented code.
                 you're welcome */}
 

@@ -2,7 +2,7 @@ import Toggle from "@/components/UI/toggle"
 import Image from "next/image"
 import Wrapper from "../../../wrapper"
 
-const GeneralStage = ({ clientType, setClientType }) => {
+const GeneralStage = ({ register }) => {
   return (
     <Wrapper
       header="General"

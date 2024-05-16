@@ -1,6 +1,6 @@
 import Wrapper from "@/components/manager/wrapper"
 
-const ClientType = () => {
+const ClientType = ({ register }) => {
   return (
     <Wrapper header="Client type" subHead="Select client type.">
       <ul className="grid gap-5 font-bold">
@@ -8,15 +8,16 @@ const ClientType = () => {
           <div className="flex gap-3">
             <div className="flex items-center">
               <input
+                {...register("clientType")}
                 checked
                 id="Company/Organization"
                 type="radio"
-                value=""
+                value="company/organisation"
                 name="default-radio"
                 className="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300  "
               />
               <label
-                for="Company/Organization"
+                htmlFor="Company/Organization"
                 className="ms-2 text-lg  font-semibold"
               >
                 Company/Organization
@@ -29,14 +30,18 @@ const ClientType = () => {
           <div className="flex gap-3">
             <div className="flex items-center">
               <input
+                {...register("clientType")}
                 checked
                 id="Individual"
                 type="radio"
-                value=""
+                value="individual"
                 name="default-radio"
                 className="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300  "
               />
-              <label for="Individual" className="ms-2 text-lg  font-semibold ">
+              <label
+                htmlFor="Individual"
+                className="ms-2 text-lg  font-semibold "
+              >
                 Individual
               </label>
             </div>

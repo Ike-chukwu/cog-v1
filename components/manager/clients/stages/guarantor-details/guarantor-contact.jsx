@@ -12,6 +12,7 @@ const GuarantorContact = () => {
           <p className="font-semibold opacity-70">Guarantor Contact</p>
 
           <Input
+            name="guarantorContact"
             placeholder="Enter contact"
             className="bg-[#F5F7F9] py-1 px-2 mt-4 placeholder:text-[#B1B1B4] border border-primary rounded-none"
           />

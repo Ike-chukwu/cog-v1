@@ -1,12 +1,22 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
-const UnitDetailsForm = ({ number }) => {
+const UnitDetailsForm = ({
+  number,
+  register,
+  unitData,
+  setUnitData,
+  setValue,
+}) => {
   const [isFormVisible, setIsFormVisible] = useState(false)
-  const [unitId, setUnitId] = useState("")
-  const [amount, setAmount] = useState("")
-  const [selectedFeatures, setSelectedFeatures] = useState([])
-  const [featureAmounts, setFeatureAmounts] = useState({})
 
+  const [unitId, setUnitId] = useState(unitData[number - 1]?.unitId || "")
+  const [amount, setAmount] = useState(unitData[number - 1]?.amount || "")
+  const [selectedFeatures, setSelectedFeatures] = useState(
+    unitData[number - 1]?.selectedFeatures || []
+  )
+  const [featureAmounts, setFeatureAmounts] = useState(
+    unitData[number - 1]?.featureAmounts || {}
+  )
   const toggleFormVisibility = () => {
     setIsFormVisible(!isFormVisible)
   }
@@ -15,14 +25,34 @@ const UnitDetailsForm = ({ number }) => {
     if (selectedFeatures.includes(feature)) {
       setSelectedFeatures(selectedFeatures.filter((f) => f !== feature))
       setFeatureAmounts({ ...featureAmounts, [feature]: "" })
+      setValue(`unit-${number}.${feature}Amount`, featureAmounts[feature])
     } else {
       setSelectedFeatures([...selectedFeatures, feature])
+      setValue(`unit-${number}.${feature}`, "yes")
     }
   }
 
   const handleFeatureAmountChange = (feature, value) => {
     setFeatureAmounts({ ...featureAmounts, [feature]: value })
+    setValue(`unit-${number}.${feature}-Amount`, featureAmounts[feature])
   }
+
+  const handleUnitDataChange = () => {
+    setUnitData((prevData) => {
+      const updatedData = [...prevData]
+      updatedData[number - 1] = {
+        unitId,
+        amount,
+        selectedFeatures,
+        featureAmounts,
+      }
+      return updatedData
+    })
+  }
+
+  useEffect(() => {
+    handleUnitDataChange()
+  }, [unitId, amount, selectedFeatures, featureAmounts])
 
   const features = [
     "WiFi",
@@ -75,9 +105,8 @@ const UnitDetailsForm = ({ number }) => {
             </label>
             <input
               type="text"
-              id="unitId"
-              value={unitId}
-              onChange={(e) => setUnitId(e.target.value)}
+              id={`unit-${number}.unitId`}
+              {...register(`unit-${number}.unitId`)}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Name of unit"
             />
@@ -88,9 +117,8 @@ const UnitDetailsForm = ({ number }) => {
             </label>
             <input
               type="text"
-              id="amount"
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
+              id={`unit-${number}.unitAmount`}
+              {...register(`unit-${number}.unitAmount`)}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Amount"
             />

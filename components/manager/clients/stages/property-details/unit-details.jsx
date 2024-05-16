@@ -2,8 +2,9 @@ import Wrapper from "@/components/manager/wrapper"
 import { useState } from "react"
 import UnitDetailsForm from "./unit-details-form"
 
-const UnitDetails = ({ applicationType, setApplicationType }) => {
+const UnitDetails = ({ register, setValue }) => {
   const [numberOfUnits, setNumberOfUnits] = useState(1)
+  const [unitData, setUnitData] = useState([])
   return (
     <Wrapper
       header="Unit details"
@@ -13,7 +14,7 @@ const UnitDetails = ({ applicationType, setApplicationType }) => {
         <li>
           <p className="font-semibold opacity-70">Number of units</p>
           <select
-            value={applicationType}
+            {...register("numberOfUnits")}
             onChange={(e) => setNumberOfUnits(parseInt(e.target.value))}
             className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
           >
@@ -27,7 +28,14 @@ const UnitDetails = ({ applicationType, setApplicationType }) => {
 
         {numberOfUnits > 0
           ? Array.from({ length: numberOfUnits }, (v, i) => i).map((_, idx) => (
-              <UnitDetailsForm key={idx} number={idx + 1} />
+              <UnitDetailsForm
+                key={idx}
+                number={idx + 1}
+                register={register}
+                unitData={unitData}
+                setUnitData={setUnitData}
+                setValue={setValue}
+              />
             ))
           : null}
       </ul>
