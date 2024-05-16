@@ -43,7 +43,7 @@ export default function index() {
         <div className="border border-[#62909F] py-9 px-7">
           <header className="flex gap-5 justify-end mb-6">
             <div className="bg-borderGrey flex py-2 px-9 rounded-[10px]">
-              <Image src={clock} alt="" className="mr-2"/>
+              <Image src={clock} alt="" className="mr-2" />
               <p>Jan 2022 - Dec 2022</p>
             </div>
 
@@ -75,7 +75,7 @@ export default function index() {
               <div className="flex flex-col gap-4">
                 <div>
                   <input type="checkbox" id="rep" />
-                  <label for="rep" className="ml-4">
+                  <label htmlFor="rep" className="ml-4">
                     Report period
                   </label>
                 </div>
@@ -97,7 +97,7 @@ export default function index() {
               <div className="flex flex-col gap-4 mt-5">
                 <div>
                   <input type="checkbox" id="rep" />
-                  <label for="rep" className="ml-4">
+                  <label htmlFor="rep" className="ml-4">
                     Client
                   </label>
                 </div>
@@ -111,7 +111,7 @@ export default function index() {
               <div className="flex flex-col gap-4 mt-5">
                 <div>
                   <input type="checkbox" id="rep" />
-                  <label for="rep" className="ml-4">
+                  <label htmlFor="rep" className="ml-4">
                     Inbound type
                   </label>
                 </div>
@@ -125,7 +125,7 @@ export default function index() {
               <div className="flex flex-col gap-4 mt-5">
                 <div>
                   <input type="checkbox" id="rep" />
-                  <label for="rep" className="ml-4">
+                  <label htmlFor="rep" className="ml-4">
                     Property name
                   </label>
                 </div>
@@ -138,7 +138,7 @@ export default function index() {
               <div className="flex flex-col gap-4 mt-5">
                 <div>
                   <input type="checkbox" id="rep" />
-                  <label for="rep" className="ml-4">
+                  <label htmlFor="rep" className="ml-4">
                     Due date
                   </label>
                 </div>
@@ -151,7 +151,7 @@ export default function index() {
               <div className="flex flex-col gap-4 mt-5">
                 <div>
                   <input type="checkbox" id="rep" />
-                  <label for="rep" className="ml-4">
+                  <label htmlFor="rep" className="ml-4">
                     Currency
                   </label>
                 </div>
