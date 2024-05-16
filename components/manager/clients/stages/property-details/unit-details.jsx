@@ -1,3 +1,4 @@
+import Input from "@/components/UI/input"
 import Wrapper from "@/components/manager/wrapper"
 import { useState } from "react"
 import UnitDetailsForm from "./unit-details-form"
@@ -13,17 +14,14 @@ const UnitDetails = ({ register, setValue }) => {
       <ul className="list-disc ml-6">
         <li>
           <p className="font-semibold opacity-70">Number of units</p>
-          <select
+
+          <Input
             {...register("numberOfUnits")}
             onChange={(e) => setNumberOfUnits(parseInt(e.target.value))}
-            className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
-          >
-            <option value="0" className="pointer-events-none">
-              Select number of units
-            </option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-          </select>
+            type="number"
+            placeholder="Enter number of units"
+            className="bg-[#F5F7F9] py-1 px-2 mt-4 placeholder:text-[#B1B1B4] border border-primary rounded-none"
+          />
         </li>
 
         {numberOfUnits > 0
