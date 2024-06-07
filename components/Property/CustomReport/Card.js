@@ -1,3 +1,5 @@
+import ClientTable from "@/components/manager/clients/client-table"
+
 export const SmallCard = ({ text, num }) => {
   return (
     <div className="border border-[#62909F] px-3 py-10 text-center rounded-[10px] flex flex-col items-center gap-3 w-52">
@@ -35,6 +37,7 @@ export const Bigcard = ({ variant }) => {
             <h1>Recent activity</h1>
             <h1>View all</h1>
           </div>
+          <ClientTable />
         </div>
       )}
     </>

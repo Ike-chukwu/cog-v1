@@ -25,7 +25,6 @@ const AddNewClient = () => {
     handleSubmit,
     watch,
     setValue,
-    formState: { errors },
   } = methods
 
   const propertyDetailsIfPropertyIsNew =

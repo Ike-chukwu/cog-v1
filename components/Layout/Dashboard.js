@@ -39,7 +39,7 @@ const Dashboard = ({ children, className }) => {
       content: "Manager",
       submenus: [
         {
-          link: "/dashboard/manager/rent",
+          link: "/dashboard/manager/payments",
           subcontent: "Payments",
         },
         {
@@ -68,7 +68,12 @@ const Dashboard = ({ children, className }) => {
     {
       link: "",
       content: "Back-office",
-      submenus: [],
+      submenus: [
+        {
+          link: "/dashboard/back-office/employees",
+          subcontent: "Employees",
+        },
+      ],
     },
     {
       link: "",

@@ -23,7 +23,31 @@ const Property = () => {
     setOpenPopup(false)
   }
 
-  const recentActivities = <div className="mr-10"></div>
+  const recentActivities = (
+    <div className="mr-10">
+      {[...Array(4)].map((_, i) => (
+        <div
+          key={i}
+          className="flex gap-x-10 p-4 border-b-[#E8E8EE] border-b-2 mr-10"
+        >
+          <figure className="bg-[#9FF1CA] grid place-items-center rounded-[50%] h-[50px] w-[50px]">
+            <Image
+              src="/assets/images/arrow-down.svg"
+              alt="file-icon-white"
+              width={20}
+              height={38}
+            />
+          </figure>
+          <div className="flex flex-col gap-y-3">
+            <h1 className="text-[#19191A] text-[18px] font-semibold">
+              New property added - Ikorodu property
+            </h1>
+            <p className="text-[#B1B1B4]">Fri Jun 15,2022 GMT 13:00</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  )
 
   return (
     <Dashboard>
@@ -46,7 +70,17 @@ const Property = () => {
                 <span className="font-bold text-[20px]">PA</span>
               </div>
             </div>
-            <p className="text-[#4B4B4B] text-[14px] text-right">
+            <p
+              className="text-[#4B4B4B] text-[le
+            Filter
+            
+            Propperty ID
+            Date
+            Property name
+            Property type
+            Occupant count
+            Amount14px] text-right"
+            >
               User ID: 12345678
             </p>
           </div>
@@ -59,7 +93,7 @@ const Property = () => {
                 className="bg-[#386A8B] text-white rounded-[4px] px-6 py-2 ml-auto"
                 onClick={togglePopupHandler}
               >
-                Prospect manager
+                Property manager
               </button>
 
               {openPopup && (
@@ -70,12 +104,12 @@ const Property = () => {
                   <span
                     className="flex p-2 gap-x-2 hover:bg-[#D2F4FF] cursor-pointer whitespace-no-wrap"
                     onClick={(e) =>
-                      closePopupHandler(e, "property/add-properties")
+                      closePopupHandler(e, "property/add-new-property")
                     }
                   >
                     <Image
                       src="/assets/images/fi_add.svg"
-                      alt="Add Icon"
+                      alt="Add Icon"z
                       width={20}
                       height={20}
                     />{" "}
@@ -102,12 +136,28 @@ const Property = () => {
           </div>
 
           <div className="pt-10 flex justify-between gap-x-5">
-            {[...Array(3)].map((_, index) => (
+            {[
+              {
+                header: "Total property count",
+                val: "18",
+                metric: "Increased by 30% since july 2022",
+              },
+              {
+                header: "Available spaces",
+                val: "2",
+                metric: "Increased by 30% since july 2022",
+              },
+              {
+                header: "Crypto  currency",
+                val: "-10,000.000",
+                metric: "Decreased by 30% since july 2022",
+              },
+            ].map((item, index) => (
               <Card
                 key={index}
-                header={"Total agreements"}
-                val={2}
-                metric={"increased by x% since july 2022"}
+                header={item.header}
+                val={item.val}
+                metric={item.metric}
               />
             ))}
           </div>
@@ -134,24 +184,29 @@ const Property = () => {
                 View All
               </span>
             </div>
-            {[1].length !== 0 ? (
+            {0 !== 0 ? (
               recentActivities
             ) : (
               <div className="px-10 py-5 grid grid-cols-2 gap-x-10">
                 <div>
                   <div className="max-w-[30rem] text-center pt-20 text-[#4B4B4B]">
                     <h1 className="font-bold mb-10">
-                      You have no recent activities
+                      You have no previous income statement
                     </h1>
                     <p>
-                      Create a new prospect by through the Prospect manager
-                      dropdown
+                      Sign up for the standard plan to get monthly income
+                      statements
                     </p>
-                    <p>Go to Prospect manager &gt; Add new prospect.</p>
+                    <p>Go to settings and subscriptions to begin.</p>
                   </div>
                 </div>
                 <figure>
-                  <Image src={no_recent_activity_img} alt="file-icon-white" />
+                  <Image
+                    src={no_recent_activity_img}
+                    alt="file-icon-white"
+                    width={300}
+                    height={300}
+                  />
                 </figure>
               </div>
             )}

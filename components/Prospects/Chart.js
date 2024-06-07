@@ -1,10 +1,10 @@
 import { data02 } from "@/data/chart"
 import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts"
 
-export const Chart = () => {
+export const Chart = (props) => {
   const colors = ["#9FF1CA", "#938AF5"]
   return (
-    <div className="border border-[#62909F] px-2 py-10 rounded-[10px]">
+    <div className={"border border-[#62909F] px-2 py-10 rounded-[10px]  " + `${props.className}`}>
       <h1 className="text-benefitColor text-center">
         Property prospect distribution
       </h1>

@@ -33,7 +33,7 @@ const AddAgreement = () => {
   const [unitID, setUnitID] = useState("")
 
   // Client Details
-  const [clientType, setClientType] = useState("")
+  // const [clientType, setClientType] = useState("")
   const [clientName, setClientName] = useState("")
   const [clientAddress, setClientAddress] = useState("")
   const [clientContact, setClientContact] = useState("")
@@ -41,7 +41,7 @@ const AddAgreement = () => {
   // Landlord Details
   const [newImport, setNewImport] = useState("")
   const [landlordName, setLandlordName] = useState("")
-  const [landlordAddress, setLandlordAddress] = useState("")
+  // const [landlordAddress, setLandlordAddress] = useState("")
   const [landlordContact, setLandlordContact] = useState("")
 
   // State for GuarantorDetails
@@ -165,7 +165,7 @@ const AddAgreement = () => {
     }
   }
 
-  console.log("active stage:", activeStage, "active substage:", activeSubStage)
+  // console.log("active stage:", activeStage, "active substage:", activeSubStage)
   return (
     <Dashboard>
       <section className="p-8 pt-10 grid min-h-full">

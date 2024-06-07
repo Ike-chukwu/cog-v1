@@ -56,6 +56,21 @@ const Input = ({ label, name, className, options, type, ...inputProps }) => {
           />
           <label>{label}</label>
         </div>
+      ) : type === "textarea" ? (
+        <div>
+          <textarea
+            {...register(name)}
+            {...inputProps}
+            type={type}
+            className={cn(
+              `w-72 text-black border border-gray-200 p-2 ${
+                inputProps.placeholder === "₦" && "pl-8"
+              } placeholder:text-[#4F4F4F] font-medium rounded-lg`,
+              className
+            )}
+          />
+          <label>{label}</label>
+        </div>
       ) : (
         <div className="relative mb-4">
           <div className="flex items-center">

@@ -54,7 +54,7 @@ export default function index() {
           </header>
 
           <div className="flex gap-6">
-            <div className="w-2/3">
+            <div className="w-[50%]">
               <div className="flex gap-6 flex-col">
                 <div className="flex gap-3 justify-between">
                   <SmallCard text={"Overdue rent"} num={6} />
@@ -69,7 +69,7 @@ export default function index() {
               </div>
             </div>
 
-            <Chart styles={"w-1/3"} />
+            <Chart className={"w-[49%]"} />
           </div>
         </div>
       </main>

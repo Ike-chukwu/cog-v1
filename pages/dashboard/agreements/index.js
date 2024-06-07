@@ -12,10 +12,10 @@ const Agreement = () => {
 
   const popupRef = useRef()
 
-  const togglePopupHandler = (e) => {
+  const togglePopupHandler = () => {
     setOpenPopup((val) => !val)
   }
-  const closePopupHandler = (e) => {
+  const closePopupHandler = () => {
     setOpenPopup(false)
   }
 

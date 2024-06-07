@@ -1,0 +1,58 @@
+export const AllCLients = [
+  {
+    clientId: "#657899832",
+    name: "Adetunji Tobi",
+    unitId: "001",
+    dueDate: "12 April 2023, 12:43 AM",
+    amount: 3500000.0,
+  },
+  {
+    clientId: "#657899832",
+    name: "Adetunji Tobi",
+    unitId: "002",
+    dueDate: "12 April 2023, 12:43 AM",
+    amount: 3500000.0,
+  },
+  {
+    clientId: "#657899832",
+    name: "Adetunji Tobi",
+    unitId: "003",
+    dueDate: "12 April 2023, 12:43 AM",
+    amount: 3500000.0,
+  },
+  {
+    clientId: "#657899832",
+    name: "Adetunji Tobi",
+    unitId: "004",
+    dueDate: "12 April 2023, 12:43 AM",
+    amount: 3500000.0,
+  },
+  {
+    clientId: "#657899832",
+    name: "Adetunji Tobi",
+    unitId: "005",
+    dueDate: "12 April 2023, 12:43 AM",
+    amount: 3500000.0,
+  },
+  {
+    clientId: "#657899832",
+    name: "Adetunji Tobi",
+    unitId: "006",
+    dueDate: "12 April 2023, 12:43 AM",
+    amount: 3500000.0,
+  },
+  {
+    clientId: "#657899832",
+    name: "Adetunji Tobi",
+    unitId: "007",
+    dueDate: "12 April 2023, 12:43 AM",
+    amount: 3500000.0,
+  },
+  {
+    clientId: "#657899832",
+    name: "Adetunji Tobi",
+    unitId: "008",
+    dueDate: "12 April 2023, 12:43 AM",
+    amount: 3500000.0,
+  },
+]

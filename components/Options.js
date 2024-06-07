@@ -16,6 +16,7 @@ const Options = ({ show, setShow, type }) => {
         <div className="absolute top-[100%] w-max right-[-100%] bg-white rounded-md py-3 shadow-md z-10">
           <ul>
             {type().map((option, index) => {
+              console.log(option)
               const { to, src, value } = option
               return (
                 <Link key={index} href={to}>
