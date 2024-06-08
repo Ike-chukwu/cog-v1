@@ -430,3 +430,5 @@ const NewPropertySummary = () => {
 }
 
 export default NewPropertySummary
+
+

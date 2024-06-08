@@ -267,6 +267,64 @@ export const morePaymentData = [
     status: "Overdue",
   },
 ]
+export const allEmployeesData = [
+  {
+    id: "#657899832",
+    name: "Adigun Salau",
+    department: "Facility Management",
+    income: "3,500,000.00",
+    status: "Active",
+  },
+  {
+    id: "#787754567",
+    name: "Rosemary Abigail",
+    department: "IT",
+    income: "1,500.000,000.00",
+    status: "Inactive",
+  },
+  {
+    id: "#657899832",
+    name: "Al-ameen Islam",
+    department: "Sales and Marketng",
+    income: "700,000.00",
+    status: "Active",
+  },
+  {
+    id: "#787754567",
+    name: "Prosper Amos",
+    department: "Finance",
+    income: "150,000.00",
+    status: "Active",
+  },
+  {
+    id: "#787754567",
+    name: "Sikiru Abbas",
+    department: "Legal",
+    income: "12,000,000.00",
+    status: "Inactive",
+  },
+  {
+    id: "#787754567",
+    name: "Sensea Abraham",
+    department: "Faclity Management",
+    income: "1,000,000.00",
+    status: "Active",
+  },
+  {
+    id: "#787754567",
+    name: "Precious Ko",
+    department: "IT",
+    income: "950,000.00",
+    status: "Inactive",
+  },
+  {
+    id: "#787754567",
+    name: "Roland Garros",
+    department: "Finance",
+    income: "3500.00",
+    status: "Active",
+  },
+]
 
 export const employeesList = [
   {

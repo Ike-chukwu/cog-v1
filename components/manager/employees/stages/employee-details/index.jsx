@@ -1,8 +1,3 @@
-// import ApplicationType from "./application-type"
-// import PaymentStyle from "./payment-style"
-// import PropertyDetailsSubStage from "./property-details"
-// import PropertyName from "./property-name"
-// import UnitDetails from "./unit-details"
 import EmployeePersonalDetails from "./personal-details"
 import JobInfoDetails from "./job-info"
 import CompensationDetails from "./compensation-details"

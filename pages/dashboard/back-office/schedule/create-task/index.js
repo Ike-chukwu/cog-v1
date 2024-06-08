@@ -1,29 +1,26 @@
 import Dashboard from "@/components/Layout/Dashboard"
 import Header from "@/components/UI/Dashboard/Header"
 import ProgressBar from "@/components/UI/Dashboard/ProgressBar"
+import TaskDetailsInSchedule from "@/components/back-office/stages/task/task-details"
+import TimeFrameInSchedule from "@/components/back-office/stages/time-frame"
 import EmployeeDetails from "@/components/manager/employees/stages/employee-details"
 import PaymentDetailsInEmployees from "@/components/manager/employees/stages/payment-details"
 import EmployeeSummary from "@/components/manager/employees/stages/summary"
 import Timeframe from "@/components/manager/employees/stages/time-frame"
 import { useRouter } from "next/router"
-import { Fragment,  useState } from "react"
+import { Fragment, useEffect, useState } from "react"
 import { FormProvider, useForm, useWatch } from "react-hook-form"
 
-const SetTermsForm = () => {
+const CreateTasksInSchedule = () => {
   const [activeStage, setActiveStage] = useState(1)
-  const [activeSubStage, setActiveSubStage] = useState(1)
+  const [activeSubStage, setActiveSubStage] = useState(0)
 
   const saveToLocalstorage = (data) => {
-    localStorage.setItem("employees-data", JSON.stringify(data))
+    localStorage.setItem("schedule-data", JSON.stringify(data))
   }
   const router = useRouter()
   const methods = useForm()
-  const {
-    register,
-    control,
-    handleSubmit,
-    setValue,
-  } = methods
+  const { register, control, handleSubmit, setValue } = methods
 
   const employeeDetailsArray = [
     "Personal details",
@@ -31,13 +28,13 @@ const SetTermsForm = () => {
     "Compensation details",
   ]
 
-  const timeFrameArray = []
+  const timeFrameArray = ["Schedule time", "Recurring settings"]
 
   const stagesData = [
     {
-      stage: "Employee details",
+      stage: "Task details",
       //xheck for '-'
-      subStages: [...employeeDetailsArray],
+      subStages: [],
     },
     {
       stage: "Time frame",
@@ -45,8 +42,12 @@ const SetTermsForm = () => {
       subStages: [...timeFrameArray],
     },
     {
-      stage: "Payment details",
+      stage: "Attachments",
       subStages: ["Account details", "Salary"],
+    },
+    {
+      stage: "Integrations",
+      subStages: [],
     },
     {
       stage: "Summary",
@@ -67,8 +68,13 @@ const SetTermsForm = () => {
     if (activeStage == 1 && activeSubStage == 1) {
       return
     }
+    if (activeStage == 2 && activeSubStage == 1) {
+      setActiveSubStage(stagesData[1 - 1].subStages.length)
+      setActiveStage(activeStage - 1)
+      return
+    }
     if (activeStage == 3 && activeSubStage == 1) {
-      setActiveSubStage(0)
+      setActiveSubStage(stagesData[2 - 1].subStages.length)
       setActiveStage(activeStage - 1)
       return
     }
@@ -90,7 +96,7 @@ const SetTermsForm = () => {
     if (activeStage < stagesData.length) {
       setActiveStage((prevStage) => prevStage + 1)
       if (activeStage == 1) {
-        setActiveSubStage(0)
+        setActiveSubStage(1)
       } else {
         setActiveSubStage(1)
       }
@@ -117,27 +123,31 @@ const SetTermsForm = () => {
 
   const onSubmit = (data) => {
     if (window !== undefined)
-      localStorage.setItem("employees-data", JSON.stringify(data))
+      localStorage.setItem("schedule-data", JSON.stringify(data))
   }
+
+  useEffect(() => {
+    console.log(activeStage, activeSubStage)
+  }, [activeStage, activeSubStage])
 
   const renderForms = (activeStage) => {
     switch (activeStage) {
       case 1:
         return (
-          <EmployeeDetails
+          <TaskDetailsInSchedule
             register={register}
             setValue={setValue}
             activeSubStage={activeSubStage}
-            subStages={stagesData[1].subStages}
+            subStages={stagesData[0].subStages}
           />
         )
       case 2:
         return (
-          <Timeframe
+          <TimeFrameInSchedule
             register={register}
             setValue={setValue}
             activeSubStage={activeSubStage}
-            subStages={stagesData[1].subStages}
+            subStage={activeSubStage}
           />
         )
 
@@ -232,4 +242,4 @@ const SetTermsForm = () => {
   )
 }
 
-export default SetTermsForm
+export default CreateTasksInSchedule

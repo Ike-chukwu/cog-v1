@@ -7,7 +7,7 @@ import { useRouter } from "next/router"
 import no_recent_activity_img from "public/assets/images/no-recent-act.svg"
 import { useRef, useState } from "react"
 
-const Employees = () => {
+const Schedule = () => {
   const [openPopup, setOpenPopup] = useState(false)
   const router = useRouter()
 
@@ -40,7 +40,7 @@ const Employees = () => {
           </figure>
           <div className="flex flex-col gap-y-3">
             <h1 className="text-[#19191A] text-[18px] font-semibold">
-              Employee payment - Ajibola Quadri
+              New task added - Property inspection for Mr Adekunle
             </h1>
             <p className="text-[#B1B1B4]">Fri Jun 15,2022 GMT 13:00</p>
           </div>
@@ -90,13 +90,13 @@ const Employees = () => {
 
         <section className="mt-5 pr-5">
           <div className="flex">
-            <p className="text-[18px] font-[500]">Employees</p>
+            <p className="text-[18px] font-[500]">Schedule</p>
             <div className="relative ml-auto">
               <button
                 className="bg-[#386A8B] text-white rounded-[4px] px-6 py-2 ml-auto"
                 onClick={togglePopupHandler}
               >
-                Employee manager
+                Task manager
               </button>
 
               {openPopup && (
@@ -107,7 +107,7 @@ const Employees = () => {
                   <span
                     className="flex p-2 gap-x-2 hover:bg-[#D2F4FF] cursor-pointer whitespace-no-wrap"
                     onClick={(e) =>
-                      closePopupHandler(e, "employees/add-new-employee")
+                      closePopupHandler(e, "schedule/create-task")
                     }
                   >
                     <Image
@@ -117,13 +117,13 @@ const Employees = () => {
                       width={20}
                       height={20}
                     />{" "}
-                    Add new employee
+                    Create task
                   </span>
 
                   <span
                     className="flex p-2 gap-x-2 hover:bg-[#D2F4FF] cursor-pointer whitespace-no-wrap"
                     onClick={(e) =>
-                      closePopupHandler(e, "employees/view-all-employees")
+                      closePopupHandler(e, "schedule/view-calendar")
                     }
                   >
                     <Image
@@ -132,7 +132,7 @@ const Employees = () => {
                       width={20}
                       height={20}
                     />{" "}
-                    View all employees
+                    View calendar
                   </span>
                 </div>
               )}
@@ -142,19 +142,19 @@ const Employees = () => {
           <div className="pt-10 flex justify-between gap-x-5">
             {[
               {
-                header: "Total contribution",
-                val: "$22,159.86",
-                metric: "Increased by 30% since july 2022",
-              },
-              {
-                header: "Fund value",
-                val: "$ 25,000.90",
+                header: "Total tasks",
+                val: "12",
                 metric: "Same as August 2022",
               },
               {
-                header: "Estimated projection at retirement",
-                val: "-$ 210.50",
-                metric: "42 years to target year",
+                header: "Completed tasks",
+                val: "10",
+                metric: "Same as August 2022",
+              },
+              {
+                header: "Pending tasks",
+                val: "-2",
+                metric: " Decreased by 30% since July 2022",
               },
             ].map((item, index) => (
               <Card
@@ -167,10 +167,7 @@ const Employees = () => {
           </div>
 
           <div className="flex pt-10">
-            <Link
-              href={"/dashboard/back-office/employees/custom-report"}
-              className="ml-auto"
-            >
+            <Link href={""} className="ml-auto">
               <div className="relative ">
                 <button className="text-[#386A8B] border-[#62909F] border-[1px] font-semibold bg-white rounded-[4px] px-6 py-2 ml-auto">
                   View custom report
@@ -221,4 +218,4 @@ const Employees = () => {
   )
 }
 
-export default Employees
+export default Schedule

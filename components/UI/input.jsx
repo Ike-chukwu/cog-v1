@@ -56,6 +56,16 @@ const Input = ({ label, name, className, options, type, ...inputProps }) => {
           />
           <label>{label}</label>
         </div>
+      ) : type === "date" ? (
+        <div>
+          <input
+            type={type}
+            {...register(name)}
+            {...inputProps}
+            className={cn("mr-2", className)}
+          />
+          <label>{label}</label>
+        </div>
       ) : type === "textarea" ? (
         <div>
           <textarea

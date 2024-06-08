@@ -68,7 +68,7 @@ const AddAgreement = () => {
     propertyAddress,
     landlordName,
     landlordContact,
-    landlordAddress,
+    // landlordAddress,
     clientName,
     clientContact,
     clientAddress,
