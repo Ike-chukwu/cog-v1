@@ -192,13 +192,12 @@ const Schedule = () => {
                 <div>
                   <div className="max-w-[30rem] text-center pt-20 text-[#4B4B4B]">
                     <h1 className="font-bold mb-10">
-                      You have no previous income statement
+                      You have no previous tasks
                     </h1>
                     <p>
-                      Sign up for the standard plan to get monthly income
-                      statements
+                      Create a new schedule through the Task manager dropdown
                     </p>
-                    <p>Go to settings and subscriptions to begin.</p>
+                    <p>Go to Task manager - Add new task.</p>
                   </div>
                 </div>
                 <figure>

@@ -192,7 +192,7 @@ export default function Calendar() {
               </div>
             </div>
 
-            <div className="rounded-[10px] flex flex-col items-start gap-10 grid-col-8 col-span-5 px-6 border border-[#62909F] py-3">
+            <div className=" flex flex-col items-start gap-10 grid-col-8 col-span-5 px-6 border border-[#62909F] py-3">
               <div className="flex flex-col gap-4 w-full">
                 <div className="w-full pt-4">
                   <div className="flex justify-between items-center py-4">

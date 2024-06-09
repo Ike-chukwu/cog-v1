@@ -18,15 +18,16 @@ const CalendarSlider = () => {
   const [active, setActive] = useState(1)
 
   return (
-    <div className="w-full">
+    <div className="overflow-x-scroll">
       <div className="">
-        <Slider {...settings}>
+        {/* <Slider {...settings}> */}
+        <div className="flex">
           {days.map(({ day, date }, index) =>
             active == index + 1 ? (
               <div
                 key={index}
                 onClick={() => setActive(index + 1)}
-                className="!w-[40px] cursor-pointer bg-[#62909f] h-[60px] pt-2 flex flex-col text-center items-center rounded-xl justify-center gap-[1rem] text-white"
+                className="!w-[40px] cursor-pointer bg-[#62909f] py-2 px-4 flex flex-col text-center items-center rounded-xl gap-[1rem] justify-center text-white"
               >
                 <p className="text-[13px]">{day}</p>
                 <p className="text-[18px]">{date}</p>
@@ -35,14 +36,15 @@ const CalendarSlider = () => {
               <div
                 key={index}
                 onClick={() => setActive(index + 1)}
-                className="!w-[40px] cursor-pointer h-[60px] flex flex-col pt-2 text-center items-center justify-center rounded-xl gap-[1rem] text-[#62909f]"
+                className="!w-[40px] cursor-pointer flex py-2 px-4 flex-col text-center items-center justify-center rounded-xl gap-[1rem] text-[#62909f]"
               >
                 <p className="text-[13px]">{day}</p>
                 <p className="text-[18px]">{date}</p>
               </div>
             )
           )}
-        </Slider>
+        </div>
+        {/* </Slider> */}
       </div>
     </div>
   )
