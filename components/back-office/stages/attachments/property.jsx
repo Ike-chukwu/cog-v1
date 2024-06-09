@@ -9,7 +9,7 @@ const PropertyInSchedule = ({ register }) => {
           <p className="font-semibold opacity-70">Property type</p>
           <Input
             name="selectedPropertyType"
-            className="bg-[#F5F7F9] py-1 px-2  placeholder:text-[#B1B1B4] border border-primary rounded-none"
+            className="bg-[#F5F7F9] mt-4 py-1 px-2  placeholder:text-[#B1B1B4] border border-primary rounded-none"
             register={register}
             type="select"
             options={[

@@ -73,6 +73,10 @@ const Dashboard = ({ children, className }) => {
           link: "/dashboard/back-office/employees",
           subcontent: "Employees",
         },
+        {
+          link: "/dashboard/back-office/schedule",
+          subcontent: "Schedule",
+        },
       ],
     },
     {

@@ -1,6 +1,9 @@
 import Dashboard from "@/components/Layout/Dashboard"
 import Header from "@/components/UI/Dashboard/Header"
 import ProgressBar from "@/components/UI/Dashboard/ProgressBar"
+import AttachmentsInSchedule from "@/components/back-office/stages/attachments"
+import Integrations from "@/components/back-office/stages/integrations"
+import ScheduleSummary from "@/components/back-office/stages/schedule-summary"
 import TaskDetailsInSchedule from "@/components/back-office/stages/task/task-details"
 import TimeFrameInSchedule from "@/components/back-office/stages/time-frame"
 import EmployeeDetails from "@/components/manager/employees/stages/employee-details"
@@ -43,7 +46,7 @@ const CreateTasksInSchedule = () => {
     },
     {
       stage: "Attachments",
-      subStages: ["Account details", "Salary"],
+      subStages: ["Employee", "Property", "Third party"],
     },
     {
       stage: "Integrations",
@@ -153,14 +156,16 @@ const CreateTasksInSchedule = () => {
 
       case 3:
         return (
-          <PaymentDetailsInEmployees
+          <AttachmentsInSchedule
             register={register}
             subStage={activeSubStage}
           />
         )
 
       case 4:
-        return <EmployeeSummary />
+        return <Integrations />
+      case 5:
+        return <ScheduleSummary />
     }
   }
   const currentForm = renderForms(activeStage)
@@ -197,10 +202,11 @@ const CreateTasksInSchedule = () => {
                     type="button"
                     onClick={() => {
                       saveToLocalstorage(formValues)
-                      if (activeStage >= 4) {
-                        router.push(
-                          "/dashboard/manager/payments/create-invoice"
-                        )
+                      if (activeStage > 5) {
+                        return
+                        // router.push(
+                        //   "/dashboard/manager/payments/create-invoice"
+                        // )
                       } else {
                         handleNextSubStage()
                       }

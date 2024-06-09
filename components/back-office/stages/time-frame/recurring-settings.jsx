@@ -59,7 +59,7 @@ const RecurringSettingsInSchedule = ({ register }) => {
           <p className="font-semibold opacity-70">Frequency</p>
           <Input
             register={register}
-            name="startDateUnderTimeframe"
+            name="frequency"
             placeholder="DD-MM-YYY"
             className="bg-[#F5F7F9] py-1 px-2 mt-4 placeholder:text-[#B1B1B4] border border-primary rounded-none"
           />

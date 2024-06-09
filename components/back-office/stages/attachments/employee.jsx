@@ -3,14 +3,14 @@ import Wrapper from "@/components/manager/wrapper"
 
 const EmployeeInSchedule = ({ register }) => {
   return (
-    <Wrapper header="Employee" subHead="Kindly select your employee.">
+    <Wrapper header="Employee" subHead="Kindly select your employee type.">
       <ul className="list-disc ml-6">
         <li>
           <p className="font-semibold opacity-70">Employee type</p>
 
           <Input
             name="selectedEmployee"
-            className="bg-[#F5F7F9] py-1 px-2  placeholder:text-[#B1B1B4] border border-primary rounded-none"
+            className="bg-[#F5F7F9] mt-4 py-1 px-2  placeholder:text-[#B1B1B4] border border-primary rounded-none"
             register={register}
             type="select"
             options={[
